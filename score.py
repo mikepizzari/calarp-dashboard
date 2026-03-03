@@ -139,13 +139,34 @@ def run(input_path: str):
     agg["DaysSince"]  = (TODAY - agg["LatestEval"]).dt.days
     agg["YearsSince"] = agg["DaysSince"] / 365.25
 
+    # Count how many rows per site have non-empty notes
+    notes_count = df[df["EvalNotes"].str.strip().str.len() > 10].groupby("SiteID").size().rename("NotesCount")
+    agg = agg.join(notes_count, on="SiteID")
+    agg["NotesCount"] = agg["NotesCount"].fillna(0).astype(int)
+
     def flag(notes, rx): return bool(rx.search(notes))
+
+    def iiar9_gap_flag(notes: str, notes_count: int, latest_year: int) -> bool:
+        """
+        Only flag as IIAR 9 gap if:
+        - Notes are rich enough to expect a mention (at least 2 substantive note rows), OR
+        - The site has recent evals (post-2020) where IIAR 9 should appear if compliant
+        If notes are sparse/blank, mark as UNKNOWN (False) — don't penalize for missing data.
+        """
+        if flag(notes, IIAR9_RE):
+            return False   # Explicitly compliant — no gap
+        if notes_count >= 2 and latest_year >= 2020:
+            return True    # Enough notes, recent enough — absence is meaningful
+        if notes_count >= 4:
+            return True    # Lots of notes across history — absence is meaningful
+        return False       # Sparse notes — can't determine, don't penalize
 
     rows = []
     for _, r in agg.iterrows():
         notes = r["AllNotes"]
         latest_year = r["LatestEval"].year if pd.notna(r["LatestEval"]) else 0
         latest_str  = r["LatestEval"].strftime("%Y-%m-%d") if pd.notna(r["LatestEval"]) else "Unknown"
+        notes_ct    = int(r["NotesCount"])
 
         rec = {
             "site_id":          int(r["SiteID"]),
@@ -162,7 +183,7 @@ def run(input_path: str):
             "is_refinery":      flag(notes, REFINERY_RE),
             "is_p3":            flag(notes, P3_RE),
             "is_p2":            flag(notes, P2_RE),
-            "iiar9_gap":        not flag(notes, IIAR9_RE),
+            "iiar9_gap":        iiar9_gap_flag(notes, notes_ct, latest_year),
             "revalid_overdue":  latest_year > 0 and latest_year <= 2021,
             "revalid_soon":     latest_year == 2022,
             "pre_epa2024":      pd.notna(r["LatestEval"]) and r["LatestEval"] < pd.Timestamp("2024-05-01"),
