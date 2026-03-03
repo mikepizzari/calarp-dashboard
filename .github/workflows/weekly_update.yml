@@ -1,0 +1,81 @@
+name: Weekly CalARP Dashboard Update
+
+on:
+  schedule:
+    # Runs every Monday at 7:00 AM UTC (midnight Pacific)
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    # Also allows manual trigger from the GitHub Actions UI
+    inputs:
+      reason:
+        description: "Reason for manual run"
+        required: false
+        default: "Manual trigger"
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # needed to commit the updated dashboard back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check for new CERS export
+        id: check_data
+        run: |
+          # Look for any .xlsx or .csv in data/ folder
+          FILE=$(ls data/*.xlsx data/*.csv 2>/dev/null | head -1)
+          if [ -z "$FILE" ]; then
+            echo "ERROR: No data file found in data/ folder."
+            echo "Please upload a fresh CERS export to the data/ folder."
+            exit 1
+          fi
+          echo "data_file=$FILE" >> $GITHUB_OUTPUT
+          echo "Found data file: $FILE"
+
+      - name: Run scoring engine
+        run: |
+          python score.py --input "${{ steps.check_data.outputs.data_file }}"
+
+      - name: Verify outputs exist
+        run: |
+          test -f output/dashboard.html || (echo "dashboard.html not generated" && exit 1)
+          test -f output/leads.csv      || (echo "leads.csv not generated" && exit 1)
+          test -f output/leads.json     || (echo "leads.json not generated" && exit 1)
+          echo "All outputs verified."
+          wc -l output/leads.csv
+
+      - name: Commit and push updated dashboard
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/dashboard.html output/leads.csv output/leads.json output/last_updated.txt output/leads_previous.json output/changes.json
+          # Only commit if something changed
+          git diff --staged --quiet || git commit -m "Auto-update: CalARP dashboard $(date -u '+%Y-%m-%d')"
+          git push
+
+      - name: Summary
+        run: |
+          UPDATED=$(cat output/last_updated.txt)
+          LINES=$(wc -l < output/leads.csv)
+          echo "### CalARP Dashboard Updated" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp:** $UPDATED" >> $GITHUB_STEP_SUMMARY
+          echo "- **Sites scored:** $((LINES - 1))" >> $GITHUB_STEP_SUMMARY
+          echo "- **Dashboard:** output/dashboard.html (served via GitHub Pages)" >> $GITHUB_STEP_SUMMARY
+          if [ -f output/changes.json ]; then
+            UP=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('moved_up_count',0))")
+            DOWN=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('moved_down_count',0))")
+            NEW=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('new_count',0))")
+            echo "- **Score changes:** ↑$UP up, ↓$DOWN down, +$NEW new sites" >> $GITHUB_STEP_SUMMARY
+          fi
