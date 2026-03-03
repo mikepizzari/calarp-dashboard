@@ -440,7 +440,7 @@ function copyLead(sid, btn) {{
     '', 'PAIN POINTS:', ...(l.pp||[]).map(pt=>`• ${{pt}}`),
     ...((l.nt&&l.nt.length)?['', 'NOTES:', ...l.nt.map(n=>`• ${{n}}`)]: []),
   ];
-  navigator.clipboard.writeText(lines.join('\n')).then(()=>{{
+  navigator.clipboard.writeText(lines.join('\\n')).then(()=>{{
     btn.textContent='Copied!'; btn.classList.add('copied');
     setTimeout(()=>{{btn.textContent='Copy Lead'; btn.classList.remove('copied');}}, 1800);
   }});
