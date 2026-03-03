@@ -2,14 +2,4985 @@
   "baseline": false,
   "prev_date": "2026-03-03",
   "moved_up": [],
-  "moved_down": [],
+  "moved_down": [
+    {
+      "site_id": 9798,
+      "facility_name": "AUTOMOTIVE RACING PRODUCTS, INC",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 9895,
+      "facility_name": "AutoZone #3365",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 11805,
+      "facility_name": "BEO MAG PLATING",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 13414,
+      "facility_name": "Brea Power LLC",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 19636,
+      "facility_name": "City of Imperial City Garage",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 20049,
+      "facility_name": "City of Westmorland Waste Water Plant",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 20968,
+      "facility_name": "COLTON WATER RECLAM FAC.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 26845,
+      "facility_name": "DN Tanks",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 28287,
+      "facility_name": "EMWD Hemet Water Filtration Plant",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 28302,
+      "facility_name": "EMWD Quandt Ranch Well #29",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 31683,
+      "facility_name": "Freeport McMoRan Oil & Gas- REINA",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 44734,
+      "facility_name": "LLOYD MICHAEL WATER TREATMENT PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 55217,
+      "facility_name": "Palo Verde County Water District",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 66020,
+      "facility_name": "SD CNTY AGRICULTURE, WEIGHTS & MEASURES",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 69019,
+      "facility_name": "SORENSON ENGINEERING INC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 78196,
+      "facility_name": "TWIN OAKS RESERVOIR",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 89200,
+      "facility_name": "On point Auto",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 102178,
+      "facility_name": "CALIFORNIA WATER SERVICE CO. - CBK-F101ABCD",
+      "cupa": "Bakersfield City Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 103542,
+      "facility_name": "Lineage Logistics",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 105406,
+      "facility_name": "Christensen Plating Works Inc",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 106456,
+      "facility_name": "City of Vernon Booster Plant 3",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 114512,
+      "facility_name": "EMWD San Jacinto Valley RWRF",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 114524,
+      "facility_name": "EMWD Menifee/Perris Desalter",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 123220,
+      "facility_name": "HORACE HINCKLEY WATER TRT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 125642,
+      "facility_name": "SMC Automotive LLC",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 146887,
+      "facility_name": "RCWD Ace Bowen Pump Station",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 147354,
+      "facility_name": "REID'S SOUTH BAY AUTO WORX",
+      "cupa": "Redondo Beach Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 164242,
+      "facility_name": "UCSB-BLDG 503",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 358636,
+      "facility_name": "Metro Operations and Maintenance Facility - Div 14",
+      "cupa": "Santa Monica Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 364191,
+      "facility_name": "FINELINE CIRCUITS AND TECHNOLOGY",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384288,
+      "facility_name": "AG RX - 609 DEPOT",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387723,
+      "facility_name": "BELRIDGE WATER STORAGE DIST",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387894,
+      "facility_name": "Bio-Lab",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388756,
+      "facility_name": "CalEnergy Operating Corporation-Central Services",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388761,
+      "facility_name": "CalEnergy Operating Corporation-Units 3,4,and 5",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388983,
+      "facility_name": "California Resources Production Corporation - BV Nose",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389379,
+      "facility_name": "Carlsbad Gas & Propane, Inc.",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389853,
+      "facility_name": "CHEVRON MIDWAY SUNSET",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389865,
+      "facility_name": "Chevron USA Cymric Area",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389893,
+      "facility_name": "CHINO BASIN DESALTER AUTHORITY",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390052,
+      "facility_name": "City of El Centro Waste Water Treatment Plant",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390467,
+      "facility_name": "Ardent MILLS",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390653,
+      "facility_name": "Costco Wholesale Depot #960",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391807,
+      "facility_name": "Dune Company of Imperial Valley,LLC-Calipatria Yard",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392188,
+      "facility_name": "EMWD Perris Valley RWRF",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392312,
+      "facility_name": "Evolution Fresh, Inc.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392428,
+      "facility_name": "JOHNSTON FARMS",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393137,
+      "facility_name": "FRITO LAY NORTH AMERICA, INC.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393678,
+      "facility_name": "Gargiulo Cooling",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394634,
+      "facility_name": "HERAEUS PRECIOUS METALS NORTH AMERICA LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395030,
+      "facility_name": "ILLUMINA, INC",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395366,
+      "facility_name": "JACUMBA SHELL",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395694,
+      "facility_name": "KALASHO, INC (DBA GO GAS)",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396821,
+      "facility_name": "LT FARM INC.- HERRING",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397049,
+      "facility_name": "Mandalay Generating Station",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399867,
+      "facility_name": "PRECISION POWERED METAL PART",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 400437,
+      "facility_name": "RAYTHEON - RVS 1",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403451,
+      "facility_name": "T.K. Services Inc",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405183,
+      "facility_name": "USDOE - WAPA (Knob Substation)",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405223,
+      "facility_name": "DSV Solutions- Fontana",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405272,
+      "facility_name": "VALLEY CENTER EQUIPTMENT RENTALS",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 410983,
+      "facility_name": "City of San Clemente Water Reclamation Plant",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 414381,
+      "facility_name": "HBR-RESERVOIR HILL",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 423273,
+      "facility_name": "WATERLINE TECHNOLOGIES/PSOC",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 432926,
+      "facility_name": "Google LLC - GQ3",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 555738,
+      "facility_name": "BMW of Riverside Collision Center",
+      "cupa": "Riverside City Fire Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 564470,
+      "facility_name": "Cana Rose Realty Holdings, LLC",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 571297,
+      "facility_name": "Commerce Way Owner II, LLC",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 612232,
+      "facility_name": "Costco Business Center #1581",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 613988,
+      "facility_name": "LAUNCHPAD LANDS",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 627081,
+      "facility_name": "ROLLS-ROYCE HIGH-TEMPERATURE COMPOSITES INC",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 7,
+      "prev_score": 10,
+      "delta": -3,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 4445,
+      "facility_name": "ALLEN BOOSTER AND RESERVOIR",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 20095,
+      "facility_name": "Sheldon Reservoir",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 35628,
+      "facility_name": "Four Star Chemical (Bandini Warehouse)",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 36093,
+      "facility_name": "HERAEUS METAL PROCESSING INC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 55590,
+      "facility_name": "PARTER MEDICAL PRODUCTS INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 68331,
+      "facility_name": "Skyworks Solutions, Inc. (Newbury Park, CA)",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 91168,
+      "facility_name": "SEPARATIONS GROUP GRACE VYDAC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 100916,
+      "facility_name": "C M W D-#1 CHLORINATION STATION",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 106534,
+      "facility_name": "Monk Hill Treatment Plant",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122144,
+      "facility_name": "Helena Agri-Enterprises, LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 126685,
+      "facility_name": "Jones Reservoir",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 135482,
+      "facility_name": "Mirador Reservoir",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 148900,
+      "facility_name": "Bestway Sandwiches",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 150872,
+      "facility_name": "SANTA ANITA BOOSTER & RESERVOIR",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 164193,
+      "facility_name": "Lineage Vernon 5-6",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 169763,
+      "facility_name": "Wadsworth Well",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 359585,
+      "facility_name": "CITY OF LA - GLENDALE Water Reclamation Plant",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388398,
+      "facility_name": "Braga Fresh Imperial",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388721,
+      "facility_name": "CAL TECH/CENTRAL PLANT",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389053,
+      "facility_name": "CALLEGUAS MUNICIPAL WATER DIST",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390090,
+      "facility_name": "CITY OF LA - PW - T.I.W.R.P.",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390155,
+      "facility_name": "CITY/WATER & PW GENERAL PLANT",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390809,
+      "facility_name": "Midstream Energy Partners, USA,LLC- NO COLES LEVEE GAS PLT",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391201,
+      "facility_name": "DECCO US POST HARVEST",
+      "cupa": "Monrovia Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395271,
+      "facility_name": "J G BOSWELL COMPANY - KERN TOMATO",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395563,
+      "facility_name": "Johnson & Johnson CLS, Fontana",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398325,
+      "facility_name": "North Brawley Geothermal Project",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398742,
+      "facility_name": "ORMAT NEVADA GEO OPER.-HEBER 1",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398743,
+      "facility_name": "Ormat Nevada Geo. Oper. Heber 2",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399143,
+      "facility_name": "CORE X ALLIANCE",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399144,
+      "facility_name": "CORE X Alliance",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399150,
+      "facility_name": "Pasadena Water Yards",
+      "cupa": "Pasadena Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 557950,
+      "facility_name": "The Sherwin-Williams Company - Victorville",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 569008,
+      "facility_name": "California Sugar Refiners LLC",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 703881,
+      "facility_name": "TRICHROMATIC-WEST INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 954289,
+      "facility_name": "Archer Meat Snacks, Inc.",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 6,
+      "prev_score": 9,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 315,
+      "facility_name": "PLANT # 4",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 3687,
+      "facility_name": "Airgas Specialty Products - Riverside, CA",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 6763,
+      "facility_name": "Arctic Glacier Barstow 488",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 10722,
+      "facility_name": "BAKER PETROLITE LLC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 13450,
+      "facility_name": "BRENNTAG PACIFIC INC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 13745,
+      "facility_name": "BROWN-PACIFIC, INC.",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 20699,
+      "facility_name": "Brothers Best Produce",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 24439,
+      "facility_name": "Del Monte Fresh Produce N.A. Inc.",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 29694,
+      "facility_name": "FARMDALE CREAMERY LLC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 38388,
+      "facility_name": "NEW-INDY OXNARD LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 50756,
+      "facility_name": "MWD - Chemical Unloading Facility (CUF)",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 57835,
+      "facility_name": "PLANT # 6",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 57844,
+      "facility_name": "PLANT #7",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 61492,
+      "facility_name": "Bagdasarian Packing Mecca LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 65445,
+      "facility_name": "SB WATER DEPARTMENT YARD",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 66621,
+      "facility_name": "Solecta, Inc",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 69744,
+      "facility_name": "SOUTHERN VALLEY CHEMICAL COMPANY",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 72169,
+      "facility_name": "Woodspur Farming LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 74931,
+      "facility_name": "The Dodge Company, Inc",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84768,
+      "facility_name": "WATER DEPT DEVILS CANYON #2 WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84772,
+      "facility_name": "WATER DEPT/KENWOOD WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84773,
+      "facility_name": "WATER DEPT/LYTLE CREEK",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84774,
+      "facility_name": "WATER DEPT/NEWMARK PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84775,
+      "facility_name": "WATER DPT/DEVIL CNYN 4",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84813,
+      "facility_name": "WATER/MILL & D ST WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 87129,
+      "facility_name": "ZIEGENFELDER COMPANY",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 90174,
+      "facility_name": "AGUA MANSA POWER PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 99268,
+      "facility_name": "Helena Agri Enterprises LLC (Blythe Facility)",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 103314,
+      "facility_name": "Carpenter Co",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 105142,
+      "facility_name": "CHINO BENSON RESERVOIR SITE",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 105159,
+      "facility_name": "CHINO PHILLIPS RESERVOIR SITE",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 108641,
+      "facility_name": "Nutrien Ag Solutions",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 109781,
+      "facility_name": "CVWD WRP #7",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 109801,
+      "facility_name": "CVWD WRP #4",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 110782,
+      "facility_name": "Del Real LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 110873,
+      "facility_name": "DELMART COLD STORAGE",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 111165,
+      "facility_name": "Desert Water Agency (Reclaim Plant)",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 112902,
+      "facility_name": "Dune Co.Imperial Valley,LLC(N.Pesticide Warehouse)",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 113468,
+      "facility_name": "Eastside Water Treatment Plant",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122137,
+      "facility_name": "Helena Agri-Enterprises, LLC.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122142,
+      "facility_name": "HELENA AGRI-ENTERPRISES,LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122241,
+      "facility_name": "HENRY TATE WATER TREATMENT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122263,
+      "facility_name": "HERAEUS PRECIOUS METALS NORTH AMERICA LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 127360,
+      "facility_name": "SUMMIT INTERCONNECT INC",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 127704,
+      "facility_name": "KERN FRONT LIMITED",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 135992,
+      "facility_name": "MP Mine Operations LLC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 141307,
+      "facility_name": "CVWD Palm Desert Headquarters / WRP #10",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 144032,
+      "facility_name": "PLAINS MARKETING - METSON STATION",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 150895,
+      "facility_name": "SANTA BARBARA FARMS LLC - COOLER",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170474,
+      "facility_name": "WATER DEPT/17TH ST PLN",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170475,
+      "facility_name": "WATER DEPT/CAJON PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170477,
+      "facility_name": "WATER DEPT/SYCAMORE PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170479,
+      "facility_name": "WATER DPT/27TH ST WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170481,
+      "facility_name": "WATER DPT/LYNWOOD WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170524,
+      "facility_name": "WATER/ WATERMAN PLANT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170525,
+      "facility_name": "WATER/10TH ST WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170526,
+      "facility_name": "WATER/MALLORY ST WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 171363,
+      "facility_name": "Western Precooling Systems/Commercial Cooler",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 357192,
+      "facility_name": "Kroger Manufacturing - Creamery",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384359,
+      "facility_name": "AIRGAS USA, LLC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385124,
+      "facility_name": "AmeriGas Rail Facility Barstow",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385304,
+      "facility_name": "GEODIS Logistics LLC 0593",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385504,
+      "facility_name": "ASSOCIATED PLATING CO. INC.",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388144,
+      "facility_name": "BOSKOVICH FARMS: MOUNTAIN VIEW",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388739,
+      "facility_name": "CAL-TRON PLATING INC.",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389811,
+      "facility_name": "CHEMEX CHEMICALS INC",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390519,
+      "facility_name": "Continental Heat Treating",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390743,
+      "facility_name": "Nutrien Ag Solutions - Bakersfield",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390815,
+      "facility_name": "CRIMSON RENEWABLE ENERGY L.P.",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391085,
+      "facility_name": "DAN ANDREWS COOLING LLC",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391720,
+      "facility_name": "DOUBLE C LIMITED",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391802,
+      "facility_name": "DUNCAN FAMILY FARMS, LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391872,
+      "facility_name": "E F Oxnard LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392737,
+      "facility_name": "Fisherman's Pride Processor dba Neptune Foods",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393644,
+      "facility_name": "GALLADE CHEMICAL, INC.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393899,
+      "facility_name": "Glendale Water & Power - Grayson Power Plant",
+      "cupa": "Glendale City Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394011,
+      "facility_name": "GOODRICH CORPORATION",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394168,
+      "facility_name": "Grimmway - Cal-O Tehachapi",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394449,
+      "facility_name": "HARTWELL CORP",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394632,
+      "facility_name": "HERAEUS PRECIOUS METALS NORTH AMERICA LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394633,
+      "facility_name": "HERAEUS PRECIOUS METALS NORTH AMERICA LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394635,
+      "facility_name": "HERAEUS PRECIOUS METALS NORTH AMERICA LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395026,
+      "facility_name": "IID SteamPlant/Fish Farm",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395876,
+      "facility_name": "KIK (SoCAL) LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399949,
+      "facility_name": "ProCAL",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 400326,
+      "facility_name": "Ralphs Grocery Co - Riverside Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 401637,
+      "facility_name": "ID Logistics Ontario",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 401857,
+      "facility_name": "Majestic Star, LLC Storage #1",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402122,
+      "facility_name": "Sierra Aluminum, A Division of Samuel, Son & Co. (USA) Inc.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403507,
+      "facility_name": "Rentokil North America, Inc. DBA Target Santa Fe Springs",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 404287,
+      "facility_name": "TRANSPHORM INC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 404334,
+      "facility_name": "Trical, Inc. - Mojave.",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405379,
+      "facility_name": "ELLWOOD ONSHORE FACILITY",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407445,
+      "facility_name": "WEBER DISTRIBUTION",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407559,
+      "facility_name": "WestAir Gases & Equipment, Inc.",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407613,
+      "facility_name": "Western Precooling Systems-Mountain View Division",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 411284,
+      "facility_name": "FORGE",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 517828,
+      "facility_name": "OK International",
+      "cupa": "Orange County Environmental Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 565114,
+      "facility_name": "Xtractor Depot",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 566673,
+      "facility_name": "Pratt & Whitney CMC Center of Excellence",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567582,
+      "facility_name": "Magnolia Foods",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 592753,
+      "facility_name": "Americold Logistics",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 624852,
+      "facility_name": "Acrisure Arena",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 703763,
+      "facility_name": "LAC WATERWORKS- 87th & I Pump Station",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 775268,
+      "facility_name": "Capstan California",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 5,
+      "prev_score": 8,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 15757,
+      "facility_name": "CALLEGUAS MWD-GRIMES CANYON",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 18991,
+      "facility_name": "Church & Dwight Co., Inc.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 20963,
+      "facility_name": "COLTON POWER LP-CENTURY",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 22585,
+      "facility_name": "Nutrien Ag Solutions",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 26696,
+      "facility_name": "Dune Co.of Imperial Valley,LLC(Shop Pest.Warehouse)",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 44577,
+      "facility_name": "Lineage Logistics - Agua Mansa",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 58069,
+      "facility_name": "POLARIS, INC.",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 69015,
+      "facility_name": "Kyocera, SLD Laser Inc. - Pine",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 102589,
+      "facility_name": "CAMARILLO SANITARY DISTRICT",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 109080,
+      "facility_name": "CSUCI POWER PLANT",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 112720,
+      "facility_name": "Colton Power LP-Drews",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 122136,
+      "facility_name": "Helena Agri-Enterprises, LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 134021,
+      "facility_name": "Medical Chemical Corporation",
+      "cupa": "Torrance Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 144703,
+      "facility_name": "PRECISION CONTROL FINISHING",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 164770,
+      "facility_name": "United Water Conservation District Oxnard",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 169445,
+      "facility_name": "VISTA METALS CORPORATION",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 373657,
+      "facility_name": "AGRO Shop",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391054,
+      "facility_name": "Kiewit - DC Tillman Plant",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391764,
+      "facility_name": "DRISCOLL'S STRAWBERRY ASSOC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394193,
+      "facility_name": "Grimmway Enterprises, Inc. - Coachella Cold Storage Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396655,
+      "facility_name": "LJ EXPRESS TRUCKING",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398835,
+      "facility_name": "PABLO'S PRODUCE INC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407472,
+      "facility_name": "GP ETTING ROAD COOLER, LLC/ GP ANACAPA FOODS, LLC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 441330,
+      "facility_name": "Meridian Parkway Campus-Riverside Commissary",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 561902,
+      "facility_name": "Anacapa Fresh Logistics #3",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 562785,
+      "facility_name": "United Natural Foods West Inc. - Riverside",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567671,
+      "facility_name": "Chevron U.S.A. Inc.- Eastridge Cogen",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567738,
+      "facility_name": "Chevron U.S.A. Inc.- 26C Cogen",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567866,
+      "facility_name": "Chevron U.S.A. Inc. - SEKR Cogen",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 614618,
+      "facility_name": "DrinkPak - BLDG 2",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 926463,
+      "facility_name": "World Class Distribution, Inc. - Palmdale",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 4,
+      "prev_score": 7,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 5499,
+      "facility_name": "Americold Logistics",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 11888,
+      "facility_name": "Berry Corporation-COGEN 38",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 17898,
+      "facility_name": "CHALK CLIFF LIMITED",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 19491,
+      "facility_name": "City Of Corona Glen Ivy Reservoir",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 21220,
+      "facility_name": "Compton Ag Services",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 25984,
+      "facility_name": "DOLLAR TREE REGIONAL DISTRIBUTION CENTER",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 26523,
+      "facility_name": "Driscoll's Inc",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 30480,
+      "facility_name": "FISHER RANCH CORPORATION",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 30481,
+      "facility_name": "Fisher Ranch-Mixed Melon Cooler",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 30844,
+      "facility_name": "L.A. Lumber Treating, Ltd.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 31338,
+      "facility_name": "Foster-Gardner, Inc",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 36404,
+      "facility_name": "HIGH SIERRA LIMITED",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 40100,
+      "facility_name": "Jobbers Meat Packing Co.",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 44222,
+      "facility_name": "Lester Water Treatment Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 44579,
+      "facility_name": "Baker Cold Storage, INC. DBA: Lineage Logistics - Vernon",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 46398,
+      "facility_name": "Bimbo Bakeries USA, Inc.",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 53691,
+      "facility_name": "Olin Chlor Alkali Products",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 53942,
+      "facility_name": "ONTARIO ICE SKATING CTR",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 58142,
+      "facility_name": "POMONA VALLEY POOL CHLOR",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 60426,
+      "facility_name": "HV Randall Foods, LLC",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 68393,
+      "facility_name": "BLENDING STATION / SM CITY WATER WELL #9",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 68486,
+      "facility_name": "Smart and Final Riverside Warehouse",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 68703,
+      "facility_name": "SO CA GAS CO - Wheeler Ridge Comp Station",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 71006,
+      "facility_name": "St Francis Cooling Inc",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 71823,
+      "facility_name": "Stremicks Heritage Foods",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 78467,
+      "facility_name": "Lineage Vernon 1-3",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 89983,
+      "facility_name": "AERA ENERGY LLC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 91702,
+      "facility_name": "AMERICAN POLYMERS CORP",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 92510,
+      "facility_name": "Anthony Vineyards, Inc.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 92817,
+      "facility_name": "AQUAMAR, INC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 98466,
+      "facility_name": "BETTER COOLING INC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 99900,
+      "facility_name": "Helena Agri-Enterprises, LLC",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 102310,
+      "facility_name": "Callaway Vineyard & Winery",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 108632,
+      "facility_name": "Nutrien Ag Solutions",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 108642,
+      "facility_name": "Nutrien Ag Soliutions -Oxnard 660",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 112688,
+      "facility_name": "Roadrunner Cold Storage LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 118083,
+      "facility_name": "Fresh Venture Foods",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 123926,
+      "facility_name": "IID Niland Gas Turbine",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 130670,
+      "facility_name": "DL Cooling, Inc",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 130854,
+      "facility_name": "Baker Cold Storage, INC. DBA: Lineage Logistics - Vernon",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 130857,
+      "facility_name": "Arctic Cold La Brea T",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 131194,
+      "facility_name": "Lompoc Valley Cooling Inc.",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 134103,
+      "facility_name": "MEINERS OAKS CO WATER DIST-#4a, 7",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 134104,
+      "facility_name": "MEINERS OAKS WATER DIST.",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 144319,
+      "facility_name": "Polycoat Products",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 145171,
+      "facility_name": "Promenade Connection",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 145209,
+      "facility_name": "Pacific Prime Meats",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 145231,
+      "facility_name": "BHJ USA, LLC",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 152083,
+      "facility_name": "SDG&E - MORENO COMPRESSOR STATION",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 152795,
+      "facility_name": "SGS OBISPO",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 153392,
+      "facility_name": "Sierra Del Oro Water Treatment Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 165609,
+      "facility_name": "VALLEY CENTRAL COOLING",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170472,
+      "facility_name": "WATER DEPT 7TH ST WELL",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170478,
+      "facility_name": "WATER DPT/19TH ST PLNT",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 171364,
+      "facility_name": "WPS-Ocean Breeze Cooling",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 179395,
+      "facility_name": "Springs Generating Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 183184,
+      "facility_name": "Doe and Ingalls of CA Operating, LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 272572,
+      "facility_name": "Arctic Glacier Indio 530",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 273773,
+      "facility_name": "AI Incorporated (ALDI)",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384253,
+      "facility_name": "AERA ENERGY LLC",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384315,
+      "facility_name": "AGRO JAL FARMING - KATHLEEN CT",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384560,
+      "facility_name": "ALERT PLATING COMPANY",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384749,
+      "facility_name": "Amazing Coachella",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385010,
+      "facility_name": "Americold Vernon 2102",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385299,
+      "facility_name": "Taylor Farms",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387702,
+      "facility_name": "Thermal Cooling LLC.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388009,
+      "facility_name": "Blythe Energy Inc.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388110,
+      "facility_name": "BONITA PACKING",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388145,
+      "facility_name": "BOSKOVICH FARMS: OXNARD PLANT",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388738,
+      "facility_name": "Cal-Sun Produce, LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388781,
+      "facility_name": "CALICO BRANDS INC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388987,
+      "facility_name": "CALNRG OPERATING, LLC - SANTA CLARA GAS",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389217,
+      "facility_name": "CAMBRIA WINERY",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389634,
+      "facility_name": "CENTRAL CITY COOLING",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 389670,
+      "facility_name": "Central Wire Group",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390662,
+      "facility_name": "Refresco Beverages US Inc.",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391097,
+      "facility_name": "Dandy Cooling Company, LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392131,
+      "facility_name": "ELITE METAL FINISHING, LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393106,
+      "facility_name": "Freeport McMoRan Oil & Gas - HARRIS GRADE",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393475,
+      "facility_name": "FRONTIER COOLING",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393850,
+      "facility_name": "Gills Onions, LLC",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394716,
+      "facility_name": "High Desert Power Project",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 394735,
+      "facility_name": "Highline Cooling, LLC",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 395051,
+      "facility_name": "Imperial Western Products Inc.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396185,
+      "facility_name": "LAGUNA COUNTY SANITATION DIST.",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396629,
+      "facility_name": "Lineage Logistics",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396707,
+      "facility_name": "LONE STAR FRAC AND ISOM FACILITY",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397002,
+      "facility_name": "MAIN STREET PRODUCE LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397338,
+      "facility_name": "MCKITTRICK LIMITED",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397976,
+      "facility_name": "MURRIETTA CIRCUITS",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398532,
+      "facility_name": "Ocean Mist Farms",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398748,
+      "facility_name": "Ormond Beach Generating Station",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398761,
+      "facility_name": "OSI Industries LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398795,
+      "facility_name": "Owens Brockway Glass Container Inc.",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398972,
+      "facility_name": "ELITE COMFORT SOLUTIONS",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399537,
+      "facility_name": "PHIBRO-TECH INC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399572,
+      "facility_name": "PICTSWEET COMPANY, THE",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399853,
+      "facility_name": "Linde Inc - 986",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399859,
+      "facility_name": "PRECISION AEROSPACE CORPORATION",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 400537,
+      "facility_name": "Red Diamond Cooling, Inc.",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 400847,
+      "facility_name": "Rockwood Ag Services, Inc.",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 401929,
+      "facility_name": "Sentinel Peak Resources Belridge Gas Plant",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402869,
+      "facility_name": "STATER BROS MARKET DISTRIBUTION CTR",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402905,
+      "facility_name": "Sterigenics U.S., LLC - Los Angeles 49th Street Facility",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402908,
+      "facility_name": "Sterigenics U.S., LLC - Los Angeles 50th Street Facility",
+      "cupa": "Vernon Health & Environmental Control Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403291,
+      "facility_name": "Superior Connector Plating Inc dba Superior Plating",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403292,
+      "facility_name": "Superior Cooling & Ice",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403380,
+      "facility_name": "Sysco Riverside Inc.",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403616,
+      "facility_name": "Temescal Desalter Facility",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403632,
+      "facility_name": "Terminal Freezers,LLC. (A Subsidiary of Lineage Logistics, LLC)",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 403966,
+      "facility_name": "THE PROCTER & GAMBLE PAPER PRODUCTS CO",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 404446,
+      "facility_name": "Tudor Ranch, Inc. (Packing Shed)",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 404953,
+      "facility_name": "United Natural Foods West, Inc-Moreno Valley",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 416467,
+      "facility_name": "Anacapa Fresh Logistics",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 426892,
+      "facility_name": "Vandenberg AFB",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 429602,
+      "facility_name": "McConnell's Fine Ice Creams",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 435049,
+      "facility_name": "Beachside Produce, LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 438861,
+      "facility_name": "GH Dairy #4",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 441958,
+      "facility_name": "San Miguel Produce",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 443119,
+      "facility_name": "World Class Distribution, Inc. - Redlands",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 517107,
+      "facility_name": "ALLBRITE CAR CARE PRODUCTS INC",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 537565,
+      "facility_name": "MWS Wire Industries",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 543690,
+      "facility_name": "Sure Fresh Produce Inc",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 549860,
+      "facility_name": "Home Chef San Bernardino",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 550229,
+      "facility_name": "Brewery X, LLC",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 561762,
+      "facility_name": "Nutrien Ag Solutions - Eastman",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567236,
+      "facility_name": "Agro-Jal",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 567433,
+      "facility_name": "Cannagas Supply",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 595812,
+      "facility_name": "IN-N-OUT BURGER Warehouse - Commissary",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 596755,
+      "facility_name": "Arctic Cold, LLC.",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 611171,
+      "facility_name": "MID COAST COOLING",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 614477,
+      "facility_name": "Mangular Blending Station",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 614805,
+      "facility_name": "HYDROGEN DISTRIBUTION SERVICES",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 776127,
+      "facility_name": "Majestic Star, LLC Storage #2",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 916127,
+      "facility_name": "CALNRG OPERATING, LLC - GRUBB RINCON",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 922581,
+      "facility_name": "Mercer Foods LLC DBA Thrive Foods LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 3,
+      "prev_score": 6,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 38031,
+      "facility_name": "Indigo Generation, LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 47322,
+      "facility_name": "MCAGCC/ MARINE CORPS AIR GRND",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 155451,
+      "facility_name": "Southern California Gas Co. - Blythe Compressor Station",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 170838,
+      "facility_name": "SPR - Welport - Cymric Field",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 171362,
+      "facility_name": "Western Precooling Systems/Cal West Cooling",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384100,
+      "facility_name": "ABBOTT CARDIOVASCULAR SYSTEMS ACS",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398598,
+      "facility_name": "CAMCHINO Leasing, LLC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 421922,
+      "facility_name": "Nutrien Ag Solutions - Coachella",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 915540,
+      "facility_name": "Arctic Cold Betteravia, LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 2,
+      "prev_score": 5,
+      "delta": -3,
+      "pitch": "EPA 2024 RMP Rule Compliance Review",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 13921,
+      "facility_name": "BUENA VISTA PUMP AND CHLORINATION STATION",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 15458,
+      "facility_name": "CALNRG OPERATING, LLC-WEST MONTALVO FIELD",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 19466,
+      "facility_name": "CITY OF CERRITOS-C-1 WELL SITE",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 24676,
+      "facility_name": "DELTA TRADING",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 27558,
+      "facility_name": "evt parts",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 34986,
+      "facility_name": "D&S Autoworks",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 36511,
+      "facility_name": "Eagle Rock/Hillmont Chlorine & Pump Stations",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 36755,
+      "facility_name": "Hollywood Pump Station",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 41357,
+      "facility_name": "KEMIRA WATER SOLUTIONS INC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 42641,
+      "facility_name": "LA HABRA PLATING",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 47193,
+      "facility_name": "MAXIMA ENTERPRISES INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 47625,
+      "facility_name": "McLane Food Service",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 47789,
+      "facility_name": "MECHANICAL METAL FINISHING",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 51701,
+      "facility_name": "The Newark Group dba Greif",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 52369,
+      "facility_name": "NORCHEM CORPORATION",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 58390,
+      "facility_name": "PPG IND INC LOC #1858",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 60695,
+      "facility_name": "RCWD VDC Chloramination, Ponds and Vail Lake Pump Station",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 66164,
+      "facility_name": "SDCTY - OTAY WATER TREATMENT PLANT",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 66944,
+      "facility_name": "SGS Guadalupe",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 97386,
+      "facility_name": "LOMPOC FARMING LLC",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 100447,
+      "facility_name": "BUELLTON WATER TREATMENT - HWY 246",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 100448,
+      "facility_name": "BUELLTON WATER TREATMENT - McMURRAY",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 101021,
+      "facility_name": "CA ASEPTIC BEVERAGES LLC",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 106225,
+      "facility_name": "City of Norco Corporate Yard",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 107002,
+      "facility_name": "LASD - AERO BUREAU",
+      "cupa": "Long Beach Environmental Heath",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 107451,
+      "facility_name": "COMBI-BLOCKS, INC",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 114735,
+      "facility_name": "L&Y FOOD INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 124379,
+      "facility_name": "INNOVATIVE COATINGS TECHNOLOGY CORP",
+      "cupa": "Kern County Env Health Services Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 124414,
+      "facility_name": "SP OilStop",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 128547,
+      "facility_name": "L & W SERVICE COMPANY",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 128578,
+      "facility_name": "SPE TRADING, INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 133818,
+      "facility_name": "SCE McGrath Peaker Generating Station",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 135659,
+      "facility_name": "MISSION WELLS CHLORINATION STATION",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 140417,
+      "facility_name": "OSI OPTOELECTRONICS INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 141146,
+      "facility_name": "HOOVER TREATED WOOD PRODUCTS, INC.",
+      "cupa": "Bakersfield City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 146896,
+      "facility_name": "SRRRA Santa Rosa Water Reclamation Facility and Adjacent Properties",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 147612,
+      "facility_name": "REYCON CONSTRUCTION INC.",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 163384,
+      "facility_name": "TRI-STAR INDUSTRIAL PRODUCTS",
+      "cupa": "Downey Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 176615,
+      "facility_name": "CVWD Well #5682",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 177019,
+      "facility_name": "CVWD Well #4631",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 182835,
+      "facility_name": "CVWD Well #5630",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 383875,
+      "facility_name": "6th Street Cooling",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384375,
+      "facility_name": "AIRCRAFT X RAY",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384618,
+      "facility_name": "ALLFAST FASTENING SYSTEMS, LLC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384765,
+      "facility_name": "AMERICAN BLENDING CO INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384771,
+      "facility_name": "Excello Circuits, Inc.",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 385186,
+      "facility_name": "ANAHEIM PUBLIC UTILITIES DOWLING SUBSTATION",
+      "cupa": "Anaheim City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387453,
+      "facility_name": "Baker Petrolite LLC",
+      "cupa": "Santa Fe Springs Fire-Rescue",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387983,
+      "facility_name": "Blue Rhino",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390654,
+      "facility_name": "Costco Wholesale Depot #961/276",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390750,
+      "facility_name": "Nutrien Ag Solutions - San Jacinto",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390841,
+      "facility_name": "Nutrien Ag Solutions",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 390857,
+      "facility_name": "FIVE CROWNS INC DBA CROWN COOLING",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391121,
+      "facility_name": "Dart Container Corp",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391193,
+      "facility_name": "Deardorff Family Farms",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391343,
+      "facility_name": "Desert Express, LLC",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391791,
+      "facility_name": "DUCOMMUN AEROSTRUCTURES GARDENA FAC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392187,
+      "facility_name": "EMWD Moreno Valley Water Reclaim",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392190,
+      "facility_name": "EMWD Temecula Valley Regional WRF",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392363,
+      "facility_name": "SYU ONSHORE-LAS FLORES CANYON",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 392733,
+      "facility_name": "Thermo Fisher Scientific- SCD Building 2",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 393564,
+      "facility_name": "Frozen Food Express",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397005,
+      "facility_name": "Fairfield Cooling, Inc.",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 397778,
+      "facility_name": "MONOGRAM AEROSPACE FASTENERS",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398628,
+      "facility_name": "OWB Packers, LLC",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398744,
+      "facility_name": "Ormesa Geothermal I",
+      "cupa": "Imperial CUPA - DTSC",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398927,
+      "facility_name": "PACIFIC OFFSHORE PIPELINE COMPANY",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399265,
+      "facility_name": "Pepsi Bottling Group",
+      "cupa": "Riverside City Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 399635,
+      "facility_name": "PITCHESS COGENERATION PLANT",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 401446,
+      "facility_name": "SANTA PAULA U-RENT",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 401755,
+      "facility_name": "SDCTY-PUD, NORTH CITY WRP",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402457,
+      "facility_name": "SOLID STATE DEVICES INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402808,
+      "facility_name": "STABILE PLATING CO INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405292,
+      "facility_name": "VALLEY PLATING WORKS INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405389,
+      "facility_name": "VENTURA TRANSFER CO",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407562,
+      "facility_name": "WestAir Gases and Equipment Inc.",
+      "cupa": "San Diego County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 447283,
+      "facility_name": "WRD Albert Robles Center",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 566865,
+      "facility_name": "Leftbank Art",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 568734,
+      "facility_name": "ABL Space Systems - Long Beach",
+      "cupa": "Long Beach Environmental Heath",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 570582,
+      "facility_name": "WestRock Oxnard Produce Yard",
+      "cupa": "Oxnard City CUPA",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 574067,
+      "facility_name": "Taylor Farms Southern California",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 575383,
+      "facility_name": "Pulp Studio Inc.",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 611157,
+      "facility_name": "ANDERSON SYSTEMS",
+      "cupa": "Santa Barbara County Environmental Health Services",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 615984,
+      "facility_name": "GENE BELK FRUIT PACKERS",
+      "cupa": "San Bernardino County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 704281,
+      "facility_name": "Nova Power, LLC",
+      "cupa": "Riverside County Department of Env Health",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 922388,
+      "facility_name": "Marathon Industries",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 8,
+      "prev_score": 10,
+      "delta": -2,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 30640,
+      "facility_name": "LMC ENTERPRISES DBA FLO-KEM DBA CHEMCO PRODUCTS COMPANY",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 50893,
+      "facility_name": "NALCO COMPANY",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 72646,
+      "facility_name": "SUPREME STEEL TREATING INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 75123,
+      "facility_name": "Arctic Glacier Bellflower 519",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 84960,
+      "facility_name": "WEBER METALS INC.",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 112848,
+      "facility_name": "DUCOMMUN AEROSTRUCTURES 268 GARDENA",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 113562,
+      "facility_name": "Ecolab Facility #350",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 142210,
+      "facility_name": "PEMACO METAL PROCESSING CORP",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 153670,
+      "facility_name": "SILVER LAKE RESERVOIR",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 157421,
+      "facility_name": "Stone Canyon Pump and Microfiltration Plant",
+      "cupa": "Los Angeles City Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 384551,
+      "facility_name": "Howmet Global Fastening Systems Inc.",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387364,
+      "facility_name": "AVK INDUSTRIAL PRODUCTS",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 387514,
+      "facility_name": "BARKEN'S HARD CHROME INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 388704,
+      "facility_name": "CAL PAC CHEMICAL CO INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 391095,
+      "facility_name": "DANCO METAL SURFACING",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 396274,
+      "facility_name": "LANGER JUICE CO INC",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 398533,
+      "facility_name": "Anacapa Fresh Logistics 2 - Hueneme Rd.",
+      "cupa": "Ventura County Environmental Health",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 402065,
+      "facility_name": "Shepard Bros., Inc.",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 405241,
+      "facility_name": "VACCO INDUSTRIES",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 407913,
+      "facility_name": "WOODWARD HRT",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 619120,
+      "facility_name": "Amazon com Services LLC SAX5",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 700038,
+      "facility_name": "GE CORE COMPANY",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    },
+    {
+      "site_id": 776761,
+      "facility_name": "Quinn Rental service",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 9,
+      "prev_score": 10,
+      "delta": -1,
+      "pitch": "RMP 5-Year Revalidation",
+      "reason": "IIAR 9 compliance language now detected in notes"
+    }
+  ],
   "new_sites": [],
   "dropped": [],
   "summary": {
     "moved_up_count": 0,
-    "moved_down_count": 0,
+    "moved_down_count": 497,
     "new_count": 0,
     "dropped_count": 0,
-    "unchanged_count": 1113
+    "unchanged_count": 616
   }
 }
