@@ -1,0 +1,65 @@
+{
+  "baseline": false,
+  "prev_date": "2026-02-24",
+  "moved_up": [
+    {
+      "site_id": 5762,
+      "facility_name": "ANAPLEX CORPORATION",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 10,
+      "prev_score": 8,
+      "delta": 2,
+      "pitch": "IIAR 9 MI Program Development",
+      "reason": "Score increased on data refresh"
+    },
+    {
+      "site_id": 6761,
+      "facility_name": "Arctic Glacier Carson 496",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 10,
+      "prev_score": 8,
+      "delta": 2,
+      "pitch": "IIAR 9 MI Program Development",
+      "reason": "Score increased on data refresh"
+    },
+    {
+      "site_id": 9798,
+      "facility_name": "AUTOMOTIVE RACING PRODUCTS, INC",
+      "cupa": "Santa Paula Fire Department",
+      "current_score": 10,
+      "prev_score": 8,
+      "delta": 2,
+      "pitch": "IIAR 9 MI Gap Analysis + RMP Revalidation Package",
+      "reason": "Score increased on data refresh"
+    }
+  ],
+  "moved_down": [],
+  "new_sites": [
+    {
+      "site_id": 561,
+      "facility_name": "Cargill Food Distribution, Norwalk",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 10,
+      "prev_score": null,
+      "delta": null,
+      "pitch": "IIAR 9 MI Program Development"
+    },
+    {
+      "site_id": 5679,
+      "facility_name": "AMVAC CHEMICAL CORP",
+      "cupa": "Los Angeles County Fire Department",
+      "current_score": 10,
+      "prev_score": null,
+      "delta": null,
+      "pitch": "IIAR 9 MI Program Development"
+    }
+  ],
+  "dropped": [],
+  "summary": {
+    "moved_up_count": 3,
+    "moved_down_count": 0,
+    "new_count": 2,
+    "dropped_count": 0,
+    "unchanged_count": 1108
+  }
+}
