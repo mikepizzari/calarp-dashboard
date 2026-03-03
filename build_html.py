@@ -32,6 +32,7 @@ def build_html(stats: dict, leads: list, changes: dict = None):
     table_leads = []
     for r in leads[:200]:
         table_leads.append({
+            "sid": r["site_id"],
             "s": r["urgency_score"],
             "n": r["facility_name"],
             "cupa": r["cupa"],
@@ -198,24 +199,15 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
 .page-btn{{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:4px;cursor:pointer;transition:all 0.15s;}}
 .page-btn:hover,.page-btn.active{{background:rgba(255,77,28,0.15);border-color:rgba(255,77,28,0.4);color:var(--accent);}}
 .page-info{{font-family:var(--mono);font-size:11px;color:var(--muted);}}
-.change-badge{{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap;}}
+.change-badge{{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;}}
 .cb-item{{font-family:var(--mono);font-size:11px;padding:3px 10px;border-radius:4px;}}
 .cb-up{{background:rgba(45,212,160,0.15);color:#2dd4a0;border:1px solid rgba(45,212,160,0.3);}}
 .cb-down{{background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}}
 .cb-new{{background:rgba(59,130,246,0.15);color:#3b82f6;border:1px solid rgba(59,130,246,0.3);}}
 .cb-sep{{font-family:var(--mono);font-size:10px;color:var(--muted);}}
-.delta-up{{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:10px;color:#2dd4a0;background:rgba(45,212,160,0.12);border:1px solid rgba(45,212,160,0.25);border-radius:3px;padding:1px 5px;margin-left:4px;}}
-.delta-down{{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:10px;color:#ef4444;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);border-radius:3px;padding:1px 5px;margin-left:4px;}}
-.delta-new{{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:10px;color:#3b82f6;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);border-radius:3px;padding:1px 5px;margin-left:4px;}}
-.changes-panel{{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px;}}
-.changes-grid{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}}
-.change-col-title{{font-family:var(--display);font-size:16px;letter-spacing:1px;margin-bottom:12px;}}
-.change-item{{border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:6px;transition:border-color 0.15s;}}
-.change-item:hover{{border-color:var(--border2);}}
-.ci-name{{font-size:12px;font-weight:500;color:var(--text);}}
-.ci-cupa{{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:1px;}}
-.ci-meta{{display:flex;align-items:center;gap:6px;margin-top:6px;flex-wrap:wrap;}}
-.ci-reason{{font-size:11px;color:var(--muted);margin-top:4px;font-style:italic;}}
+.delta-up{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#2dd4a0;margin-left:5px;vertical-align:middle;}}
+.delta-down{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#ef4444;margin-left:5px;vertical-align:middle;}}
+.delta-new{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#3b82f6;margin-left:5px;vertical-align:middle;}}
 @media(max-width:1100px){{.kpi-grid{{grid-template-columns:repeat(3,1fr);}}.charts-row{{grid-template-columns:1fr;}}.trigger-grid{{grid-template-columns:repeat(2,1fr);}}.hbar-row{{grid-template-columns:160px 1fr 70px;}}}}
 @media(max-width:700px){{header,main{{padding-left:20px;padding-right:20px;}}.kpi-grid{{grid-template-columns:repeat(2,1fr);}}.trigger-grid{{grid-template-columns:1fr;}}h1{{font-size:36px;}}}}
 </style>
@@ -231,7 +223,6 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
     <div class="meta-item"><span class="meta-label">Inspection Records</span><span class="meta-value">{total_evals:,}</span></div>
     <div class="meta-item"><span class="meta-label">Last Updated</span><span class="meta-value" style="font-size:20px;padding-top:6px">{generated}</span></div>
   </div>
-  {{chg_badge}}
 </header>
 <main>
   <div>
@@ -281,24 +272,6 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
       <div class="trigger-card" style="background:rgba(45,212,160,0.04)"><span class="trigger-icon">🏭</span><div class="trigger-num" style="color:#2dd4a0">{p3:,}</div><div class="trigger-label">Program 3 Sites Confirmed</div><div class="trigger-sub">Highest burden — STAA + enhanced audits mandatory</div></div>
     </div>
   </div>
-  <div class="changes-panel" id="changes-panel" style="display:none">
-    <div class="card-title">Week-over-Week Changes <small id="changes-subtitle"></small></div>
-    <div class="changes-grid">
-      <div>
-        <div class="change-col-title" style="color:#2dd4a0">&#x25B2; Moved Up <span id="up-count" style="font-family:var(--mono);font-size:13px;color:var(--muted)"></span></div>
-        <div id="up-list"></div>
-      </div>
-      <div>
-        <div class="change-col-title" style="color:#ef4444">&#x25BC; Moved Down <span id="down-count" style="font-family:var(--mono);font-size:13px;color:var(--muted)"></span></div>
-        <div id="down-list"></div>
-      </div>
-      <div>
-        <div class="change-col-title" style="color:#3b82f6">+ New Sites <span id="new-count" style="font-family:var(--mono);font-size:13px;color:var(--muted)"></span></div>
-        <div id="new-list"></div>
-      </div>
-    </div>
-  </div>
-
   <div class="card">
     <div class="card-title">Lead List <small>top 200 by urgency score · full dataset in output/leads.csv</small></div>
     <div class="filter-row">
@@ -418,14 +391,21 @@ function render(){{
   const data=getFiltered(); const pages=Math.ceil(data.length/PAGE)||1;
   const cp=Math.min(page,pages); const slice=data.slice((cp-1)*PAGE,cp*PAGE);
   document.getElementById('table-info').textContent=`${{data.length}} results · page ${{cp}} of ${{pages}}`;
-  document.getElementById('tbody').innerHTML=slice.map(l=>`<tr>
-    <td><span class="score-badge ${{scoreClass(l.s)}}">${{l.s}}</span></td>
+  document.getElementById('tbody').innerHTML=slice.map(l=>{{
+    const chg = CHANGE_MAP[String(l.sid||'')];
+    let deltaHtml = '';
+    if(chg && chg.dir==='up')   deltaHtml=`<span class="delta-up" title="${{chg.reason}}">&#x25B2;+${{chg.delta}}</span>`;
+    if(chg && chg.dir==='down') deltaHtml=`<span class="delta-down" title="${{chg.reason}}">&#x25BC;${{chg.delta}}</span>`;
+    if(chg && chg.dir==='new')  deltaHtml=`<span class="delta-new">NEW</span>`;
+    return `<tr>
+    <td style="white-space:nowrap"><span class="score-badge ${{scoreClass(l.s)}}">${{l.s}}</span>${{deltaHtml}}</td>
     <td><div class="fac-name">${{l.n}}</div><div class="fac-cupa">${{l.cupa}}</div></td>
     <td style="font-family:var(--mono);font-size:12px;color:#9ca3af;white-space:nowrap">${{l.e}}</td>
     <td style="font-family:var(--mono);font-size:12px;color:${{l.y>5?'#ef4444':l.y>3?'#f5a623':'#9ca3af'}}">${{l.y}}y</td>
     <td>${{l.v>0?`<span class="tag tag-red">${{l.v}}</span>`:'<span class="tag tag-gray">0</span>'}}</td>
     <td>${{revalidTag(l.r)}}</td><td>${{seismicTag(l.q)}}</td>
-    <td class="pitch-cell">${{l.p}}</td></tr>`).join('');
+    <td class="pitch-cell">${{l.p}}</td></tr>`;
+  }}).join('');
   const pag=document.getElementById('pagination'); pag.innerHTML='';
   if(pages>1){{
     const pb=(txt,pg,act)=>{{const b=document.createElement('button');b.className='page-btn'+(act?' active':'');b.textContent=txt;b.onclick=()=>{{page=pg;render();}};pag.appendChild(b);}};
@@ -455,36 +435,7 @@ document.querySelectorAll('th[data-col]').forEach(th=>{{
 // ── CHANGES PANEL ───────────────────────────────────────────────────────────
 function scoreClass2(s){{return s===10?'s10':s===9?'s9':s===8?'s8':s===7?'s7':'slow';}}
 
-function renderChangeItem(r, dir){{
-  const prev = r.prev_score != null ? r.prev_score : '—';
-  const curr = r.current_score;
-  let badge = '';
-  if(dir==='up')   badge=`<span class="delta-up">&#x25B2; +${{r.delta}} (${{prev}}→${{curr}})</span>`;
-  if(dir==='down') badge=`<span class="delta-down">&#x25BC; ${{r.delta}} (${{prev}}→${{curr}})</span>`;
-  if(dir==='new')  badge=`<span class="delta-new">NEW ${{curr}}</span>`;
-  return `<div class="change-item">
-    <div class="ci-name">${{r.facility_name}}</div>
-    <div class="ci-cupa">${{r.cupa}}</div>
-    <div class="ci-meta">
-      <span class="score-badge ${{scoreClass2(curr)}}">${{curr}}</span>
-      ${{badge}}
-      <span class="tag tag-gray" style="font-size:10px">${{r.pitch}}</span>
-    </div>
-    ${{r.reason ? `<div class="ci-reason">${{r.reason}}</div>` : ''}}
-  </div>`;
-}}
-
-if(!IS_BASELINE && (MOVED_UP.length||MOVED_DOWN.length||NEW_SITES.length)){{
-  document.getElementById('changes-panel').style.display='block';
-  document.getElementById('changes-subtitle').textContent =
-    `vs ${{PREV_DATE}} — ${{MOVED_UP.length}} up, ${{MOVED_DOWN.length}} down, ${{NEW_SITES.length}} new`;
-  document.getElementById('up-count').textContent   = `(${{MOVED_UP.length}})`;
-  document.getElementById('down-count').textContent = `(${{MOVED_DOWN.length}})`;
-  document.getElementById('new-count').textContent  = `(${{NEW_SITES.length}})`;
-  document.getElementById('up-list').innerHTML   = MOVED_UP.map(r=>renderChangeItem(r,'up')).join('')   || '<p style="color:var(--muted);font-size:12px">None this week</p>';
-  document.getElementById('down-list').innerHTML = MOVED_DOWN.map(r=>renderChangeItem(r,'down')).join('')|| '<p style="color:var(--muted);font-size:12px">None this week</p>';
-  document.getElementById('new-list').innerHTML  = NEW_SITES.map(r=>renderChangeItem(r,'new')).join('')  || '<p style="color:var(--muted);font-size:12px">None this week</p>';
-}}
+// Change indicators rendered inline in table score cells via CHANGE_MAP
 
 // ── ADD DELTA BADGES TO TABLE ────────────────────────────────────────────────
 const _origGetFiltered = window._origGetFiltered;
