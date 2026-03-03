@@ -126,7 +126,7 @@ def compute_diff(current_leads: list) -> dict:
     _save(changes)
 
     print(f"[diff.py] vs {prev_date}: "
-          f"↑{len(moved_up)} up, ↓{len(moved_down)} down, "
+          f"^{len(moved_up)} up, v{len(moved_down)} down, "
           f"+{len(new_sites)} new, -{len(dropped)} dropped")
 
     return changes
@@ -141,7 +141,7 @@ def save_snapshot(current_data: dict):
     prev_path = OUTPUT_DIR / "leads_previous.json"
     with open(prev_path, "w") as f:
         json.dump(current_data, f, indent=2, default=str)
-    print(f"[diff.py] Snapshot saved → output/leads_previous.json")
+    print("[diff.py] Snapshot saved -> output/leads_previous.json")
 
 
 def _save(changes: dict):
@@ -171,6 +171,12 @@ def _explain_delta(curr: dict, prev: dict) -> str:
     # IIAR 9 gap appeared
     if curr.get("iiar9_gap") and not prev.get("iiar9_gap"):
         reasons.append("IIAR 9 compliance language no longer found")
+    # EPA 2024 threshold cleared (new eval recorded post May 2024)
+    if not curr.get("pre_epa2024") and prev.get("pre_epa2024"):
+        reasons.append("New eval post May 2024 — EPA 2024 RMP Rule threshold cleared")
+    # EPA 2024 threshold appeared (latest eval regressed in data export)
+    if curr.get("pre_epa2024") and not prev.get("pre_epa2024"):
+        reasons.append("EPA 2024 compliance window reopened — latest eval pre-May 2024")
     # Score changed but reason unclear (data refresh)
     if not reasons:
         delta = curr.get("urgency_score", 0) - prev.get("urgency_score", 0)

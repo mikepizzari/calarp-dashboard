@@ -40,10 +40,12 @@ def build_html(stats: dict, leads: list, changes: dict = None):
             "y": r["years_since"],
             "v": r["total_violations"],
             "r": ("OVERDUE" if r["revalid_overdue"]
-                  else "DUE 2027" if r["revalid_soon"]
+                  else "DUE SOON" if r["revalid_soon"]
                   else "OK"),
             "q": r["seismic"],
             "p": r["recommended_pitch"],
+            "pp": r["pain_points"],
+            "nt": r["notes"],
         })
 
     score_dist_js  = json.dumps([[int(k), v] for k, v in sorted(score_dist.items())])
@@ -210,6 +212,31 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
 .delta-new{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#3b82f6;margin-left:5px;vertical-align:middle;}}
 @media(max-width:1100px){{.kpi-grid{{grid-template-columns:repeat(3,1fr);}}.charts-row{{grid-template-columns:1fr;}}.trigger-grid{{grid-template-columns:repeat(2,1fr);}}.hbar-row{{grid-template-columns:160px 1fr 70px;}}}}
 @media(max-width:700px){{header,main{{padding-left:20px;padding-right:20px;}}.kpi-grid{{grid-template-columns:repeat(2,1fr);}}.trigger-grid{{grid-template-columns:1fr;}}h1{{font-size:36px;}}}}
+.changes-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}}
+.change-item{{padding:10px 0;border-bottom:1px solid var(--border);}}
+.change-item:last-child{{border-bottom:none;}}
+.ci-top{{display:flex;align-items:center;gap:8px;margin-bottom:3px;}}
+.ci-name{{font-size:12px;font-weight:500;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
+.ci-meta{{font-family:var(--mono);font-size:10px;color:var(--muted);padding-left:36px;}}
+.ci-reason{{font-size:11px;color:var(--muted);padding-left:36px;margin-top:2px;line-height:1.4;}}
+@media(max-width:1100px){{.changes-grid{{grid-template-columns:1fr;}}}}
+.cupa-select{{background:var(--border);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:4px;outline:none;cursor:pointer;transition:border-color 0.15s;}}
+.cupa-select:focus{{border-color:rgba(255,77,28,0.4);}}
+.cupa-select option{{background:var(--surface);}}
+tr.expandable{{cursor:pointer;}}
+.expand-icon{{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:5px;display:inline-block;transition:transform 0.15s;line-height:1;}}
+.expand-icon.open{{transform:rotate(90deg);}}
+.detail-row td{{padding:0;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.01);}}
+.detail-body{{padding:14px 16px 14px 52px;display:flex;gap:24px;align-items:flex-start;}}
+.pain-list{{flex:1;display:flex;flex-direction:column;gap:7px;}}
+.pain-item{{font-size:11px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}}
+.pain-dot{{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}}
+.copy-btn{{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:4px;cursor:pointer;transition:all 0.15s;white-space:nowrap;align-self:flex-start;}}
+.copy-btn:hover{{background:rgba(255,77,28,0.15);border-color:rgba(255,77,28,0.4);color:var(--accent);}}
+.copy-btn.copied{{background:rgba(45,212,160,0.15);border-color:rgba(45,212,160,0.4);color:#2dd4a0;}}
+.notes-list{{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px;}}
+.note-item{{font-size:11px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}}
+.note-dot{{width:5px;height:5px;border-radius:50%;background:var(--muted);flex-shrink:0;margin-top:5px;}}
 </style>
 </head>
 <body>
@@ -225,12 +252,20 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
   </div>
 </header>
 <main>
+  <div id="changes-section" style="display:none">
+    <div class="section-label"><span>WEEK-OVER-WEEK CHANGES</span></div>
+    <div class="changes-grid">
+      <div class="card"><div class="card-title">Score Increases <small id="up-count"></small></div><div id="changes-up"></div></div>
+      <div class="card"><div class="card-title">Score Decreases <small id="down-count"></small></div><div id="changes-down"></div></div>
+      <div class="card"><div class="card-title">New Sites <small id="new-count"></small></div><div id="changes-new"></div></div>
+    </div>
+  </div>
   <div>
     <div class="section-label"><span>KEY COMPLIANCE TRIGGERS</span></div>
     <div class="kpi-grid">
       <div class="kpi-card" style="--kpi-color:#ef4444"><div class="kpi-num">{iiar9:,}</div><div class="kpi-label">IIAR 9 Gap Detected</div><div class="kpi-sub">No MI update evidence — Jan 2026 deadline passed</div></div>
       <div class="kpi-card" style="--kpi-color:#ff4d1c"><div class="kpi-num">{overdue:,}</div><div class="kpi-label">RMP Revalidation Overdue</div><div class="kpi-sub">Last eval ≤2021 · Call today</div></div>
-      <div class="kpi-card" style="--kpi-color:#f5a623"><div class="kpi-num">{soon:,}</div><div class="kpi-label">Revalidation Due 2027</div><div class="kpi-sub">2022 vintage · Pipeline now</div></div>
+      <div class="kpi-card" style="--kpi-color:#f5a623"><div class="kpi-num">{soon:,}</div><div class="kpi-label">Revalidation Due Soon</div><div class="kpi-sub">Due within 18 months · Pipeline now</div></div>
       <div class="kpi-card" style="--kpi-color:#a855f7"><div class="kpi-num">{violations:,}</div><div class="kpi-label">Prior Violation History</div><div class="kpi-sub">Documented gaps · Warm entry</div></div>
       <div class="kpi-card" style="--kpi-color:#3b82f6"><div class="kpi-num">{high_s:,}</div><div class="kpi-label">High Seismic Zone Sites</div><div class="kpi-sub">IIAR 9 §6.6 bracing required</div></div>
     </div>
@@ -248,7 +283,7 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
       <div class="card-title">RMP Revalidation</div>
       <div class="timeline">
         <div class="tl-row"><div class="tl-dot" style="background:#ef4444"></div><div class="tl-label">Overdue now</div><div><div class="tl-val" style="color:#ef4444">{overdue:,}</div><div class="tl-sub">≤2021 · Call today</div></div></div>
-        <div class="tl-row"><div class="tl-dot" style="background:#f5a623"></div><div class="tl-label">Due 2027</div><div><div class="tl-val" style="color:#f5a623">{soon:,}</div><div class="tl-sub">2022 vintage · Plan now</div></div></div>
+        <div class="tl-row"><div class="tl-dot" style="background:#f5a623"></div><div class="tl-label">Due soon</div><div><div class="tl-val" style="color:#f5a623">{soon:,}</div><div class="tl-sub">Due within 18 months · Plan now</div></div></div>
         <div class="tl-row"><div class="tl-dot" style="background:#2dd4a0"></div><div class="tl-label">Within window</div><div><div class="tl-val" style="color:#2dd4a0">{total - overdue - soon:,}</div><div class="tl-sub">2023+ · Still need IIAR 9</div></div></div>
       </div>
       <div class="pitch-list">
@@ -265,7 +300,7 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
     <div class="section-label"><span>REGULATORY TRIGGER BREAKDOWN</span></div>
     <div class="trigger-grid">
       <div class="trigger-card" style="background:rgba(239,68,68,0.04)"><span class="trigger-icon">⚙️</span><div class="trigger-num" style="color:#ef4444">{iiar9:,}</div><div class="trigger-label">IIAR 9 Mechanical Integrity Gap</div><div class="trigger-sub">{round(iiar9/total*100,1)}% of all CalARP sites — Jan 2026 deadline has passed</div></div>
-      <div class="trigger-card" style="background:rgba(255,77,28,0.04)"><span class="trigger-icon">📅</span><div class="trigger-num" style="color:#ff4d1c">{overdue+soon:,}</div><div class="trigger-label">RMP Revalidation Overdue or Imminent</div><div class="trigger-sub">{overdue:,} overdue · {soon:,} due 2027 · pitch both now</div></div>
+      <div class="trigger-card" style="background:rgba(255,77,28,0.04)"><span class="trigger-icon">📅</span><div class="trigger-num" style="color:#ff4d1c">{overdue+soon:,}</div><div class="trigger-label">RMP Revalidation Overdue or Imminent</div><div class="trigger-sub">{overdue:,} overdue · {soon:,} due soon · pitch both now</div></div>
       <div class="trigger-card" style="background:rgba(245,166,35,0.04)"><span class="trigger-icon">📋</span><div class="trigger-num" style="color:#f5a623">{pre2024:,}</div><div class="trigger-label">EPA 2024 RMP Rule Unaddressed</div><div class="trigger-sub">No eval post May 2024 — third-party audit + STAA required</div></div>
       <div class="trigger-card" style="background:rgba(168,85,247,0.04)"><span class="trigger-icon">⚠️</span><div class="trigger-num" style="color:#a855f7">{violations:,}</div><div class="trigger-label">Prior Violation on Record</div><div class="trigger-sub">Documented gaps = warm sales entry point</div></div>
       <div class="trigger-card" style="background:rgba(59,130,246,0.04)"><span class="trigger-icon">🌐</span><div class="trigger-num" style="color:#3b82f6">{high_s:,}</div><div class="trigger-label">High Seismic Zone — IIAR 9 §6.6</div><div class="trigger-sub">Bay Area + LA/Ventura — seismic bracing audit upsell</div></div>
@@ -278,11 +313,10 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
       <span class="filter-label">Score:</span>
       <button class="filter-btn active" data-f="all">ALL</button>
       <button class="filter-btn" data-f="hot">HOT 8+</button>
-      <button class="filter-btn" data-f="10">10 🔴</button>
-      <button class="filter-btn" data-f="9">9</button>
-      <button class="filter-btn" data-f="8">8</button>
       <button class="filter-btn" data-f="7">7</button>
-      <input class="search-box" id="search" type="text" placeholder="Search facility or CUPA…">
+      <button class="filter-btn" data-f="6">6</button>
+      <select class="cupa-select" id="cupa-select"><option value="">ALL CUPAS</option></select>
+      <input class="search-box" id="search" type="text" placeholder="Search facility…">
     </div>
     <div class="table-info" id="table-info"></div>
     <div class="table-wrap">
@@ -371,40 +405,71 @@ CUPA_STATS.forEach((c,i)=>{{
 setTimeout(()=>{{ CUPA_STATS.forEach((_,i)=>{{ setTimeout(()=>{{ const b=document.getElementById('bar-'+i); if(b)b.style.width=(CUPA_STATS[i].count/maxC*100)+'%'; }},i*55); }}); }},300);
 
 // Table
-let filter='all',search='',page=1,sortCol='s',sortAsc=false;
+let filter='all', cupaFilter='', search='', page=1, sortCol='s', sortAsc=false, expandedSid=null;
 const PAGE=10;
 function scoreClass(s){{return s===10?'s10':s===9?'s9':s===8?'s8':s===7?'s7':'slow';}}
-function revalidTag(r){{return r==='OVERDUE'?'<span class="tag tag-red">OVERDUE</span>':r==='DUE 2027'?'<span class="tag tag-amber">DUE 2027</span>':'<span class="tag tag-green">OK</span>';}}
+function revalidTag(r){{return r==='OVERDUE'?'<span class="tag tag-red">OVERDUE</span>':r==='DUE SOON'?'<span class="tag tag-amber">DUE SOON</span>':'<span class="tag tag-green">OK</span>';}}
 function seismicTag(q){{return q==='High'?'<span class="tag tag-red">High</span>':q==='Medium'?'<span class="tag tag-amber">Medium</span>':'<span class="tag tag-green">Low</span>';}}
+
+// Populate CUPA dropdown
+const cupaSelect=document.getElementById('cupa-select');
+[...new Set(LEADS.map(l=>l.cupa))].sort().forEach(c=>{{
+  const o=document.createElement('option'); o.value=c; o.textContent=c; cupaSelect.appendChild(o);
+}});
+cupaSelect.addEventListener('change',e=>{{cupaFilter=e.target.value;page=1;render();}});
+
 function getFiltered(){{
   return LEADS.filter(l=>{{
     const so=filter==='all'?true:filter==='hot'?l.s>=8:l.s===parseInt(filter);
-    const se=l.n.toLowerCase().includes(search)||l.cupa.toLowerCase().includes(search);
-    return so&&se;
+    const sc=cupaFilter?l.cupa===cupaFilter:true;
+    const se=l.n.toLowerCase().includes(search);
+    return so&&sc&&se;
   }}).sort((a,b)=>{{
     let va=a[sortCol],vb=b[sortCol];
     if(typeof va==='string') return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
     return sortAsc?va-vb:vb-va;
   }});
 }}
+
+function copyLead(sid, btn) {{
+  const l=LEADS.find(x=>x.sid===sid); if(!l) return;
+  const lines=[
+    `FACILITY: ${{l.n}}`, `CUPA: ${{l.cupa}}`, `URGENCY: ${{l.s}}/10`,
+    `LAST EVAL: ${{l.e}} (${{l.y}}y ago)`, `VIOLATIONS: ${{l.v}}`,
+    `REVALIDATION: ${{l.r}}`, `SEISMIC: ${{l.q}}`, `PITCH: ${{l.p}}`,
+    '', 'PAIN POINTS:', ...(l.pp||[]).map(pt=>`• ${{pt}}`),
+    ...((l.nt&&l.nt.length)?['', 'NOTES:', ...l.nt.map(n=>`• ${{n}}`)]: []),
+  ];
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>{{
+    btn.textContent='Copied!'; btn.classList.add('copied');
+    setTimeout(()=>{{btn.textContent='Copy Lead'; btn.classList.remove('copied');}}, 1800);
+  }});
+}}
+
 function render(){{
   const data=getFiltered(); const pages=Math.ceil(data.length/PAGE)||1;
   const cp=Math.min(page,pages); const slice=data.slice((cp-1)*PAGE,cp*PAGE);
   document.getElementById('table-info').textContent=`${{data.length}} results · page ${{cp}} of ${{pages}}`;
   document.getElementById('tbody').innerHTML=slice.map(l=>{{
-    const chg = CHANGE_MAP[String(l.sid||'')];
-    let deltaHtml = '';
-    if(chg && chg.dir==='up')   deltaHtml=`<span class="delta-up" title="${{chg.reason}}">&#x25B2;+${{chg.delta}}</span>`;
-    if(chg && chg.dir==='down') deltaHtml=`<span class="delta-down" title="${{chg.reason}}">&#x25BC;${{chg.delta}}</span>`;
-    if(chg && chg.dir==='new')  deltaHtml=`<span class="delta-new">NEW</span>`;
-    return `<tr>
+    const chg=CHANGE_MAP[String(l.sid||'')];
+    let deltaHtml='';
+    if(chg&&chg.dir==='up')   deltaHtml=`<span class="delta-up" title="${{chg.reason}}">&#x25B2;+${{chg.delta}}</span>`;
+    if(chg&&chg.dir==='down') deltaHtml=`<span class="delta-down" title="${{chg.reason}}">&#x25BC;${{chg.delta}}</span>`;
+    if(chg&&chg.dir==='new')  deltaHtml=`<span class="delta-new">NEW</span>`;
+    const isOpen=expandedSid===l.sid;
+    const notesHtml=(l.nt&&l.nt.length)?`<div class="notes-list">${{l.nt.map(n=>`<div class="note-item"><span class="note-dot"></span><span>${{n}}</span></div>`).join('')}}</div>`:'';
+    const detail=isOpen?`<tr class="detail-row"><td colspan="8"><div class="detail-body">
+      <div class="pain-list">${{(l.pp||[]).map(pt=>`<div class="pain-item"><span class="pain-dot"></span><span>${{pt}}</span></div>`).join('')}}${{notesHtml}}</div>
+      <button class="copy-btn" onclick="event.stopPropagation();copyLead(${{l.sid}},this)">Copy Lead</button>
+    </div></td></tr>`:'';
+    return `<tr class="expandable" onclick="expandedSid=expandedSid===${{l.sid}}?null:${{l.sid}};render()">
     <td style="white-space:nowrap"><span class="score-badge ${{scoreClass(l.s)}}">${{l.s}}</span>${{deltaHtml}}</td>
-    <td><div class="fac-name">${{l.n}}</div><div class="fac-cupa">${{l.cupa}}</div></td>
+    <td><div class="fac-name">${{l.n}}<span class="expand-icon${{isOpen?' open':''}}">&rsaquo;</span></div><div class="fac-cupa">${{l.cupa}}</div></td>
     <td style="font-family:var(--mono);font-size:12px;color:#9ca3af;white-space:nowrap">${{l.e}}</td>
     <td style="font-family:var(--mono);font-size:12px;color:${{l.y>5?'#ef4444':l.y>3?'#f5a623':'#9ca3af'}}">${{l.y}}y</td>
     <td>${{l.v>0?`<span class="tag tag-red">${{l.v}}</span>`:'<span class="tag tag-gray">0</span>'}}</td>
     <td>${{revalidTag(l.r)}}</td><td>${{seismicTag(l.q)}}</td>
-    <td class="pitch-cell">${{l.p}}</td></tr>`;
+    <td class="pitch-cell">${{l.p}}</td></tr>${{detail}}`;
   }}).join('');
   const pag=document.getElementById('pagination'); pag.innerHTML='';
   if(pages>1){{
@@ -432,20 +497,33 @@ document.querySelectorAll('th[data-col]').forEach(th=>{{
     render();
   }});
 }});
-// ── CHANGES PANEL ───────────────────────────────────────────────────────────
-function scoreClass2(s){{return s===10?'s10':s===9?'s9':s===8?'s8':s===7?'s7':'slow';}}
-
-// Change indicators rendered inline in table score cells via CHANGE_MAP
-
-// ── ADD DELTA BADGES TO TABLE ────────────────────────────────────────────────
-const _origGetFiltered = window._origGetFiltered;
-function deltaTag(lead){{
-  const ch = CHANGE_MAP[String(lead.id || lead.sid || '')];
-  if(!ch) return '';
-  if(ch.dir==='up')   return `<span class="delta-up" title="${{ch.reason}}">&#x25B2;+${{ch.delta}}</span>`;
-  if(ch.dir==='down') return `<span class="delta-down" title="${{ch.reason}}">&#x25BC;${{ch.delta}}</span>`;
-  if(ch.dir==='new')  return `<span class="delta-new">NEW</span>`;
-  return '';
+// ── CHANGES PANEL ────────────────────────────────────────────────────────────
+if (!IS_BASELINE) {{
+  document.getElementById('changes-section').style.display = '';
+  function renderChangeList(items, containerId, countId, type) {{
+    const el = document.getElementById(containerId);
+    const ct = document.getElementById(countId);
+    if (ct) ct.textContent = items.length + ' sites';
+    if (!items.length) {{
+      el.innerHTML = '<div style="color:var(--muted);font-size:12px;padding:8px 0">None this week</div>';
+      return;
+    }}
+    el.innerHTML = items.map(r => {{
+      let badge = '';
+      if (type === 'up')   badge = `<span class="delta-up">&#x25B2;+${{r.delta}}</span>`;
+      if (type === 'down') badge = `<span class="delta-down">&#x25BC;${{r.delta}}</span>`;
+      if (type === 'new')  badge = `<span class="delta-new">NEW</span>`;
+      const score = r.current_score ?? r.prev_score;
+      return `<div class="change-item">
+        <div class="ci-top"><span class="score-badge ${{scoreClass(score)}}">${{score}}</span>${{badge}}<span class="ci-name">${{r.facility_name}}</span></div>
+        <div class="ci-meta">${{r.cupa}}</div>
+        ${{r.reason ? `<div class="ci-reason">${{r.reason}}</div>` : ''}}
+      </div>`;
+    }}).join('');
+  }}
+  renderChangeList(MOVED_UP,   'changes-up',   'up-count',   'up');
+  renderChangeList(MOVED_DOWN, 'changes-down', 'down-count', 'down');
+  renderChangeList(NEW_SITES,  'changes-new',  'new-count',  'new');
 }}
 
 render();

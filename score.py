@@ -59,9 +59,10 @@ P3_RE        = re.compile(r"program.?3|Program 3|PSM|process.?safety", re.I)
 P2_RE        = re.compile(r"program.?2|Program 2", re.I)
 
 # ── SCORING ───────────────────────────────────────────────────────────────────
-def score_site(row: dict) -> tuple[int, list[str]]:
+def score_site(row: dict) -> tuple[int, list[str], list[str]]:
     pts = 2
     pain = []
+    notes = []
 
     if row["iiar9_gap"]:
         pts += 3
@@ -73,26 +74,32 @@ def score_site(row: dict) -> tuple[int, list[str]]:
                     f"({row['years_since']:.1f} yrs ago)")
     elif row["revalid_soon"]:
         pts += 1
-        pain.append(f"RMP Revalidation DUE 2027: Plan now ({row['latest_eval']})")
+        due_yr = row.get("reval_due_year", "soon")
+        pain.append(f"RMP Revalidation DUE {due_yr}: Plan now ({row['latest_eval']})")
 
     if row["pre_epa2024"]:
         pts += 2
         pain.append("EPA 2024 RMP Rule: Third-party audit + STAA requirements unaddressed")
 
-    if row["total_violations"] > 0:
+    v = row["total_violations"]
+    if v >= 4:
+        pts += 2
+        pain.append(f"Significant violation history: {v} violations on record")
+    elif v > 0:
         pts += 1
-        pain.append(f"Prior violation history: {row['total_violations']} violations on record")
+        pain.append(f"Prior violation history: {v} violations on record")
 
     if row["seismic"] == "High":
         pts += 1
         pain.append("High seismic zone: IIAR 9 Section 6.6 bracing documentation required")
     elif row["seismic"] == "Medium":
-        pain.append("Medium seismic zone: Verify IIAR 9 seismic bracing compliance")
+        notes.append("Medium seismic zone: Verify IIAR 9 seismic bracing compliance")
 
     if row["is_p3"]:
         pts += 1
+        pain.append("Program 3 confirmed: STAA + enhanced third-party audits mandatory")
 
-    return min(pts, 10), pain
+    return min(pts, 10), pain, notes
 
 def pitch(row: dict) -> str:
     if row["revalid_overdue"] and row["iiar9_gap"]:
@@ -168,6 +175,17 @@ def run(input_path: str):
         latest_str  = r["LatestEval"].strftime("%Y-%m-%d") if pd.notna(r["LatestEval"]) else "Unknown"
         notes_ct    = int(r["NotesCount"])
 
+        # ── Revalidation flags (5-year cycle, date-relative) ─────────────────
+        if pd.notna(r["LatestEval"]):
+            reval_due       = r["LatestEval"] + pd.DateOffset(years=5)
+            today_ts        = pd.Timestamp(TODAY)
+            revalid_overdue = reval_due < today_ts
+            revalid_soon    = (not revalid_overdue) and reval_due < today_ts + pd.DateOffset(months=18)
+            reval_due_year  = reval_due.year
+        else:
+            revalid_overdue = revalid_soon = False
+            reval_due_year  = None
+
         rec = {
             "site_id":          int(r["SiteID"]),
             "facility_name":    str(r["SiteName"]).strip(),
@@ -184,13 +202,15 @@ def run(input_path: str):
             "is_p3":            flag(notes, P3_RE),
             "is_p2":            flag(notes, P2_RE),
             "iiar9_gap":        iiar9_gap_flag(notes, notes_ct, latest_year),
-            "revalid_overdue":  latest_year > 0 and latest_year <= 2021,
-            "revalid_soon":     latest_year == 2022,
-            "pre_epa2024":      pd.notna(r["LatestEval"]) and r["LatestEval"] < pd.Timestamp("2024-05-01"),
+            "revalid_overdue":  revalid_overdue,
+            "revalid_soon":     revalid_soon,
+            "reval_due_year":   reval_due_year,
+            "pre_epa2024":      flag(notes, P3_RE) and pd.notna(r["LatestEval"]) and r["LatestEval"] < pd.Timestamp("2024-05-01"),
         }
-        score, pain = score_site(rec)
+        score, pain, notes = score_site(rec)
         rec["urgency_score"]     = score
         rec["pain_points"]       = pain
+        rec["notes"]             = notes
         rec["recommended_pitch"] = pitch(rec)
         rows.append(rec)
 
