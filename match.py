@@ -26,10 +26,14 @@ OUTPUT_DIR = Path("output")
 CONTACTS_FILE = DATA_DIR / "contacts.xlsx"
 MATCH_FILE    = DATA_DIR / "site_match.json"
 
-# Matches below LOW_CONF are discarded entirely.
-# Matches between LOW_CONF and HIGH_CONF are kept but flagged low_confidence=True.
-LOW_CONF  = 0.50
-HIGH_CONF = 0.75
+# CERS data is California-only — only match against CA contacts to prevent
+# false positives from AZ/UT/NV/etc. facilities with similar names.
+LEADS_STATE = "CA"
+
+# Minimum similarity to accept a match at all.
+# Above this but below HIGH_CONF → flagged low_confidence=True in UI.
+LOW_CONF  = 0.80
+HIGH_CONF = 0.90
 
 _FILLER = re.compile(
     r"\b(inc|llc|corp|co|company|the|and|ltd|corporation|industries|"
@@ -79,11 +83,20 @@ def run(leads: list | None = None) -> dict:
         with open(leads_path) as f:
             leads = json.load(f).get("leads", [])
 
-    # Load and normalise contacts
+    # Load and normalise contacts — filter to same state as leads
     contacts = pd.read_excel(CONTACTS_FILE)
     contacts.columns = [c.strip() for c in contacts.columns]
-    contacts["_norm"] = contacts["Facility Name"].fillna("").apply(_norm)
 
+    if "State" in contacts.columns and LEADS_STATE:
+        contacts = contacts[contacts["State"].str.upper() == LEADS_STATE.upper()]
+        if contacts.empty:
+            print(f"[match.py] No {LEADS_STATE} records in contacts.xlsx — 0 matches. "
+                  f"Add CA facilities to contacts.xlsx to enable contact lookup.")
+            with open(MATCH_FILE, "w") as f:
+                json.dump({}, f)
+            return {}
+
+    contacts["_norm"] = contacts["Facility Name"].fillna("").apply(_norm)
     matched: dict = {}
     low_conf_count = 0
 
