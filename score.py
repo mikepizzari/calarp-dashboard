@@ -110,6 +110,59 @@ def pitch(row: dict) -> str:
         return "RMP 5-Year Revalidation"
     return "EPA 2024 RMP Rule Compliance Review"
 
+# ── SCORE HISTORY ─────────────────────────────────────────────────────────────
+def _update_score_history(rows: list) -> dict:
+    """Append today's scores to output/score_history.json (rolling 52-week window)."""
+    history_path = OUTPUT_DIR / "score_history.json"
+    date_str     = TODAY.strftime("%Y-%m-%d")
+
+    if history_path.exists():
+        with open(history_path) as f:
+            history = json.load(f)
+    else:
+        history = {"dates": [], "scores": {}}
+
+    dates  = history["dates"]
+    scores = history["scores"]
+
+    current_ids = {str(r["site_id"]) for r in rows}
+
+    if date_str in dates:
+        # Overwrite existing entry for today (re-run same day)
+        idx = dates.index(date_str)
+        for r in rows:
+            sid = str(r["site_id"])
+            if sid not in scores:
+                scores[sid] = [None] * len(dates)
+            scores[sid][idx] = r["urgency_score"]
+        for sid in scores:
+            if sid not in current_ids and len(scores[sid]) > idx:
+                scores[sid][idx] = None
+    else:
+        dates.append(date_str)
+        for r in rows:
+            sid = str(r["site_id"])
+            if sid not in scores:
+                scores[sid] = [None] * (len(dates) - 1)
+            scores[sid].append(r["urgency_score"])
+        for sid in scores:
+            if sid not in current_ids:
+                if len(scores[sid]) < len(dates):
+                    scores[sid].append(None)
+
+    # Keep rolling 52-week window
+    if len(dates) > 52:
+        trim   = len(dates) - 52
+        dates  = dates[trim:]
+        scores = {sid: v[trim:] for sid, v in scores.items()}
+
+    history = {"dates": dates, "scores": scores}
+    with open(history_path, "w") as f:
+        json.dump(history, f, separators=(",", ":"))
+    print(f"[score.py] Updated score_history.json ({len(dates)} weeks, {len(scores)} sites)")
+    return history
+
+
 # ── MAIN PIPELINE ─────────────────────────────────────────────────────────────
 def run(input_path: str):
     print(f"[score.py] Reading: {input_path}")
@@ -280,9 +333,14 @@ def run(input_path: str):
     from diff import compute_diff, save_snapshot
     changes = compute_diff(rows)
 
+    # ── Match contacts & build score history ──────────────────────────────────
+    from match import run as run_match
+    contacts = run_match(rows)
+    score_history = _update_score_history(rows)
+
     # ── Generate dashboard HTML ───────────────────────────────────────────────
     from build_html import build_html
-    build_html(stats, rows, changes)
+    build_html(stats, rows, changes, contacts=contacts, score_history=score_history)
     print(f"[score.py] Written: output/dashboard.html")
 
     # ── Save snapshot for next week's diff ───────────────────────────────────

@@ -11,7 +11,15 @@ from pathlib import Path
 OUTPUT_DIR = Path("output")
 
 
-def build_html(stats: dict, leads: list, changes: dict = None):
+CRM_SHEET_URL = (
+    "https://docs.google.com/spreadsheets/d/e/"
+    "2PACX-1vTwnj_oAgynuyp05FomBrZl-UqSTgMu_JVRW-gSUPi133vsOFs0_bu2l9LId8uOTkIDpuqmGbvqksk6"
+    "/pub?gid=0&single=true&output=csv"
+)
+
+
+def build_html(stats: dict, leads: list, changes: dict = None,
+               contacts: dict = None, score_history: dict = None):
     generated   = stats["generated"]
     total       = stats["total_sites"]
     hot         = stats["hot_leads"]
@@ -28,29 +36,48 @@ def build_html(stats: dict, leads: list, changes: dict = None):
     score_dist  = stats["score_dist"]
     cupa_stats  = stats["cupa_stats"]
 
+    contacts      = contacts or {}
+    score_history = score_history or {"dates": [], "scores": {}}
+
     # Inline JSON for the table (top 200 leads by score for JS)
     table_leads = []
     for r in leads[:200]:
+        sid_str = str(r["site_id"])
+        ct = contacts.get(sid_str, {})
         table_leads.append({
-            "sid": r["site_id"],
-            "s": r["urgency_score"],
-            "n": r["facility_name"],
+            "sid":  r["site_id"],
+            "s":    r["urgency_score"],
+            "n":    r["facility_name"],
             "cupa": r["cupa"],
-            "e": r["latest_eval"],
-            "y": r["years_since"],
-            "v": r["total_violations"],
+            "e":    r["latest_eval"],
+            "y":    r["years_since"],
+            "v":    r["total_violations"],
             "r": ("OVERDUE" if r["revalid_overdue"]
                   else "DUE SOON" if r["revalid_soon"]
                   else "OK"),
-            "q": r["seismic"],
-            "p": r["recommended_pitch"],
+            "q":  r["seismic"],
+            "p":  r["recommended_pitch"],
             "pp": r["pain_points"],
             "nt": r["notes"],
+            # Contact fields (from site_match.json)
+            "cn":  ct.get("contact_name"),
+            "cp":  ct.get("contact_phone"),
+            "ce":  ct.get("contact_email"),
+            "ep":  ct.get("epaid"),
+            "lc":  ct.get("low_confidence", False),
+            "mn":  ct.get("matched_name"),
         })
+
+    # Score history: only include sites shown in the table
+    table_sids = {str(r["site_id"]) for r in leads[:200]}
+    sh_scores  = {sid: v for sid, v in score_history["scores"].items()
+                  if sid in table_sids}
+    score_history_js = json.dumps({"dates": score_history["dates"], "scores": sh_scores})
 
     score_dist_js  = json.dumps([[int(k), v] for k, v in sorted(score_dist.items())])
     cupa_stats_js  = json.dumps(cupa_stats)
     table_leads_js = json.dumps(table_leads)
+    crm_url_js     = json.dumps(CRM_SHEET_URL)
 
     # Build change map: {site_id -> {delta, direction, reason}}
     change_map = {}
@@ -237,6 +264,19 @@ tr.expandable{{cursor:pointer;}}
 .notes-list{{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:5px;}}
 .note-item{{font-size:11px;color:var(--muted);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}}
 .note-dot{{width:5px;height:5px;border-radius:50%;background:var(--muted);flex-shrink:0;margin-top:5px;}}
+.crm-panel{{min-width:200px;max-width:240px;border-left:1px solid var(--border);padding-left:18px;display:flex;flex-direction:column;gap:5px;}}
+.crm-field{{font-size:11px;color:var(--muted);display:flex;gap:6px;align-items:flex-start;line-height:1.45;}}
+.crm-icon{{flex-shrink:0;width:14px;text-align:center;}}
+.crm-value{{color:var(--text);}}
+.crm-divider{{border-top:1px solid var(--border);margin-top:6px;padding-top:6px;}}
+.crm-status{{display:inline-block;padding:1px 7px;border-radius:3px;font-family:var(--mono);font-size:10px;letter-spacing:0.04em;background:rgba(107,114,128,0.18);color:#9ca3af;}}
+.fp-p1{{display:inline-block;padding:1px 7px;border-radius:3px;font-family:var(--mono);font-size:10px;background:rgba(239,68,68,0.15);color:#ef4444;border:1px solid rgba(239,68,68,0.3);}}
+.fp-p2{{display:inline-block;padding:1px 7px;border-radius:3px;font-family:var(--mono);font-size:10px;background:rgba(245,166,35,0.15);color:#f5a623;border:1px solid rgba(245,166,35,0.3);}}
+.fp-p3{{display:inline-block;padding:1px 7px;border-radius:3px;font-family:var(--mono);font-size:10px;background:rgba(59,130,246,0.15);color:#3b82f6;border:1px solid rgba(59,130,246,0.3);}}
+.fac-crm{{font-family:var(--mono);font-size:10px;min-height:14px;margin-top:2px;}}
+.action-btns{{display:flex;flex-direction:column;gap:6px;align-self:flex-start;}}
+.log-btn{{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.15s;white-space:nowrap;}}
+.log-btn:hover{{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.4);color:var(--blue);}}
 </style>
 </head>
 <body>
@@ -338,16 +378,18 @@ tr.expandable{{cursor:pointer;}}
   </div>
 </main>
 <script>
-const SCORE_DIST  = {score_dist_js};
-const CUPA_STATS  = {cupa_stats_js};
-const LEADS       = {table_leads_js};
-const SCORE_COLORS = {{3:'#6366f1',4:'#6366f1',5:'#8b5cf6',6:'#a855f7',7:'#3b82f6',8:'#f5a623',9:'#ff4d1c',10:'#ef4444'}};
-const CHANGE_MAP   = {change_map_js};
-const MOVED_UP     = {moved_up_js};
-const MOVED_DOWN   = {moved_down_js};
-const NEW_SITES    = {new_sites_js};
-const IS_BASELINE  = {'true' if is_baseline else 'false'};
-const PREV_DATE    = "{changes_prev_date or ''}";
+const SCORE_DIST    = {score_dist_js};
+const CUPA_STATS    = {cupa_stats_js};
+const LEADS         = {table_leads_js};
+const SCORE_HISTORY = {score_history_js};
+const SCORE_COLORS  = {{3:'#6366f1',4:'#6366f1',5:'#8b5cf6',6:'#a855f7',7:'#3b82f6',8:'#f5a623',9:'#ff4d1c',10:'#ef4444'}};
+const CHANGE_MAP    = {change_map_js};
+const MOVED_UP      = {moved_up_js};
+const MOVED_DOWN    = {moved_down_js};
+const NEW_SITES     = {new_sites_js};
+const IS_BASELINE   = {'true' if is_baseline else 'false'};
+const PREV_DATE     = "{changes_prev_date or ''}";
+const CRM_SHEET_URL = {crm_url_js};
 
 // Histogram
 const maxBar = Math.max(...SCORE_DIST.map(d=>d[1]));
@@ -404,7 +446,113 @@ CUPA_STATS.forEach((c,i)=>{{
 }});
 setTimeout(()=>{{ CUPA_STATS.forEach((_,i)=>{{ setTimeout(()=>{{ const b=document.getElementById('bar-'+i); if(b)b.style.width=(CUPA_STATS[i].count/maxC*100)+'%'; }},i*55); }}); }},300);
 
-// Table
+// ── CRM ───────────────────────────────────────────────────────────────────────
+let CRM = {{}};  // {{site_id_str: crm_row}} — populated after sheet fetch
+
+function _parseCSVLine(line) {{
+  const res=[]; let cur='', inQ=false;
+  for(let i=0;i<line.length;i++) {{
+    const c=line[i];
+    if(c==='"'){{ inQ=!inQ; }}
+    else if(c===','&&!inQ){{ res.push(cur); cur=''; }}
+    else cur+=c;
+  }}
+  res.push(cur); return res;
+}}
+
+fetch(CRM_SHEET_URL)
+  .then(r=>r.text())
+  .then(text=>{{
+    const lines=text.trim().split('\\n');
+    if(!lines.length) return;
+    const hdrs=_parseCSVLine(lines[0]).map(h=>h.trim().toLowerCase());
+    lines.slice(1).forEach(line=>{{
+      const vals=_parseCSVLine(line);
+      const row={{}};
+      hdrs.forEach((h,i)=>row[h]=(vals[i]||'').trim());
+      const rawKey=row['site_id']||row['epaid']||'';
+      const key=rawKey.replace(/\\.0$/,'');  // strip trailing .0 from sheet numbers
+      if(key) CRM[key]=row;
+    }});
+    console.log(`[CRM] Loaded ${{Object.keys(CRM).length}} records`);
+    render();
+  }})
+  .catch(e=>console.warn('[CRM] Fetch failed:',e));
+
+function _scoreAtContact(sid, lastContact) {{
+  if(!lastContact||!SCORE_HISTORY.dates||!SCORE_HISTORY.scores[sid]) return null;
+  const dates=SCORE_HISTORY.dates, scores=SCORE_HISTORY.scores[sid];
+  let best=-1;
+  dates.forEach((d,i)=>{{ if(d<=lastContact) best=i; }});
+  return best>=0 ? scores[best] : null;
+}}
+
+function _followupFlag(lead, crm) {{
+  if(!crm) return null;
+  const today=new Date().toISOString().slice(0,10);
+  const sid=String(lead.sid);
+  const last=crm['last_contact_date']||'';
+  const next=crm['next_followup_date']||'';
+  if(last) {{
+    const sac=_scoreAtContact(sid, last);
+    if(sac!==null) {{
+      if(sac<8&&lead.s>=8) return 'P1';
+      if(lead.s>sac) return 'P2';
+    }}
+  }}
+  if(next&&next<=today) return 'P3';
+  if(last) {{
+    const days=(new Date(today)-new Date(last))/86400000;
+    if(days>=30) return 'P3';
+  }}
+  return null;
+}}
+
+function _flagHtml(flag) {{
+  if(!flag) return '';
+  const titles={{P1:'Score crossed 8+ since last contact',P2:'Score increased since last contact',P3:'Follow-up due'}};
+  return `<span class="fp-${{flag.toLowerCase()}}" title="${{titles[flag]||flag}}">${{flag}}</span>`;
+}}
+
+function _crmPanelHtml(l) {{
+  const sid=String(l.sid);
+  const crm=CRM[sid]||null;
+  // Contact: CRM overrides → matched contact
+  const name  = (crm&&crm['override_contact_name'])  ||l.cn||'';
+  const phone = (crm&&crm['override_contact_phone']) ||l.cp||'';
+  const email = (crm&&crm['override_contact_email']) ||l.ce||'';
+  const lowConf = l.lc && !(crm&&crm['override_contact_name']);
+  const hasContact = name||phone||email;
+  const flag = _followupFlag(l, crm);
+
+  let html='<div class="crm-panel">';
+  if(hasContact) {{
+    if(name)  html+=`<div class="crm-field"><span class="crm-icon">&#x1F464;</span><span class="crm-value">${{name}}${{lowConf?' <span class="tag tag-amber" style="font-size:9px">UNVERIFIED</span>':''}}</span></div>`;
+    if(phone) html+=`<div class="crm-field"><span class="crm-icon">&#x1F4DE;</span><span class="crm-value">${{phone}}</span></div>`;
+    if(email) html+=`<div class="crm-field"><span class="crm-icon">&#x2709;</span><span class="crm-value">${{email}}</span></div>`;
+  }} else {{
+    html+='<div style="font-size:11px;color:var(--muted);line-height:1.4">No contact info<br><span style="font-size:10px">Add row to CRM sheet</span></div>';
+  }}
+  if(crm) {{
+    html+='<div class="crm-divider">';
+    const status=crm['status']||'';
+    const assigned=crm['assigned_to']||'';
+    const last=crm['last_contact_date']||'';
+    const next=crm['next_followup_date']||'';
+    const notes=crm['crm_notes']||'';
+    const today=new Date().toISOString().slice(0,10);
+    if(flag||status) html+=`<div class="crm-field">${{_flagHtml(flag)}} ${{status?`<span class="crm-status">${{status}}</span>`:''}}</div>`;
+    if(assigned) html+=`<div class="crm-field"><span class="crm-icon" style="font-size:10px">&#x1F465;</span><span class="crm-value">${{assigned}}</span></div>`;
+    if(last) html+=`<div class="crm-field"><span class="crm-icon" style="font-size:10px">&#x1F4C5;</span><span class="crm-value">Last: ${{last}}</span></div>`;
+    if(next) html+=`<div class="crm-field" style="color:${{next<=today?'#ef4444':'inherit'}}"><span class="crm-icon" style="font-size:10px">&#x23F0;</span><span class="crm-value">Next: ${{next}}</span></div>`;
+    if(notes) html+=`<div class="crm-field" style="margin-top:4px;font-style:italic">${{notes}}</div>`;
+    html+='</div>';
+  }}
+  html+='</div>';
+  return html;
+}}
+
+// ── Table ─────────────────────────────────────────────────────────────────────
 let filter='all', cupaFilter='', search='', page=1, sortCol='s', sortAsc=false, expandedSid=null;
 const PAGE=10;
 function scoreClass(s){{return s===10?'s10':s===9?'s9':s===8?'s8':s===7?'s7':'slow';}}
@@ -433,16 +581,38 @@ function getFiltered(){{
 
 function copyLead(sid, btn) {{
   const l=LEADS.find(x=>x.sid===sid); if(!l) return;
+  const crm=CRM[String(sid)]||null;
+  const name  = (crm&&crm['override_contact_name'])  ||l.cn||'';
+  const phone = (crm&&crm['override_contact_phone']) ||l.cp||'';
+  const email = (crm&&crm['override_contact_email']) ||l.ce||'';
   const lines=[
     `FACILITY: ${{l.n}}`, `CUPA: ${{l.cupa}}`, `URGENCY: ${{l.s}}/10`,
     `LAST EVAL: ${{l.e}} (${{l.y}}y ago)`, `VIOLATIONS: ${{l.v}}`,
     `REVALIDATION: ${{l.r}}`, `SEISMIC: ${{l.q}}`, `PITCH: ${{l.p}}`,
     '', 'PAIN POINTS:', ...(l.pp||[]).map(pt=>`• ${{pt}}`),
     ...((l.nt&&l.nt.length)?['', 'NOTES:', ...l.nt.map(n=>`• ${{n}}`)]: []),
+    ...(name||phone||email?['', 'CONTACT:', ...(name?[`  Name:  ${{name}}`]:[]), ...(phone?[`  Phone: ${{phone}}`]:[]), ...(email?[`  Email: ${{email}}`]:[])]:[]),
+    ...(crm&&crm['crm_notes']?['', `CRM NOTES: ${{crm['crm_notes']}}`]:[]),
   ];
   navigator.clipboard.writeText(lines.join('\\n')).then(()=>{{
     btn.textContent='Copied!'; btn.classList.add('copied');
     setTimeout(()=>{{btn.textContent='Copy Lead'; btn.classList.remove('copied');}}, 1800);
+  }});
+}}
+
+function _updateCRMBadges() {{
+  document.querySelectorAll('tr.expandable[data-sid]').forEach(tr=>{{
+    const sid=tr.dataset.sid;
+    const lead=LEADS.find(l=>String(l.sid)===sid);
+    if(!lead) return;
+    const crm=CRM[sid]; if(!crm) return;
+    const flag=_followupFlag(lead,crm);
+    const status=crm['status']||'';
+    const el=tr.querySelector('.fac-crm'); if(!el) return;
+    let txt='';
+    if(flag) txt+=_flagHtml(flag)+' ';
+    if(status) txt+=`<span style="font-size:10px;color:var(--muted)">${{status}}</span>`;
+    el.innerHTML=txt;
   }});
 }}
 
@@ -458,13 +628,19 @@ function render(){{
     if(chg&&chg.dir==='new')  deltaHtml=`<span class="delta-new">NEW</span>`;
     const isOpen=expandedSid===l.sid;
     const notesHtml=(l.nt&&l.nt.length)?`<div class="notes-list">${{l.nt.map(n=>`<div class="note-item"><span class="note-dot"></span><span>${{n}}</span></div>`).join('')}}</div>`:'';
+    const crmPanelHtml = isOpen ? _crmPanelHtml(l) : '';
+    const logUrl=CRM_SHEET_URL.replace('&output=csv','');  // HTML view of published sheet
     const detail=isOpen?`<tr class="detail-row"><td colspan="8"><div class="detail-body">
       <div class="pain-list">${{(l.pp||[]).map(pt=>`<div class="pain-item"><span class="pain-dot"></span><span>${{pt}}</span></div>`).join('')}}${{notesHtml}}</div>
-      <button class="copy-btn" onclick="event.stopPropagation();copyLead(${{l.sid}},this)">Copy Lead</button>
+      ${{crmPanelHtml}}
+      <div class="action-btns">
+        <button class="copy-btn" onclick="event.stopPropagation();copyLead(${{l.sid}},this)">Copy Lead</button>
+        <a class="log-btn" href="${{logUrl}}" target="_blank" onclick="event.stopPropagation()">Log Contact &#x2192;</a>
+      </div>
     </div></td></tr>`:'';
-    return `<tr class="expandable" onclick="expandedSid=expandedSid===${{l.sid}}?null:${{l.sid}};render()">
+    return `<tr class="expandable" data-sid="${{l.sid}}" onclick="expandedSid=expandedSid===${{l.sid}}?null:${{l.sid}};render()">
     <td style="white-space:nowrap"><span class="score-badge ${{scoreClass(l.s)}}">${{l.s}}</span>${{deltaHtml}}</td>
-    <td><div class="fac-name">${{l.n}}<span class="expand-icon${{isOpen?' open':''}}">&rsaquo;</span></div><div class="fac-cupa">${{l.cupa}}</div></td>
+    <td><div class="fac-name">${{l.n}}<span class="expand-icon${{isOpen?' open':''}}">&rsaquo;</span></div><div class="fac-cupa">${{l.cupa}}</div><div class="fac-crm"></div></td>
     <td style="font-family:var(--mono);font-size:12px;color:#9ca3af;white-space:nowrap">${{l.e}}</td>
     <td style="font-family:var(--mono);font-size:12px;color:${{l.y>5?'#ef4444':l.y>3?'#f5a623':'#9ca3af'}}">${{l.y}}y</td>
     <td>${{l.v>0?`<span class="tag tag-red">${{l.v}}</span>`:'<span class="tag tag-gray">0</span>'}}</td>
@@ -479,6 +655,7 @@ function render(){{
     const info=document.createElement('span');info.className='page-info';info.textContent=`of ${{pages}}`;pag.appendChild(info);
     pb('Next →',Math.min(pages,cp+1),false);
   }}
+  if(Object.keys(CRM).length) _updateCRMBadges();
 }}
 document.querySelectorAll('.filter-btn').forEach(btn=>{{
   btn.addEventListener('click',()=>{{

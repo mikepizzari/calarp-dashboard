@@ -60,7 +60,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/dashboard.html output/leads.csv output/leads.json output/last_updated.txt output/leads_previous.json output/changes.json
+          git add output/dashboard.html output/leads.csv output/leads.json output/last_updated.txt output/leads_previous.json output/changes.json output/score_history.json
           # Only commit if something changed
           git diff --staged --quiet || git commit -m "Auto-update: CalARP dashboard $(date -u '+%Y-%m-%d')"
           git push
