@@ -58,6 +58,7 @@ def build_html(stats: dict, leads: list, changes: dict = None,
             "ce":   r.get("contact_email", ""),
             "lc":   r.get("locations", 1),
             "ac":   r.get("accidents", 0),
+            "co":   r.get("company", ""),
         })
 
     # Score history keyed by lead_key
@@ -676,7 +677,7 @@ function render(){{
         // Non-CA: show site details
         const addr=[l.city,l.state,l.zip].filter(Boolean).join(', ');
         detailContent=`<div class="flags-list">
-          <div class="flag-item"><span class="flag-dot" style="background:var(--muted)"></span><span>Locations: ${{l.lc}} · Accidents on record: ${{l.ac||0}}</span></div>
+          <div class="flag-item"><span class="flag-dot" style="background:var(--muted)"></span><span>${{l.co?`Parent: ${{l.co}} &nbsp;·&nbsp; `:''}}<span style="color:var(--muted);font-size:10px">RMP SITES</span> ${{l.lc}}${{l.ac?` &nbsp;·&nbsp; <span style="color:var(--muted);font-size:10px">ACCIDENTS</span> ${{l.ac}}`:''}}</span></div>
           ${{addr?`<div class="flag-item"><span class="flag-dot" style="background:var(--muted)"></span><span>${{addr}}</span></div>`:''}}
           ${{l.nh?`<div class="flag-item"><span class="flag-dot" style="background:var(--muted)"></span><span>NH3: ${{l.nh.toLocaleString()}} lbs on-site</span></div>`:''}}
           ${{l.ep?`<div class="flag-item"><span class="flag-dot" style="background:var(--muted)"></span><span>EPA ID: ${{l.ep}}</span></div>`:''}}
