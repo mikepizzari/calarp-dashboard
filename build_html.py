@@ -324,18 +324,6 @@ tr.expandable{{cursor:pointer;}}
     </div>
   </div>
   <div class="card">
-    <div class="card-title">Facilities by State</div>
-    <div class="heat-wrap">
-      <canvas id="heat-canvas" width="900" height="520"></canvas>
-      <div id="heat-labels" class="heat-labels"></div>
-    </div>
-    <div class="map-legend-row">
-      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">Fewer sites</span>
-      <div class="map-legend-bar"></div>
-      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">More sites</span>
-    </div>
-  </div>
-  <div class="card">
     <div class="card-title">Lead List <small>all {total:,} NH3 sites · full dataset in output/leads.csv</small></div>
     <div class="filter-row">
       <span class="filter-label">Territory:</span>
