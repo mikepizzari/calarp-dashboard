@@ -636,8 +636,8 @@ function _logFormHtml(l) {{
   const key=String(l.k);
   const crm=CRM[key]||{{}};
   const today=new Date().toISOString().slice(0,10);
-  const d=crm['last_contact_date']||today;
-  const nxt=crm['next_followup_date']||'';
+  const d=today;
+  const nxt='';
   const notes=(crm['crm_notes']||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const curStatus=crm['status']||'';
   const statuses=['Contacted','Interested','Demo Scheduled','Proposal Sent','Closed','Not Interested'];
