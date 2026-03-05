@@ -545,10 +545,9 @@ function _followupFlag(lead, crm) {{
     const days=(new Date(today)-new Date(last))/86400000;
     const warmStatuses=['Interested','Demo Scheduled','Proposal Sent'];
     if(warmStatuses.includes(status)&&days>=14) return 'P1';
-    if(status==='Contacted'&&days>=30) return 'P2';
   }}
-  if(next&&next<=today) return 'P3';
-  if(last) {{
+  if(next&&next<=today) return 'P2';
+  if(status==='Contacted'&&last) {{
     const days=(new Date(today)-new Date(last))/86400000;
     if(days>=30) return 'P3';
   }}
@@ -557,7 +556,7 @@ function _followupFlag(lead, crm) {{
 
 function _flagHtml(flag) {{
   if(!flag) return '';
-  const titles={{P1:'Active deal going cold (14+ days)',P2:'Warm lead fading (30+ days)',P3:'Follow-up due'}};
+  const titles={{P1:'Active deal going cold (14+ days)',P2:'Missed scheduled follow-up',P3:'Warm lead fading (30+ days)'}};
   return `<span class="fp-${{flag.toLowerCase()}}" title="${{titles[flag]||flag}}">${{flag}}</span>`;
 }}
 
