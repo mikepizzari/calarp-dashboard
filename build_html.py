@@ -651,7 +651,7 @@ function _logFormHtml(l) {{
     '</div>'+
     '<label style="margin-top:2px">Notes<textarea id="lf-notes-'+key+'" rows="2" style="min-width:280px">'+notes+'</textarea></label>'+
     '<div class="log-form-actions">'+
-      '<button class="submit-btn" id="lf-submit-'+key+'" onclick="event.stopPropagation();submitLogForm(\''+key+'\')">Submit</button>'+
+      '<button class="submit-btn" id="lf-submit-'+key+'" data-key="'+key+'" onclick="event.stopPropagation();submitLogForm(this.dataset.key)">Submit</button>'+
       '<button class="cancel-btn" onclick="event.stopPropagation();logFormKey=null;render()">Cancel</button>'+
       '<span class="log-msg" id="lf-msg-'+key+'"></span>'+
     '</div>'+
