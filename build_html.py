@@ -685,7 +685,8 @@ function submitLogForm(key) {{
   const msg=document.getElementById('lf-msg-'+key);
   if(submitBtn) submitBtn.disabled=true;
   if(msg){{msg.textContent='Saving\u2026';msg.className='log-msg';}}
-  fetch(APPS_SCRIPT_URL,{{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}})
+  fetch(APPS_SCRIPT_URL,{{method:'POST',headers:{{'Content-Type':'text/plain'}},body:JSON.stringify(payload)}})
+    .then(r=>r.text())
     .then(()=>{{
       if(!CRM[key]) CRM[key]={{}};
       CRM[key]['last_contact_date']=payload.last_contact_date;
