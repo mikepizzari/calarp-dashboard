@@ -19,6 +19,8 @@ CRM_SHEET_URL = (
     "/pub?gid=0&single=true&output=csv"
 )
 
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxPgvoUdK-1oUFoL9k0KndCgcCDEKZ7VlrMmTjsykxLNC79TLy7U15afa7EP76XbBk/exec"
+
 TIER_COLORS = {1: "#ef4444", 2: "#ff4d1c", 3: "#f5a623", 4: "#3b82f6", 5: "#6b6b85"}
 TIER_LABELS = {1: "Mega", 2: "Major", 3: "Mid-Market", 4: "Standard", 5: "Single"}
 
@@ -69,7 +71,8 @@ def build_html(stats: dict, leads: list, changes: dict = None,
                                    ((int(k), v) for k, v in tier_counts.items()))])
     state_counts_js = json.dumps(state_counts)
     table_leads_js  = json.dumps(table_leads)
-    crm_url_js      = json.dumps(CRM_SHEET_URL)
+    crm_url_js          = json.dumps(CRM_SHEET_URL)
+    apps_script_url_js  = json.dumps(APPS_SCRIPT_URL)
 
     # Change map: {lead_key → {dir, delta, reason}}
     change_map = {}
@@ -269,6 +272,18 @@ tr.expandable{{cursor:pointer;}}
 .action-btns{{display:flex;flex-direction:column;gap:6px;align-self:flex-start;}}
 .log-btn{{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:6px 14px;border-radius:4px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.15s;white-space:nowrap;}}
 .log-btn:hover{{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.4);color:var(--blue);}}
+.log-form{{background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:12px 14px;margin-top:6px;display:flex;flex-direction:column;gap:8px;min-width:340px;}}
+.log-form-row{{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;}}
+.log-form label{{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;display:flex;flex-direction:column;gap:3px;}}
+.log-form input[type=date],.log-form select,.log-form textarea{{background:var(--border);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:4px;outline:none;transition:border-color 0.15s;}}
+.log-form input[type=date]:focus,.log-form select:focus,.log-form textarea:focus{{border-color:rgba(59,130,246,0.5);}}
+.log-form textarea{{width:100%;resize:vertical;}}
+.log-form-actions{{display:flex;gap:6px;align-items:center;margin-top:2px;}}
+.submit-btn{{background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.4);color:var(--blue);font-family:var(--mono);font-size:11px;padding:5px 14px;border-radius:4px;cursor:pointer;transition:all 0.15s;}}
+.submit-btn:hover:not(:disabled){{background:rgba(59,130,246,0.35);}}.submit-btn:disabled{{opacity:0.5;cursor:not-allowed;}}
+.cancel-btn{{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:5px 10px;border-radius:4px;cursor:pointer;transition:all 0.15s;}}
+.cancel-btn:hover{{color:var(--text);border-color:rgba(255,255,255,0.2);}}
+.log-msg{{font-family:var(--mono);font-size:10px;padding:2px 4px;}}.log-msg.ok{{color:#2dd4a0;}}.log-msg.err{{color:#ef4444;}}
 </style>
 </head>
 <body>
@@ -379,6 +394,7 @@ const NEW_SITES   = {new_sites_js};
 const IS_BASELINE = {'true' if is_baseline else 'false'};
 const PREV_DATE   = "{changes_prev_dt or ''}";
 const CRM_SHEET_URL = {crm_url_js};
+const APPS_SCRIPT_URL = {apps_script_url_js};
 
 // ── Tier histogram ────────────────────────────────────────────────────────────
 const maxBar = Math.max(...TIER_DIST.map(d=>d[1]));
@@ -617,8 +633,76 @@ function _crmPanelHtml(l) {{
   return html;
 }}
 
+function _logFormHtml(l) {{
+  const key=String(l.k);
+  const crm=CRM[key]||{{}};
+  const today=new Date().toISOString().slice(0,10);
+  const d=crm['last_contact_date']||today;
+  const nxt=crm['next_followup_date']||'';
+  const notes=(crm['crm_notes']||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const curStatus=crm['status']||'';
+  const statuses=['Contacted','Interested','Demo Scheduled','Proposal Sent','Closed','Not Interested'];
+  const statusOpts=statuses.map(s=>'<option value="'+s+'"'+(curStatus===s?' selected':'')+'>'+s+'</option>').join('');
+  return '<div class="log-form" onclick="event.stopPropagation()">'+
+    '<div class="log-form-row">'+
+      '<label>Contact Date *<input type="date" id="lf-date-'+key+'" value="'+d+'"></label>'+
+      '<label>Status<select id="lf-status-'+key+'">'+statusOpts+'</select></label>'+
+      '<label>Next Follow-up<input type="date" id="lf-next-'+key+'" value="'+nxt+'"></label>'+
+    '</div>'+
+    '<label style="margin-top:2px">Notes<textarea id="lf-notes-'+key+'" rows="2" style="min-width:280px">'+notes+'</textarea></label>'+
+    '<div class="log-form-actions">'+
+      '<button class="submit-btn" id="lf-submit-'+key+'" onclick="event.stopPropagation();submitLogForm(\''+key+'\')">Submit</button>'+
+      '<button class="cancel-btn" onclick="event.stopPropagation();logFormKey=null;render()">Cancel</button>'+
+      '<span class="log-msg" id="lf-msg-'+key+'"></span>'+
+    '</div>'+
+  '</div>';
+}}
+
+function submitLogForm(key) {{
+  if(!APPS_SCRIPT_URL) {{
+    const msg=document.getElementById('lf-msg-'+key);
+    if(msg){{msg.textContent='Apps Script URL not configured.';msg.className='log-msg err';}}
+    return;
+  }}
+  const dateEl=document.getElementById('lf-date-'+key);
+  if(!dateEl||!dateEl.value) {{
+    const msg=document.getElementById('lf-msg-'+key);
+    if(msg){{msg.textContent='Contact date is required.';msg.className='log-msg err';}}
+    return;
+  }}
+  const lead=LEADS.find(x=>String(x.k)===String(key));
+  const payload={{
+    lead_key: key,
+    facility_name: lead?lead.n:'',
+    territory: lead?lead.tr:'',
+    tier: lead?lead.t:'',
+    last_contact_date: dateEl.value,
+    status: document.getElementById('lf-status-'+key).value,
+    crm_notes: document.getElementById('lf-notes-'+key).value,
+    next_followup_date: document.getElementById('lf-next-'+key).value,
+  }};
+  const submitBtn=document.getElementById('lf-submit-'+key);
+  const msg=document.getElementById('lf-msg-'+key);
+  if(submitBtn) submitBtn.disabled=true;
+  if(msg){{msg.textContent='Saving\u2026';msg.className='log-msg';}}
+  fetch(APPS_SCRIPT_URL,{{method:'POST',mode:'no-cors',body:JSON.stringify(payload)}})
+    .then(()=>{{
+      if(!CRM[key]) CRM[key]={{}};
+      CRM[key]['last_contact_date']=payload.last_contact_date;
+      CRM[key]['status']=payload.status;
+      CRM[key]['crm_notes']=payload.crm_notes;
+      CRM[key]['next_followup_date']=payload.next_followup_date;
+      logFormKey=null;
+      render();
+    }})
+    .catch(err=>{{
+      if(msg){{msg.textContent='Error: '+err;msg.className='log-msg err';}}
+      if(submitBtn) submitBtn.disabled=false;
+    }});
+}}
+
 // ── Table ─────────────────────────────────────────────────────────────────────
-let terrFilter='all', tierFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null;
+let terrFilter='all', tierFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null, logFormKey=null;
 const PAGE=20;
 
 function tierClass(t){{ return 't'+t; }}
@@ -702,6 +786,7 @@ function render(){{
     if(chg&&chg.dir==='new')  deltaHtml=`<span class="delta-new">NEW</span>`;
     const isOpen=expandedKey===l.k;
     const crmPanelHtml = isOpen ? _crmPanelHtml(l) : '';
+    const logForm = isOpen && logFormKey===l.k ? _logFormHtml(l) : '';
     const logUrl=CRM_SHEET_URL.replace('&output=csv','');
     // Contact/flag summary in table cell
     const hasContact = l.cn||l.cp||l.ce;
@@ -739,8 +824,9 @@ function render(){{
       ${{crmPanelHtml}}
       <div class="action-btns">
         <button class="copy-btn" onclick="event.stopPropagation();copyLead('${{l.k}}',this)">Copy Lead</button>
-        <a class="log-btn" href="${{logUrl}}" target="_blank" onclick="event.stopPropagation()">Log Contact &#x2192;</a>
+        <button class="log-btn" onclick="event.stopPropagation();logFormKey=logFormKey==='${{l.k}}'?null:'${{l.k}}';render()">${{logFormKey===l.k?'Log Contact &#x25B2;':'Log Contact &#x25BC;'}}</button>
       </div>
+      ${{logForm}}
     </div></td></tr>`:'';
     const locLabel = l.ca ? l.cupa||'CA' : l.st;
     return `<tr class="expandable" data-key="${{l.k}}" onclick="expandedKey=expandedKey==='${{l.k}}'?null:'${{l.k}}';render()">
