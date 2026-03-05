@@ -475,14 +475,12 @@ function _followupFlag(lead, crm) {
   const key=String(lead.k);
   const last=crm['last_contact_date']||'';
   const next=crm['next_followup_date']||'';
+  const status=crm['status']||'';
   if(last) {
-    const sac=_scoreAtContact(key, last);
-    if(sac!==null) {
-      // Score is inverted tier (T1→5, T5→1). Higher = better tier.
-      if(sac<4&&lead.t<=2) return 'P1';  // was T3+ at contact, now T1/T2
-      const curScore=6-lead.t;
-      if(curScore>sac) return 'P2';      // tier improved since contact
-    }
+    const days=(new Date(today)-new Date(last))/86400000;
+    const warmStatuses=['Interested','Demo Scheduled','Proposal Sent'];
+    if(warmStatuses.includes(status)&&days>=14) return 'P1';
+    if(status==='Contacted'&&days>=30) return 'P2';
   }
   if(next&&next<=today) return 'P3';
   if(last) {
@@ -494,7 +492,7 @@ function _followupFlag(lead, crm) {
 
 function _flagHtml(flag) {
   if(!flag) return '';
-  const titles={P1:'Tier upgraded since last contact',P2:'Priority improved since last contact',P3:'Follow-up due'};
+  const titles={P1:'Active deal going cold (14+ days)',P2:'Warm lead fading (30+ days)',P3:'Follow-up due'};
   return `<span class="fp-${flag.toLowerCase()}" title="${titles[flag]||flag}">${flag}</span>`;
 }
 
