@@ -312,7 +312,7 @@ tr.expandable{cursor:pointer;}
           <th data-col="st">STATE ↕</th>
           <th data-col="tr">TERRITORY ↕</th>
           <th data-col="nh">NH3 LBS ↕</th>
-          <th>REVALID</th>
+          <th data-col="rv">REVALID ↕</th>
           <th>CONTACT / FLAGS</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
@@ -737,6 +737,11 @@ function getFiltered(){
     const fq = l.n.toLowerCase().includes(search);
     return ft&&fi&&fp&&fs&&fq;
   }).sort((a,b)=>{
+    if(sortCol==='rv'){
+      const o={overdue:0,soon:1,ok:2,unknown:3};
+      const va=(o[a.rv]??3), vb=(o[b.rv]??3);
+      return sortAsc?va-vb:vb-va;
+    }
     let va=a[sortCol], vb=b[sortCol];
     if(typeof va==='string') return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
     va=va??Infinity; vb=vb??Infinity;
