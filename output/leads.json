@@ -11,64 +11,59 @@
     },
     "revalid_overdue": 431,
     "revalid_soon": 784,
-    "area_stats": [
-      {
-        "name": "TX",
-        "count": 329
-      },
-      {
-        "name": "Los Angeles County Fire Department",
-        "count": 229
-      },
-      {
-        "name": "IL",
-        "count": 174
-      },
-      {
-        "name": "WI",
-        "count": 164
-      },
-      {
-        "name": "IA",
-        "count": 146
-      },
-      {
-        "name": "WA",
-        "count": 136
-      },
-      {
-        "name": "MN",
-        "count": 135
-      },
-      {
-        "name": "PA",
-        "count": 132
-      },
-      {
-        "name": "GA",
-        "count": 132
-      },
-      {
-        "name": "Kern County Env Health Services Department",
-        "count": 122
-      },
-      {
-        "name": "OH",
-        "count": 121
-      },
-      {
-        "name": "San Bernardino County Fire Department",
-        "count": 120
-      },
-      {
-        "name": "FL",
-        "count": 112
-      },
-      {
-        "name": "Riverside County Department of Env Health",
-        "count": 98
-      }
-    ],
+    "state_counts": {
+      "IA": 146,
+      "NE": 95,
+      "TX": 329,
+      "FL": 112,
+      "PA": 132,
+      "MS": 42,
+      "TN": 70,
+      "AR": 81,
+      "KY": 58,
+      "IL": 174,
+      "AZ": 50,
+      "OK": 56,
+      "VA": 65,
+      "AL": 81,
+      "LA": 57,
+      "OR": 55,
+      "KS": 75,
+      "ID": 27,
+      "MO": 94,
+      "MI": 72,
+      "MN": 135,
+      "NC": 86,
+      "NY": 68,
+      "GA": 132,
+      "SD": 15,
+      "IN": 97,
+      "OH": 121,
+      "CO": 38,
+      "ND": 38,
+      "WI": 164,
+      "WA": 136,
+      "AK": 30,
+      "UT": 34,
+      "WV": 9,
+      "CT": 13,
+      "NV": 14,
+      "SC": 57,
+      "MD": 33,
+      "MA": 36,
+      "ME": 15,
+      "RI": 7,
+      "DE": 14,
+      "NM": 11,
+      "MT": 5,
+      "WY": 9,
+      "NJ": 17,
+      "CA": 1113,
+      "PR": 6,
+      "VT": 3,
+      "NH": 6,
+      "HI": 3
+    },
     "ca_count": 1113,
     "national_count": 3223
   },

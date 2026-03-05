@@ -383,15 +383,12 @@ def run(national_path: str, cers_path: str = ""):
     overdue_ct  = sum(1 for r in rows if r.get("revalid_status") == "overdue")
     soon_ct     = sum(1 for r in rows if r.get("revalid_status") == "soon")
 
-    # State/territory area bars (top 14 by site count)
-    area_counts = defaultdict(int)
+    # State counts for heat map (keyed by 2-letter state code)
+    state_counts: dict[str, int] = {}
     for r in rows:
-        key = r.get("cupa", r.get("state", "?")) if r.get("is_ca") else r.get("state", "?")
-        area_counts[key] += 1
-    area_stats = sorted(
-        [{"name": k, "count": v} for k, v in area_counts.items()],
-        key=lambda x: -x["count"]
-    )[:14]
+        st = r.get("state", "") or ""
+        if st:
+            state_counts[st] = state_counts.get(st, 0) + 1
 
     stats = {
         "generated":      TODAY.strftime("%Y-%m-%d"),
@@ -399,7 +396,7 @@ def run(national_path: str, cers_path: str = ""):
         "tier_counts":    tier_counts,
         "revalid_overdue": overdue_ct,
         "revalid_soon":    soon_ct,
-        "area_stats":      area_stats,
+        "state_counts":    state_counts,
         "ca_count":        len(cers_sites),
         "national_count":  total - len(cers_sites),
     }

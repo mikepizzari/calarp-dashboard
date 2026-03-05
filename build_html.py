@@ -31,7 +31,7 @@ def build_html(stats: dict, leads: list, changes: dict = None,
     tier_counts  = stats.get("tier_counts", {})
     overdue      = stats["revalid_overdue"]
     soon         = stats["revalid_soon"]
-    area_stats   = stats.get("area_stats", [])
+    state_counts = stats.get("state_counts", {})
     ca_count     = stats.get("ca_count", 0)
     national_ct  = stats.get("national_count", total - ca_count)
 
@@ -67,7 +67,7 @@ def build_html(stats: dict, leads: list, changes: dict = None,
 
     tier_counts_js  = json.dumps([[int(k), v] for k, v in sorted(
                                    ((int(k), v) for k, v in tier_counts.items()))])
-    area_stats_js   = json.dumps(area_stats)
+    state_counts_js = json.dumps(state_counts)
     table_leads_js  = json.dumps(table_leads)
     crm_url_js      = json.dumps(CRM_SHEET_URL)
 
@@ -181,12 +181,16 @@ main{{padding:28px 48px 64px;display:flex;flex-direction:column;gap:24px;}}
 .tl-label{{flex:1;font-size:12px;}}
 .tl-val{{font-family:var(--display);font-size:22px;line-height:1;}}
 .tl-sub{{font-family:var(--mono);font-size:9px;color:var(--muted);}}
-.hbar-list{{display:flex;flex-direction:column;gap:10px;}}
-.hbar-row{{display:grid;grid-template-columns:160px 1fr 80px;align-items:center;gap:12px;}}
-.hbar-name{{font-size:12px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
-.hbar-track{{background:var(--border);border-radius:2px;height:6px;overflow:hidden;}}
-.hbar-fill{{height:100%;border-radius:2px;background:var(--accent);width:0;transition:width 1.1s cubic-bezier(0.4,0,0.2,1);}}
-.hbar-meta{{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right;}}
+.state-map-grid{{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin:12px 0;}}
+.state-cell{{aspect-ratio:1;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-family:var(--mono);color:rgba(255,255,255,0.9);cursor:default;position:relative;transition:transform 0.1s;}}
+.state-cell:hover{{transform:scale(1.18);z-index:10;}}
+.state-cell.empty{{background:transparent!important;}}
+.sc-abbr{{font-weight:700;font-size:9px;line-height:1;}}
+.sc-count{{font-size:7px;opacity:0.85;margin-top:1px;}}
+.state-tooltip{{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:#0d0d1a;border:1px solid var(--border2);border-radius:4px;padding:4px 8px;font-size:10px;white-space:nowrap;pointer-events:none;display:none;z-index:20;}}
+.state-cell:hover .state-tooltip{{display:block;}}
+.map-legend-row{{display:flex;gap:10px;margin-top:8px;align-items:center;justify-content:flex-end;}}
+.map-legend-bar{{height:7px;width:130px;border-radius:4px;background:linear-gradient(to right,#1e1e2e,#f5a623,#ef4444);}}
 .filter-row{{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}}
 .filter-label{{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}}
 .filter-btn{{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all 0.15s;}}
@@ -236,7 +240,7 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
 .delta-up{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#2dd4a0;margin-left:5px;vertical-align:middle;}}
 .delta-down{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#ef4444;margin-left:5px;vertical-align:middle;}}
 .delta-new{{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#3b82f6;margin-left:5px;vertical-align:middle;}}
-@media(max-width:1100px){{.kpi-grid{{grid-template-columns:repeat(3,1fr);}}.charts-row{{grid-template-columns:1fr;}}.hbar-row{{grid-template-columns:130px 1fr 70px;}}}}
+@media(max-width:1100px){{.kpi-grid{{grid-template-columns:repeat(3,1fr);}}.charts-row{{grid-template-columns:1fr;}}.state-map-grid{{gap:2px;}}}}
 @media(max-width:700px){{header,main{{padding-left:20px;padding-right:20px;}}.kpi-grid{{grid-template-columns:repeat(2,1fr);}}h1{{font-size:36px;}}}}
 .changes-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}}
 .change-item{{padding:10px 0;border-bottom:1px solid var(--border);}}
@@ -324,8 +328,13 @@ tr.expandable{{cursor:pointer;}}
     </div>
   </div>
   <div class="card">
-    <div class="card-title">State / Territory Distribution <small>top 14 by site count</small></div>
-    <div class="hbar-list" id="area-bars"></div>
+    <div class="card-title">Facilities by State <small>hover for count</small></div>
+    <div class="state-map-grid" id="state-map"></div>
+    <div class="map-legend-row">
+      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">Low</span>
+      <div class="map-legend-bar"></div>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">High</span>
+    </div>
   </div>
   <div class="card">
     <div class="card-title">Lead List <small>all {total:,} NH3 sites · full dataset in output/leads.csv</small></div>
@@ -373,7 +382,7 @@ tr.expandable{{cursor:pointer;}}
 const TIER_COLORS = {{1:'#ef4444',2:'#ff4d1c',3:'#f5a623',4:'#3b82f6',5:'#6b6b85'}};
 const TIER_LABELS = {{1:'Mega',2:'Major',3:'Mid-Market',4:'Standard',5:'Single'}};
 const TIER_DIST   = {tier_counts_js};
-const AREA_STATS  = {area_stats_js};
+const STATE_COUNTS = {state_counts_js};
 const LEADS       = {table_leads_js};
 const SCORE_HISTORY = {score_history_js};
 const CHANGE_MAP  = {change_map_js};
@@ -414,16 +423,13 @@ document.getElementById('donut-wrap').innerHTML=`
     <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div><span class="legend-label">California (CERS)</span><span class="legend-val">${{ca_s}} <span style="color:#6b6b85;font-size:10px">${{Math.round(ca_s/total_s*100)}}%</span></span></div>
   </div>`;
 
-// ── Area bars ─────────────────────────────────────────────────────────────────
-const maxA = AREA_STATS[0]?.count||1;
-const areaEl = document.getElementById('area-bars');
-AREA_STATS.forEach((a,i)=>{{
-  const pct=(a.count/maxA)*100;
-  const row=document.createElement('div'); row.className='hbar-row';
-  row.innerHTML=`<span class="hbar-name" title="${{a.name}}">${{a.name}}</span><div class="hbar-track"><div class="hbar-fill" id="ab-${{i}}"></div></div><span class="hbar-meta">${{a.count}} sites</span>`;
-  areaEl.appendChild(row);
-}});
-setTimeout(()=>{{ AREA_STATS.forEach((_,i)=>{{ setTimeout(()=>{{ const b=document.getElementById('ab-'+i); if(b)b.style.width=(AREA_STATS[i].count/maxA*100)+'%'; }},i*55); }}); }},300);
+// ── State heat map ─────────────────────────────────────────────────────────────
+const STATE_GRID=[['AK','','','','','','','','','','ME'],['','','','','','','','','','VT','NH'],['WA','MT','ND','MN','','WI','MI','','NY','MA',''],['OR','ID','WY','SD','IA','IL','IN','OH','PA','NJ','CT'],['CA','NV','CO','NE','MO','KY','WV','VA','MD','DE','RI'],['','AZ','UT','KS','AR','TN','NC','SC','DC','',''],['HI','','NM','OK','LA','MS','AL','GA','','',''],['','','TX','','','','','FL','','','']];
+const STATE_NAMES={{'AK':'Alaska','AL':'Alabama','AR':'Arkansas','AZ':'Arizona','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'DC','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','IA':'Iowa','ID':'Idaho','IL':'Illinois','IN':'Indiana','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','MA':'Massachusetts','MD':'Maryland','ME':'Maine','MI':'Michigan','MN':'Minnesota','MO':'Missouri','MS':'Mississippi','MT':'Montana','NC':'North Carolina','ND':'North Dakota','NE':'Nebraska','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NV':'Nevada','NY':'New York','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VA':'Virginia','VT':'Vermont','WA':'Washington','WI':'Wisconsin','WV':'West Virginia','WY':'Wyoming'}};
+const maxSt=Math.max(1,...Object.values(STATE_COUNTS));
+function stateColor(c){{if(!c)return'#2a2a3e';const t=Math.sqrt(c/maxSt);const dk=[30,30,46],am=[245,166,35],rd=[239,68,68];let r,g,b;if(t<0.5){{const s=t*2;r=Math.round(dk[0]+s*(am[0]-dk[0]));g=Math.round(dk[1]+s*(am[1]-dk[1]));b=Math.round(dk[2]+s*(am[2]-dk[2]));}}else{{const s=(t-0.5)*2;r=Math.round(am[0]+s*(rd[0]-am[0]));g=Math.round(am[1]+s*(rd[1]-am[1]));b=Math.round(am[2]+s*(rd[2]-am[2]));}}return'rgb('+r+','+g+','+b+')';}}
+const mapEl=document.getElementById('state-map');
+if(mapEl){{STATE_GRID.forEach(function(row){{row.forEach(function(st){{const cell=document.createElement('div');if(!st){{cell.className='state-cell empty';mapEl.appendChild(cell);return;}}const cnt=STATE_COUNTS[st]||0;cell.className='state-cell';cell.style.background=stateColor(cnt);cell.innerHTML='<span class="sc-abbr">'+st+'</span>'+(cnt?'<span class="sc-count">'+cnt+'</span>':'')+'<div class="state-tooltip">'+(STATE_NAMES[st]||st)+': '+cnt+' site'+(cnt!==1?'s':'')+'</div>';mapEl.appendChild(cell);}});}})}}
 
 // ── CRM ───────────────────────────────────────────────────────────────────────
 let CRM = {{}};
