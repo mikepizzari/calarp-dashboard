@@ -705,8 +705,65 @@ function submitLogForm(key) {{
     }});
 }}
 
+function _editFormHtml(l) {{
+  const key=String(l.k);
+  const crm=CRM[key]||{{}};
+  const oName=(crm['override_contact_name']||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const oPhone=(crm['override_contact_phone']||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const oEmail=(crm['override_contact_email']||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return '<div class="log-form" onclick="event.stopPropagation()">'+
+    '<div class="log-form-row">'+
+      '<label>Override Name<input type="text" id="ef-name-'+key+'" value="'+oName+'" placeholder="Contact name"></label>'+
+      '<label>Override Phone<input type="tel" id="ef-phone-'+key+'" value="'+oPhone+'" placeholder="Phone number"></label>'+
+      '<label>Override Email<input type="email" id="ef-email-'+key+'" value="'+oEmail+'" placeholder="Email address"></label>'+
+    '</div>'+
+    '<div class="log-form-actions">'+
+      '<button class="submit-btn" id="ef-submit-'+key+'" data-key="'+key+'" onclick="event.stopPropagation();submitEditContact(this.dataset.key)">Save</button>'+
+      '<button class="cancel-btn" onclick="event.stopPropagation();editFormKey=null;render()">Cancel</button>'+
+      '<span class="log-msg" id="ef-msg-'+key+'"></span>'+
+    '</div>'+
+  '</div>';
+}}
+
+function submitEditContact(key) {{
+  if(!APPS_SCRIPT_URL) {{
+    const msg=document.getElementById('ef-msg-'+key);
+    if(msg){{msg.textContent='Apps Script URL not configured.';msg.className='log-msg err';}}
+    return;
+  }}
+  const lead=LEADS.find(x=>String(x.k)===String(key));
+  const payload={{
+    lead_key: key,
+    facility_name: lead?lead.n:'',
+    territory: lead?lead.tr:'',
+    tier: lead?lead.t:'',
+    override_contact_name: document.getElementById('ef-name-'+key).value,
+    override_contact_phone: document.getElementById('ef-phone-'+key).value,
+    override_contact_email: document.getElementById('ef-email-'+key).value,
+  }};
+  const submitBtn=document.getElementById('ef-submit-'+key);
+  const msg=document.getElementById('ef-msg-'+key);
+  if(submitBtn) submitBtn.disabled=true;
+  if(msg){{msg.textContent='Saving\u2026';msg.className='log-msg';}}
+  const qs=new URLSearchParams({{data:JSON.stringify(payload)}});
+  fetch(APPS_SCRIPT_URL+'?'+qs.toString(),{{mode:'no-cors'}})
+    .then(()=>{{
+      if(!CRM[key]) CRM[key]={{}};
+      CRM[key]['override_contact_name']=payload.override_contact_name;
+      CRM[key]['override_contact_phone']=payload.override_contact_phone;
+      CRM[key]['override_contact_email']=payload.override_contact_email;
+      try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');sv[key]=CRM[key];localStorage.setItem(LOCAL_KEY,JSON.stringify(sv));}}catch(e){{}}
+      editFormKey=null;
+      render();
+    }})
+    .catch(err=>{{
+      if(msg){{msg.textContent='Error: '+err;msg.className='log-msg err';}}
+      if(submitBtn) submitBtn.disabled=false;
+    }});
+}}
+
 // ── Table ─────────────────────────────────────────────────────────────────────
-let terrFilter='all', tierFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null, logFormKey=null;
+let terrFilter='all', tierFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null, logFormKey=null, editFormKey=null;
 const PAGE=20;
 
 function tierClass(t){{ return 't'+t; }}
@@ -791,14 +848,18 @@ function render(){{
     const isOpen=expandedKey===l.k;
     const crmPanelHtml = isOpen ? _crmPanelHtml(l) : '';
     const logForm = isOpen && logFormKey===l.k ? _logFormHtml(l) : '';
+    const editForm = isOpen && editFormKey===l.k ? _editFormHtml(l) : '';
     const logUrl=CRM_SHEET_URL.replace('&output=csv','');
     // Contact/flag summary in table cell
-    const hasContact = l.cn||l.cp||l.ce;
     const crmRow = CRM[String(l.k)]||null;
     const crmStatus = crmRow&&crmRow['status'] ? crmRow['status'] : null;
+    const hasContact = l.cn||l.cp||l.ce||
+      (crmRow&&(crmRow['override_contact_name']||crmRow['override_contact_phone']||crmRow['override_contact_email']));
     const contactCell = l.ca
       ? _cersFlagsHtml(l.cf)||'<span style="color:var(--muted);font-size:10px">CERS</span>'
-      : (crmStatus ? `<span class="crm-status">${{crmStatus}}</span>` : hasContact ? '<span class="tag tag-green">&#x2713; Contact</span>' : '<span class="tag tag-gray">No contact</span>');
+      : crmStatus ? `<span class="tag tag-green">&#x2713; ${{crmStatus}}</span>`
+      : hasContact ? '<span class="tag tag-blue">&#x260E; Info</span>'
+      : '<span class="tag tag-gray">&#x2717; No contact</span>';
     // Expanded detail
     let detailContent='';
     if(isOpen) {{
@@ -831,8 +892,10 @@ function render(){{
       <div class="action-btns">
         <button class="copy-btn" onclick="event.stopPropagation();copyLead('${{l.k}}',this)">Copy Lead</button>
         <button class="log-btn" onclick="event.stopPropagation();logFormKey=logFormKey==='${{l.k}}'?null:'${{l.k}}';render()">${{logFormKey===l.k?'Log Contact &#x25B2;':'Log Contact &#x25BC;'}}</button>
+        ${{!l.ca?`<button class="log-btn" onclick="event.stopPropagation();editFormKey=editFormKey==='${{l.k}}'?null:'${{l.k}}';render()">${{editFormKey===l.k?'Edit Contact &#x25B2;':'Edit Contact &#x25BC;'}}</button>`:''}}
       </div>
       ${{logForm}}
+      ${{editForm}}
     </div></td></tr>`:'';
     const locLabel = l.ca ? l.cupa||'CA' : l.st;
     return `<tr class="expandable" data-key="${{l.k}}" onclick="expandedKey=expandedKey==='${{l.k}}'?null:'${{l.k}}';render()">
