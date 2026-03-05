@@ -790,9 +790,11 @@ function render(){{
     const logUrl=CRM_SHEET_URL.replace('&output=csv','');
     // Contact/flag summary in table cell
     const hasContact = l.cn||l.cp||l.ce;
+    const crmRow = CRM[String(l.k)]||null;
+    const crmStatus = crmRow&&crmRow['status'] ? crmRow['status'] : null;
     const contactCell = l.ca
       ? _cersFlagsHtml(l.cf)||'<span style="color:var(--muted);font-size:10px">CERS</span>'
-      : (hasContact ? '<span class="tag tag-green">&#x2713; Contact</span>' : '<span class="tag tag-gray">No contact</span>');
+      : (crmStatus ? `<span class="crm-status">${{crmStatus}}</span>` : hasContact ? '<span class="tag tag-green">&#x2713; Contact</span>' : '<span class="tag tag-gray">No contact</span>');
     // Expanded detail
     let detailContent='';
     if(isOpen) {{
