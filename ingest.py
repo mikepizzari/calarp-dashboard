@@ -94,15 +94,24 @@ def run(contacts_path: Path = DATA_DIR / "contacts.xlsx",
 
     # 3a. Exclude non-refrigeration NAICS codes:
     #   42491 = Farm Supplies Merchant Wholesalers (fertilizer retail — Nutrien, etc.)
+    #   44424 = Nursery, Garden Center & Farm Supply (fertilizer retail — AgVantage/Growmark)
     #   32531 = Fertilizer Manufacturing
     #   11511 = Support Activities for Crop Production
     # These facilities store pressurized anhydrous NH3 for agricultural use,
     # not refrigeration systems — they are not IIAR 9 / RMP compliance prospects.
-    EXCLUDE_NAICS = {"42491", "32531", "11511"}
+    EXCLUDE_NAICS = {"42491", "44424", "32531", "11511"}
     nh3["_naics5"] = nh3["NAICS"].fillna("").astype(str).str.strip().str[:5]
     before = len(nh3)
     nh3 = nh3[~nh3["_naics5"].isin(EXCLUDE_NAICS)].copy()
-    print(f"[ingest.py] After excluding fertilizer/ag NAICS (42491/32531/11511): {len(nh3):,} "
+    print(f"[ingest.py] After excluding fertilizer/ag NAICS: {len(nh3):,} "
+          f"(removed {before - len(nh3):,})")
+
+    # 3b. Exclude large chemical manufacturers that use NH3 as a process feedstock,
+    # not for refrigeration (BASF, Dow Chemical).
+    EXCLUDE_ACCOUNTS = {"BASF", "Dow"}
+    before = len(nh3)
+    nh3 = nh3[~nh3["Account Name"].isin(EXCLUDE_ACCOUNTS)].copy()
+    print(f"[ingest.py] After excluding chemical feedstock accounts (BASF/Dow): {len(nh3):,} "
           f"(removed {before - len(nh3):,})")
 
     # 3. Normalize EPAID
