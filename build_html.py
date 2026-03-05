@@ -493,6 +493,7 @@ const SC={{'AK':[64.2,-153.4],'AL':[32.8,-86.8],'AR':[34.8,-92.2],'AZ':[34.3,-11
 
 // ── CRM ───────────────────────────────────────────────────────────────────────
 let CRM = {{}};
+const LOCAL_KEY = 'calarp_crm';
 
 function _parseCSVLine(line) {{
   const res=[]; let cur='', inQ=false;
@@ -520,6 +521,7 @@ fetch(CRM_SHEET_URL)
       if(key) CRM[key]=row;
     }});
     console.log(`[CRM] Loaded ${{Object.keys(CRM).length}} records`);
+    try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];}});}}catch(e){{}}
     render();
   }})
   .catch(e=>console.warn('[CRM] Fetch failed:',e));
@@ -693,6 +695,7 @@ function submitLogForm(key) {{
       CRM[key]['status']=payload.status;
       CRM[key]['crm_notes']=payload.crm_notes;
       CRM[key]['next_followup_date']=payload.next_followup_date;
+      try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');sv[key]=CRM[key];localStorage.setItem(LOCAL_KEY,JSON.stringify(sv));}}catch(e){{}}
       logFormKey=null;
       render();
     }})
@@ -909,6 +912,7 @@ if (!IS_BASELINE) {{
   renderChangeList(NEW_SITES,  'changes-new',  'new-count',  'new');
 }}
 
+try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];}});}}catch(e){{}}
 render();
 </script>
 </body>
