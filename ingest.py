@@ -142,7 +142,9 @@ def run(contacts_path: Path = DATA_DIR / "contacts.xlsx",
 
     # 6. Write output CSV
     def safe_str(col, default=""):
-        return nh3[col].fillna(default).astype(str).str.strip() if col in nh3.columns else default
+        if col not in nh3.columns:
+            return default
+        return nh3[col].fillna(default).astype(str).str.strip().str.replace(r'\.0$', '', regex=True)
 
     out = pd.DataFrame({
         "epaid":               nh3["epaid"],
