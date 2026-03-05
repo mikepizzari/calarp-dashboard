@@ -242,6 +242,12 @@ tr.expandable{cursor:pointer;}
       <button class="filter-btn" data-tier="4">T4</button>
       <button class="filter-btn" data-tier="5">T5</button>
       <div class="filter-sep"></div>
+      <span class="filter-label">Priority:</span>
+      <button class="filter-btn active" data-pf="all">ALL</button>
+      <button class="filter-btn" data-pf="P1">P1</button>
+      <button class="filter-btn" data-pf="P2">P2</button>
+      <button class="filter-btn" data-pf="P3">P3</button>
+      <div class="filter-sep"></div>
       <select class="select-filter" id="state-select">
         <option value="">ALL STATES</option>
         <option value="AK">AK</option>
@@ -707,7 +713,7 @@ function submitEditContact(key) {
 }
 
 // ── Table ─────────────────────────────────────────────────────────────────────
-let terrFilter='all', tierFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null, logFormKey=null, editFormKey=null;
+let terrFilter='all', tierFilter='all', priorityFilter='all', stateFilter='', search='', page=1, sortCol='t', sortAsc=true, expandedKey=null, logFormKey=null, editFormKey=null;
 const PAGE=20;
 
 function tierClass(t){ return 't'+t; }
@@ -726,9 +732,10 @@ function getFiltered(){
   return LEADS.filter(l=>{
     const ft = terrFilter==='all' ? true : l.tr===terrFilter;
     const fi = tierFilter==='all'  ? true : l.t===parseInt(tierFilter);
+    const fp = priorityFilter==='all' ? true : _followupFlag(l,CRM[String(l.k)]||null)===priorityFilter;
     const fs = stateFilter ? l.st===stateFilter : true;
     const fq = l.n.toLowerCase().includes(search);
-    return ft&&fi&&fs&&fq;
+    return ft&&fi&&fp&&fs&&fq;
   }).sort((a,b)=>{
     let va=a[sortCol], vb=b[sortCol];
     if(typeof va==='string') return sortAsc?va.localeCompare(vb):vb.localeCompare(va);
@@ -874,6 +881,12 @@ document.querySelectorAll('.filter-btn[data-tier]').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn[data-tier]').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active'); tierFilter=btn.dataset.tier; page=1; render();
+  });
+});
+document.querySelectorAll('.filter-btn[data-pf]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn[data-pf]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active'); priorityFilter=btn.dataset.pf; page=1; render();
   });
 });
 document.getElementById('state-select').addEventListener('change',e=>{stateFilter=e.target.value;page=1;render();});
