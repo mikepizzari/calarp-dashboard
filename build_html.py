@@ -521,7 +521,7 @@ fetch(CRM_SHEET_URL)
       if(key) CRM[key]=row;
     }});
     console.log(`[CRM] Loaded ${{Object.keys(CRM).length}} records`);
-    try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];}});}}catch(e){{}}
+    try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];else Object.assign(CRM[k],sv[k]);}});}}catch(e){{}}
     render();
   }})
   .catch(e=>console.warn('[CRM] Fetch failed:',e));
@@ -972,7 +972,7 @@ if (!IS_BASELINE) {{
   renderChangeList(NEW_SITES,  'changes-new',  'new-count',  'new');
 }}
 
-try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];}});}}catch(e){{}}
+try{{const sv=JSON.parse(localStorage.getItem(LOCAL_KEY)||'{{}}');Object.keys(sv).forEach(k=>{{if(!CRM[k])CRM[k]=sv[k];else Object.assign(CRM[k],sv[k]);}});}}catch(e){{}}
 render();
 </script>
 </body>
