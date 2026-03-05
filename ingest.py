@@ -99,11 +99,30 @@ def run(contacts_path: Path = DATA_DIR / "contacts.xlsx",
     #   11511 = Support Activities for Crop Production
     # These facilities store pressurized anhydrous NH3 for agricultural use,
     # not refrigeration systems — they are not IIAR 9 / RMP compliance prospects.
-    EXCLUDE_NAICS = {"42491", "44424", "32531", "11511"}
+    #
+    # Oil, gas, and chemical manufacturers — use NH3 as feedstock or product,
+    # not for refrigeration systems:
+    #   32411 = Petroleum Refineries
+    #   32511 = Petrochemical Manufacturing
+    #   32512 = Industrial Gas Manufacturing (Airgas, Air Liquide, etc.)
+    #   32518 = Other Basic Inorganic Chemical Manufacturing
+    #   32519 = Other Basic Organic Chemical Manufacturing
+    #   32521 = Resin and Synthetic Rubber Manufacturing
+    #   32551 = Paint and Coating Manufacturing
+    #   32561 = Soap and Cleaning Compound Manufacturing
+    #   32599 = Other Chemical Product Manufacturing
+    #   42469 = Other Chemical and Allied Products Merchant Wholesalers
+    #   42471 = Petroleum and Petroleum Products Merchant Wholesalers
+    EXCLUDE_NAICS = {
+        "42491", "44424", "32531", "11511",
+        "32411", "32511", "32512", "32518", "32519",
+        "32521", "32551", "32561", "32599",
+        "42469", "42471",
+    }
     nh3["_naics5"] = nh3["NAICS"].fillna("").astype(str).str.strip().str[:5]
     before = len(nh3)
     nh3 = nh3[~nh3["_naics5"].isin(EXCLUDE_NAICS)].copy()
-    print(f"[ingest.py] After excluding fertilizer/ag NAICS: {len(nh3):,} "
+    print(f"[ingest.py] After excluding fertilizer/ag/oil/chem NAICS: {len(nh3):,} "
           f"(removed {before - len(nh3):,})")
 
     # 3b. Exclude large chemical manufacturers that use NH3 as a process feedstock,
