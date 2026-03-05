@@ -64,16 +64,12 @@ main{padding:28px 48px 64px;display:flex;flex-direction:column;gap:24px;}
 .tl-label{flex:1;font-size:12px;}
 .tl-val{font-family:var(--display);font-size:22px;line-height:1;}
 .tl-sub{font-family:var(--mono);font-size:9px;color:var(--muted);}
-.state-map-grid{display:grid;grid-template-columns:repeat(11,1fr);gap:3px;margin:12px 0;}
-.state-cell{aspect-ratio:1;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;font-family:var(--mono);color:rgba(255,255,255,0.9);cursor:default;position:relative;transition:transform 0.1s;}
-.state-cell:hover{transform:scale(1.18);z-index:10;}
-.state-cell.empty{background:transparent!important;}
-.sc-abbr{font-weight:700;font-size:9px;line-height:1;}
-.sc-count{font-size:7px;opacity:0.85;margin-top:1px;}
-.state-tooltip{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:#0d0d1a;border:1px solid var(--border2);border-radius:4px;padding:4px 8px;font-size:10px;white-space:nowrap;pointer-events:none;display:none;z-index:20;}
-.state-cell:hover .state-tooltip{display:block;}
-.map-legend-row{display:flex;gap:10px;margin-top:8px;align-items:center;justify-content:flex-end;}
-.map-legend-bar{height:7px;width:130px;border-radius:4px;background:linear-gradient(to right,#1e1e2e,#f5a623,#ef4444);}
+.heat-wrap{position:relative;border-radius:6px;overflow:hidden;background:#1e1e2e;line-height:0;}
+.heat-wrap canvas{width:100%;height:auto;display:block;filter:blur(22px);transform:scale(1.08);transform-origin:center;}
+.heat-labels{position:absolute;inset:0;pointer-events:none;}
+.hlbl{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-size:9px;font-weight:700;color:rgba(255,255,255,0.8);text-shadow:0 1px 4px rgba(0,0,0,0.9);}
+.map-legend-row{display:flex;gap:10px;margin-top:10px;align-items:center;justify-content:flex-end;}
+.map-legend-bar{height:7px;width:130px;border-radius:4px;background:linear-gradient(to right,#1a4b8f,#22d3ee,#4ade80,#f5a623,#ef4444);}
 .filter-row{display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap;}
 .filter-label{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
 .filter-btn{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:11px;padding:5px 12px;border-radius:4px;cursor:pointer;transition:all 0.15s;}
@@ -123,7 +119,7 @@ tr:hover td{background:rgba(255,255,255,0.02);}
 .delta-up{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#2dd4a0;margin-left:5px;vertical-align:middle;}
 .delta-down{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#ef4444;margin-left:5px;vertical-align:middle;}
 .delta-new{display:inline-flex;align-items:center;font-family:var(--mono);font-size:10px;color:#3b82f6;margin-left:5px;vertical-align:middle;}
-@media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.charts-row{grid-template-columns:1fr;}.state-map-grid{gap:2px;}}
+@media(max-width:1100px){.kpi-grid{grid-template-columns:repeat(3,1fr);}.charts-row{grid-template-columns:1fr;}.hlbl{font-size:8px;}}
 @media(max-width:700px){header,main{padding-left:20px;padding-right:20px;}.kpi-grid{grid-template-columns:repeat(2,1fr);}h1{font-size:36px;}}
 .changes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .change-item{padding:10px 0;border-bottom:1px solid var(--border);}
@@ -217,12 +213,15 @@ tr.expandable{cursor:pointer;}
     </div>
   </div>
   <div class="card">
-    <div class="card-title">Facilities by State <small>hover for count</small></div>
-    <div class="state-map-grid" id="state-map"></div>
+    <div class="card-title">Facilities by State</div>
+    <div class="heat-wrap">
+      <canvas id="heat-canvas" width="900" height="520"></canvas>
+      <div id="heat-labels" class="heat-labels"></div>
+    </div>
     <div class="map-legend-row">
-      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">Low</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">Fewer sites</span>
       <div class="map-legend-bar"></div>
-      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">High</span>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--muted);">More sites</span>
     </div>
   </div>
   <div class="card">
@@ -362,13 +361,70 @@ document.getElementById('donut-wrap').innerHTML=`
     <div class="legend-item"><div class="legend-dot" style="background:#3b82f6"></div><span class="legend-label">California (CERS)</span><span class="legend-val">${ca_s} <span style="color:#6b6b85;font-size:10px">${Math.round(ca_s/total_s*100)}%</span></span></div>
   </div>`;
 
-// ── State heat map ─────────────────────────────────────────────────────────────
-const STATE_GRID=[['AK','','','','','','','','','','ME'],['','','','','','','','','','VT','NH'],['WA','MT','ND','MN','','WI','MI','','NY','MA',''],['OR','ID','WY','SD','IA','IL','IN','OH','PA','NJ','CT'],['CA','NV','CO','NE','MO','KY','WV','VA','MD','DE','RI'],['','AZ','UT','KS','AR','TN','NC','SC','DC','',''],['HI','','NM','OK','LA','MS','AL','GA','','',''],['','','TX','','','','','FL','','','']];
-const STATE_NAMES={'AK':'Alaska','AL':'Alabama','AR':'Arkansas','AZ':'Arizona','CA':'California','CO':'Colorado','CT':'Connecticut','DC':'DC','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','IA':'Iowa','ID':'Idaho','IL':'Illinois','IN':'Indiana','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','MA':'Massachusetts','MD':'Maryland','ME':'Maine','MI':'Michigan','MN':'Minnesota','MO':'Missouri','MS':'Mississippi','MT':'Montana','NC':'North Carolina','ND':'North Dakota','NE':'Nebraska','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NV':'Nevada','NY':'New York','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VA':'Virginia','VT':'Vermont','WA':'Washington','WI':'Wisconsin','WV':'West Virginia','WY':'Wyoming'};
-const maxSt=Math.max(1,...Object.values(STATE_COUNTS));
-function stateColor(c){if(!c)return'#2a2a3e';const t=Math.sqrt(c/maxSt);const dk=[30,30,46],am=[245,166,35],rd=[239,68,68];let r,g,b;if(t<0.5){const s=t*2;r=Math.round(dk[0]+s*(am[0]-dk[0]));g=Math.round(dk[1]+s*(am[1]-dk[1]));b=Math.round(dk[2]+s*(am[2]-dk[2]));}else{const s=(t-0.5)*2;r=Math.round(am[0]+s*(rd[0]-am[0]));g=Math.round(am[1]+s*(rd[1]-am[1]));b=Math.round(am[2]+s*(rd[2]-am[2]));}return'rgb('+r+','+g+','+b+')';}
-const mapEl=document.getElementById('state-map');
-if(mapEl){STATE_GRID.forEach(function(row){row.forEach(function(st){const cell=document.createElement('div');if(!st){cell.className='state-cell empty';mapEl.appendChild(cell);return;}const cnt=STATE_COUNTS[st]||0;cell.className='state-cell';cell.style.background=stateColor(cnt);cell.innerHTML='<span class="sc-abbr">'+st+'</span>'+(cnt?'<span class="sc-count">'+cnt+'</span>':'')+'<div class="state-tooltip">'+(STATE_NAMES[st]||st)+': '+cnt+' site'+(cnt!==1?'s':'')+'</div>';mapEl.appendChild(cell);});})}
+// ── State radial gradient heat map ─────────────────────────────────────────────
+// State centroids [lat, lng] — approximate geographic centers
+const SC={'AK':[64.2,-153.4],'AL':[32.8,-86.8],'AR':[34.8,-92.2],'AZ':[34.3,-111.1],'CA':[37.2,-119.4],'CO':[39.1,-105.4],'CT':[41.6,-72.7],'DC':[38.9,-77.0],'DE':[39.1,-75.5],'FL':[27.8,-81.7],'GA':[32.7,-83.4],'HI':[20.8,-156.6],'IA':[42.1,-93.5],'ID':[44.4,-114.5],'IL':[40.0,-89.2],'IN':[40.0,-86.1],'KS':[38.5,-98.3],'KY':[37.5,-85.3],'LA':[31.2,-91.8],'MA':[42.2,-71.5],'MD':[39.0,-76.8],'ME':[45.3,-69.2],'MI':[44.3,-85.4],'MN':[46.4,-93.2],'MO':[38.4,-92.5],'MS':[32.7,-89.7],'MT':[47.0,-110.5],'NC':[35.6,-79.4],'ND':[47.5,-100.5],'NE':[41.5,-99.9],'NH':[43.7,-71.6],'NJ':[40.2,-74.7],'NM':[34.8,-106.2],'NV':[39.5,-116.7],'NY':[42.9,-75.5],'OH':[40.4,-82.8],'OK':[35.6,-97.5],'OR':[44.0,-120.5],'PA':[40.9,-77.8],'RI':[41.7,-71.5],'SC':[33.9,-80.9],'SD':[44.4,-100.3],'TN':[35.9,-86.7],'TX':[31.5,-99.3],'UT':[39.4,-111.1],'VA':[37.5,-79.4],'VT':[44.0,-72.7],'WA':[47.4,-120.5],'WI':[44.3,-89.8],'WV':[38.6,-80.6],'WY':[43.0,-107.6]};
+(function(){
+  const cv=document.getElementById('heat-canvas'); if(!cv)return;
+  const ctx=cv.getContext('2d');
+  const W=cv.width, H=cv.height;
+  function proj(lat,lng){
+    if(lat>54){
+      const x=W*0.04+(lng+180)/((-130)-(-180))*W*0.17;
+      const y=H*0.68+(1-(lat-54)/(72-54))*H*0.28;
+      return[x,y];
+    }
+    if(lng<-140){
+      const x=W*0.23+(lng+162)/((-154)-(-162))*W*0.15;
+      const y=H*0.78+(1-(lat-18)/(23-18))*H*0.18;
+      return[x,y];
+    }
+    const x=(lng-(-125))/((-66)-(-125))*(W*0.82)+W*0.10;
+    const y=(1-(lat-24)/(50-24))*(H*0.83)+H*0.06;
+    return[x,y];
+  }
+  const STOPS=[[0,[26,75,143]],[0.25,[34,211,238]],[0.5,[74,222,128]],[0.75,[245,166,35]],[1,[239,68,68]]];
+  function heatColor(t){
+    for(let i=1;i<STOPS.length;i++){
+      if(t<=STOPS[i][0]){
+        const s=(t-STOPS[i-1][0])/(STOPS[i][0]-STOPS[i-1][0]);
+        const a=STOPS[i-1][1],b=STOPS[i][1];
+        return[Math.round(a[0]+s*(b[0]-a[0])),Math.round(a[1]+s*(b[1]-a[1])),Math.round(a[2]+s*(b[2]-a[2]))];
+      }
+    }
+    return STOPS[STOPS.length-1][1];
+  }
+  const maxSt=Math.max(1,...Object.values(STATE_COUNTS));
+  ctx.fillStyle='#1e1e2e'; ctx.fillRect(0,0,W,H);
+  [0.55,1.0].forEach(function(pass){
+    Object.keys(SC).forEach(function(st){
+      const cnt=STATE_COUNTS[st]||0; if(!cnt)return;
+      const[lat,lng]=SC[st];
+      const[x,y]=proj(lat,lng);
+      const t=Math.sqrt(cnt/maxSt);
+      const[r,g,b]=heatColor(t);
+      const radius=Math.max(35,t*190)*pass;
+      const grad=ctx.createRadialGradient(x,y,0,x,y,radius);
+      grad.addColorStop(0,'rgba('+r+','+g+','+b+',0.85)');
+      grad.addColorStop(0.5,'rgba('+r+','+g+','+b+',0.45)');
+      grad.addColorStop(1,'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle=grad; ctx.fillRect(0,0,W,H);
+    });
+  });
+  const labEl=document.getElementById('heat-labels');
+  if(labEl){Object.keys(SC).forEach(function(st){
+    const cnt=STATE_COUNTS[st]||0;
+    const[lat,lng]=SC[st];
+    const[x,y]=proj(lat,lng);
+    const span=document.createElement('span');
+    span.className='hlbl';
+    span.title=st+': '+(cnt||0)+' site'+(cnt!==1?'s':'');
+    span.textContent=st;
+    span.style.left=(x/W*100).toFixed(1)+'%';
+    span.style.top=(y/H*100).toFixed(1)+'%';
+    labEl.appendChild(span);
+  });}
+})();
 
 // ── CRM ───────────────────────────────────────────────────────────────────────
 let CRM = {};
