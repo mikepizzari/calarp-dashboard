@@ -7,53 +7,89 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Run the full pipeline locally:**
 ```bash
 pip install -r requirements.txt
-python score.py --input data/CERS_Data_CalARP_Sites.xlsx
+python ingest.py                                                          # build national_rmp.csv
+python score.py --national data/national_rmp.csv --cers "data/CERS Data_CalARP Sites.xlsx"
 ```
 This generates `output/dashboard.html`, `output/leads.json`, `output/leads.csv`, `output/last_updated.txt`, `output/leads_previous.json`, and `output/changes.json`.
 
-The input file can be `.xlsx`, `.xls`, or `.csv`. The script auto-detects format.
+**National-only mode (no CERS file):**
+```bash
+python score.py --national data/national_rmp.csv
+```
 
 ## Architecture
 
-The pipeline runs in this order when `score.py` is invoked:
+The pipeline runs in this order:
 
-1. **`score.py`** — Entry point. Reads a CERS CalARP inspection Excel/CSV export, groups rows by `SiteID`, aggregates eval history, and scores each site 1–10 using `score_site()`. Calls `diff.py` then `build_html.py`, then saves a snapshot via `diff.py`.
+1. **`ingest.py`** — Builds `data/national_rmp.csv` from contacts.xlsx (Luke/Brian/Micah sheets) + DLP facilities.csv.
+   - Reads all 3 sheets, filters `NH3_Lbs > 0` (→ 5,877 NH3 facilities across 49 states, no CA)
+   - Deduplicates by EPAID (max `Locations` value kept)
+   - Downloads DLP facilities.csv from GitHub (cached as `data/dlp_facilities.csv`) and joins by EPAID → adds `latest_receipt_date`, `dlp_accidents`
+   - Output columns: `epaid, facility_name, company, addr, city, state, zip, lat, lng, nh3_lbs, locations, accidents, latest_receipt_date, naics, territory, contact_name, contact_phone, contact_email`
 
-2. **`diff.py`** — Week-over-week change tracking. `compute_diff()` compares the current scored leads against `output/leads_previous.json`. Returns a changes dict (moved_up, moved_down, new_sites, dropped). `save_snapshot()` writes `leads_previous.json` at the end of a successful run so next week's diff has a baseline.
+2. **`score.py`** — Entry point for scoring. Merges national + CA leads, applies tier model, calls diff.py, build_html.py.
+   - Loads `data/national_rmp.csv` (non-CA, from ingest.py)
+   - Loads CERS CalARP xlsx, aggregates per SiteID → CA leads with IIAR9/violation/EPA2024 flags
+   - Fuzzy-matches CERS SiteNames → DLP CA facilities (threshold 0.85) to get EPAID + accidents + receipt_date for CA
+   - Scores all sites with unified tier model; sort T1→T5 then NH3 desc
 
-3. **`build_html.py`** — Generates the self-contained `output/dashboard.html`. Takes the stats dict, full leads list, and changes dict from `score.py`. The HTML file inlines all data as JS constants and has no external dependencies except Google Fonts.
+3. **`diff.py`** — Week-over-week change tracking. Primary key: `lead_key` (epaid string for national; `"cers-{site_id}"` for unmatched CA). Compares tier (lower tier number = better; moved_up = tier improved).
 
-### Scoring logic (`score.py`)
+4. **`build_html.py`** — Generates `output/dashboard.html`. Inlines all ~7k leads as JS. Filters: Territory (Luke/Brian/Micah/CERS), Tier (T1–T5), State dropdown, search. CA rows show CERS flag badges; non-CA rows show contact panel.
 
-`score_site()` returns `(score, pain_points, notes)`. Pain points are action-oriented triggers that affect score; notes are informational context that don't.
+### Tier scoring model (`score.py`)
 
-Urgency score starts at 2, capped at 10. Points are added for:
-- **+3** IIAR 9 gap: inferred by absence of "IIAR 9"/"RAGAGEP"/"MI" language in notes, only penalized when notes are rich enough to expect a mention (≥2 substantive note rows AND last eval ≥2020, or ≥4 note rows total)
-- **+3** RMP revalidation overdue: `latest_eval + 5 years < today` (date-precise, not year-rounded)
-- **+1** RMP revalidation due soon: not overdue, but `latest_eval + 5 years < today + 18 months`
-- **+2** EPA 2024 RMP rule unaddressed: Program 3 site with no eval after May 2024
-- **+1/+2** violation history: +1 for 1–3 violations, +2 for 4+
-- **+1** high seismic zone (Bay Area, LA/Ventura — from `HIGH_SEISMIC` list matched against CUPA name)
-- **+1** Program 3 confirmed (from notes regex)
+`score_tier(locations, accidents)` returns tier 1–5 (1=Mega/best, 5=Single/lowest).
 
-Medium seismic zone is an informational note (no score impact).
+**Base tier from `Locations` (parent company facility count):**
+| Tier | Label | Locations |
+|------|-------|-----------|
+| T1 | Mega | > 200 |
+| T2 | Major | 51–200 |
+| T3 | Mid-Market | 11–50 |
+| T4 | Standard | 2–10 |
+| T5 | Single | 1 (or null parent) |
+
+**Accident upgrade:** +1 tier (1 accident) or +2 tiers (2+ accidents), capped at T1.
+
+**Revalid status** (from DLP `LatestReceiptDate` + 5 years): `"overdue"` / `"soon"` / `"ok"` / `"unknown"`.
+
+### CERS flags (CA only, display-only — do not affect tier)
+
+| Flag | Condition |
+|------|-----------|
+| IIAR9 | Absence of IIAR 9 language in recent rich-note evals |
+| Violations:N | N ViolationsFound=Yes rows |
+| EPA2024 | Program 3 with latest eval pre-May 2024 |
+| Revalid:OVERDUE / Revalid:SOON | From eval date or DLP receipt date |
+
+### Data sources
+
+| Source | Role |
+|--------|------|
+| `data/contacts.xlsx` (Luke/Brian/Micah sheets) | Primary national facility + contact list (non-CA) |
+| `data/CERS Data_CalARP Sites.xlsx` | CA facility list + IIAR9/violations/inspection enrichment |
+| `data/dlp_facilities.csv` | DLP join for `LatestReceiptDate` + `NumAccidentsInLatest` |
+| Google Sheet (runtime fetch) | CRM overlay — status, follow-ups, contact overrides |
 
 ### Required CERS export columns
 
-`score.py` validates these columns exist: `SiteID`, `SiteName`, `EvalDate`, `ViolationsFound`, `EvalDivision`, `EvalNotes`. Column names are stripped of whitespace before validation.
+`score.py` validates: `SiteID`, `SiteName`, `EvalDate`, `ViolationsFound`, `EvalDivision`, `EvalNotes`.
 
 ### CI/CD workflows
 
-- **`weekly_update.yml`**: Runs every Monday at 7 AM UTC. Finds any `.xlsx`/`.csv` in `data/`, runs `score.py`, commits updated `output/` files back to the repo.
-- **`pages.yml`**: Triggers on any push that changes `output/dashboard.html`. Copies `dashboard.html` → `_site/index.html` and deploys to GitHub Pages.
+- **`weekly_update.yml`**: Runs every Monday at 7 AM UTC. Downloads DLP CSV, runs `ingest.py`, then `score.py`, commits updated `output/` + `data/` files.
+- **`pages.yml`**: Triggers on push that changes `output/dashboard.html`. Deploys to GitHub Pages.
 
 ### Output files
 
 | File | Description |
 |------|-------------|
-| `output/leads.json` | Full scored dataset + metadata stats |
-| `output/leads.csv` | CRM-importable flat version (pain_points joined with ` \| `) |
-| `output/dashboard.html` | Self-contained interactive dashboard (top 200 leads in JS) |
+| `data/national_rmp.csv` | Built by ingest.py; non-CA NH3 facilities with contact + DLP data |
+| `data/dlp_facilities.csv` | Downloaded DLP facilities cache |
+| `output/leads.json` | Full scored dataset (~7k sites) + metadata stats |
+| `output/leads.csv` | CRM-importable flat version |
+| `output/dashboard.html` | Self-contained interactive dashboard (all leads inlined as JS) |
 | `output/leads_previous.json` | Snapshot of last run for week-over-week diffing |
 | `output/changes.json` | Diff result from last run |
 | `output/last_updated.txt` | ISO timestamp of last run |

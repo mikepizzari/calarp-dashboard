@@ -1,11 +1,10 @@
-name: Weekly CalARP Dashboard Update
+name: Weekly NH3 Lead Dashboard Update
 
 on:
   schedule:
     # Runs every Monday at 7:00 AM UTC (midnight Pacific)
     - cron: "0 7 * * 1"
   workflow_dispatch:
-    # Also allows manual trigger from the GitHub Actions UI
     inputs:
       reason:
         description: "Reason for manual run"
@@ -31,22 +30,40 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Check for new CERS export
-        id: check_data
+      - name: Download DLP RMP facilities data
         run: |
-          # Look for any .xlsx or .csv in data/ folder
-          FILE=$(ls data/*.xlsx data/*.csv 2>/dev/null | head -1)
+          curl -sL "https://raw.githubusercontent.com/data-liberation-project/epa-rmp-spreadsheets/main/data/output/facilities.csv" \
+            -o data/dlp_facilities.csv \
+            || echo "WARNING: DLP download failed — will use cached file if available"
+
+      - name: Run ingest (contacts.xlsx + DLP → national_rmp.csv)
+        run: python ingest.py
+
+      - name: Check for CERS export
+        id: check_cers
+        run: |
+          # Look for any .xlsx or .csv in data/ folder (excluding national_rmp.csv and dlp_facilities.csv)
+          FILE=$(ls data/*.xlsx data/*.csv 2>/dev/null \
+            | grep -v 'national_rmp' \
+            | grep -v 'dlp_facilities' \
+            | grep -v 'contacts' \
+            | head -1)
           if [ -z "$FILE" ]; then
-            echo "ERROR: No data file found in data/ folder."
-            echo "Please upload a fresh CERS export to the data/ folder."
-            exit 1
+            echo "No CERS export found — running national-only mode"
+            echo "cers_file=" >> $GITHUB_OUTPUT
+          else
+            echo "Found CERS file: $FILE"
+            echo "cers_file=$FILE" >> $GITHUB_OUTPUT
           fi
-          echo "data_file=$FILE" >> $GITHUB_OUTPUT
-          echo "Found data file: $FILE"
 
       - name: Run scoring engine
         run: |
-          python score.py --input "${{ steps.check_data.outputs.data_file }}"
+          CERS="${{ steps.check_cers.outputs.cers_file }}"
+          if [ -n "$CERS" ]; then
+            python score.py --national data/national_rmp.csv --cers "$CERS"
+          else
+            python score.py --national data/national_rmp.csv
+          fi
 
       - name: Verify outputs exist
         run: |
@@ -60,16 +77,19 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add output/dashboard.html output/leads.csv output/leads.json output/last_updated.txt output/leads_previous.json output/changes.json output/score_history.json
+          git add output/dashboard.html output/leads.csv output/leads.json \
+                  output/last_updated.txt output/leads_previous.json \
+                  output/changes.json output/score_history.json \
+                  data/national_rmp.csv data/dlp_facilities.csv
           # Only commit if something changed
-          git diff --staged --quiet || git commit -m "Auto-update: CalARP dashboard $(date -u '+%Y-%m-%d')"
+          git diff --staged --quiet || git commit -m "Auto-update: NH3 dashboard $(date -u '+%Y-%m-%d')"
           git push
 
       - name: Summary
         run: |
           UPDATED=$(cat output/last_updated.txt)
           LINES=$(wc -l < output/leads.csv)
-          echo "### CalARP Dashboard Updated" >> $GITHUB_STEP_SUMMARY
+          echo "### NH3 Lead Dashboard Updated" >> $GITHUB_STEP_SUMMARY
           echo "- **Timestamp:** $UPDATED" >> $GITHUB_STEP_SUMMARY
           echo "- **Sites scored:** $((LINES - 1))" >> $GITHUB_STEP_SUMMARY
           echo "- **Dashboard:** output/dashboard.html (served via GitHub Pages)" >> $GITHUB_STEP_SUMMARY
@@ -77,5 +97,5 @@ jobs:
             UP=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('moved_up_count',0))")
             DOWN=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('moved_down_count',0))")
             NEW=$(python3 -c "import json; d=json.load(open('output/changes.json')); print(d.get('summary',{}).get('new_count',0))")
-            echo "- **Score changes:** ↑$UP up, ↓$DOWN down, +$NEW new sites" >> $GITHUB_STEP_SUMMARY
+            echo "- **Tier changes:** &#x25B2;$UP up, &#x25BC;$DOWN down, +$NEW new sites" >> $GITHUB_STEP_SUMMARY
           fi

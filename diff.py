@@ -4,14 +4,12 @@ diff.py
 Compares the current scoring run against the previous snapshot
 stored in output/leads_previous.json.
 
-Produces a change report with three categories:
-  - MOVED_UP:   urgency score increased since last run
-  - MOVED_DOWN: urgency score decreased since last run
-  - NEW:        site not present in previous run
-  - DROPPED:    site present last run but missing this run
-
-The report is saved to output/changes.json and also returned
-as a dict for use by build_html.py.
+Primary key: lead_key (epaid string for national; "cers-{site_id}" for unmatched CA).
+Tier comparison: lower tier number = better (T1 best, T5 lowest).
+  moved_up:   prev_tier > curr_tier (tier improved, number decreased)
+  moved_down: prev_tier < curr_tier (tier worsened, number increased)
+  new_sites:  lead_key not in previous run
+  dropped:    lead_key in previous run but missing this run
 """
 
 import json
@@ -21,17 +19,11 @@ OUTPUT_DIR = Path("output")
 
 
 def compute_diff(current_leads: list) -> dict:
-    """
-    Compare current_leads against output/leads_previous.json.
-    Returns a dict of changes keyed by site_id.
-    """
+    """Compare current_leads against output/leads_previous.json."""
     prev_path = OUTPUT_DIR / "leads_previous.json"
 
-    # Build lookup for current run  {site_id -> lead_record}
-    current_map = {str(r["site_id"]): r for r in current_leads}
+    current_map = {str(r["lead_key"]): r for r in current_leads}
 
-    # If no previous snapshot exists, everything is "new" but we
-    # treat it as a baseline run — no change indicators shown.
     if not prev_path.exists():
         print("[diff.py] No previous snapshot found — this is the baseline run.")
         changes = {
@@ -48,64 +40,72 @@ def compute_diff(current_leads: list) -> dict:
     with open(prev_path) as f:
         prev_data = json.load(f)
 
-    prev_map = {str(r["site_id"]): r for r in prev_data.get("leads", [])}
+    # Support both new format (lead_key) and old format (site_id) for migration
+    def _key(r):
+        return str(r.get("lead_key") or r.get("site_id") or "")
+    prev_map  = {_key(r): r for r in prev_data.get("leads", []) if _key(r)}
     prev_date = prev_data.get("metadata", {}).get("generated", "unknown")
 
     moved_up, moved_down, new_sites, dropped = [], [], [], []
 
-    # Check every current site against previous
-    for sid, rec in current_map.items():
-        if sid not in prev_map:
+    for key, rec in current_map.items():
+        if key not in prev_map:
             new_sites.append({
-                "site_id":       rec["site_id"],
+                "lead_key":      rec["lead_key"],
                 "facility_name": rec["facility_name"],
-                "cupa":          rec["cupa"],
-                "current_score": rec["urgency_score"],
-                "prev_score":    None,
+                "state":         rec.get("state", ""),
+                "territory":     rec.get("territory", ""),
+                "current_tier":  rec["tier"],
+                "tier_label":    rec["tier_label"],
+                "prev_tier":     None,
                 "delta":         None,
-                "pitch":         rec["recommended_pitch"],
             })
         else:
-            prev_score = prev_map[sid]["urgency_score"]
-            curr_score = rec["urgency_score"]
-            delta = curr_score - prev_score
+            # Old snapshots may not have "tier"; treat as baseline if missing
+            prev_tier = prev_map[key].get("tier")
+            curr_tier = rec["tier"]
+            if prev_tier is None:
+                continue  # skip comparison if old snapshot lacks tier
+            # delta > 0 = improvement (tier number decreased)
+            delta = prev_tier - curr_tier
             if delta > 0:
                 moved_up.append({
-                    "site_id":       rec["site_id"],
+                    "lead_key":      rec["lead_key"],
                     "facility_name": rec["facility_name"],
-                    "cupa":          rec["cupa"],
-                    "current_score": curr_score,
-                    "prev_score":    prev_score,
+                    "state":         rec.get("state", ""),
+                    "territory":     rec.get("territory", ""),
+                    "current_tier":  curr_tier,
+                    "tier_label":    rec["tier_label"],
+                    "prev_tier":     prev_tier,
                     "delta":         delta,
-                    "pitch":         rec["recommended_pitch"],
-                    "reason":        _explain_delta(rec, prev_map[sid]),
+                    "reason":        _explain_delta(rec, prev_map[key]),
                 })
             elif delta < 0:
                 moved_down.append({
-                    "site_id":       rec["site_id"],
+                    "lead_key":      rec["lead_key"],
                     "facility_name": rec["facility_name"],
-                    "cupa":          rec["cupa"],
-                    "current_score": curr_score,
-                    "prev_score":    prev_score,
+                    "state":         rec.get("state", ""),
+                    "territory":     rec.get("territory", ""),
+                    "current_tier":  curr_tier,
+                    "tier_label":    rec["tier_label"],
+                    "prev_tier":     prev_tier,
                     "delta":         delta,
-                    "pitch":         rec["recommended_pitch"],
-                    "reason":        _explain_delta(rec, prev_map[sid]),
+                    "reason":        _explain_delta(rec, prev_map[key]),
                 })
 
-    # Check for dropped sites
-    for sid, rec in prev_map.items():
-        if sid not in current_map:
+    for key, rec in prev_map.items():
+        if key not in current_map:
             dropped.append({
-                "site_id":       rec["site_id"],
+                "lead_key":      rec.get("lead_key") or str(rec.get("site_id", "")),
                 "facility_name": rec["facility_name"],
-                "cupa":          rec["cupa"],
-                "prev_score":    rec["urgency_score"],
+                "state":         rec.get("state", ""),
+                "territory":     rec.get("territory", ""),
+                "prev_tier":     rec.get("tier"),
             })
 
-    # Sort by magnitude of change
     moved_up.sort(key=lambda x: -x["delta"])
     moved_down.sort(key=lambda x: x["delta"])
-    new_sites.sort(key=lambda x: -x["current_score"])
+    new_sites.sort(key=lambda x: x["current_tier"])
 
     changes = {
         "baseline":   False,
@@ -124,20 +124,14 @@ def compute_diff(current_leads: list) -> dict:
     }
 
     _save(changes)
-
     print(f"[diff.py] vs {prev_date}: "
           f"^{len(moved_up)} up, v{len(moved_down)} down, "
           f"+{len(new_sites)} new, -{len(dropped)} dropped")
-
     return changes
 
 
 def save_snapshot(current_data: dict):
-    """
-    Save the current leads.json as leads_previous.json
-    so next week's run can diff against it.
-    Called at the END of a successful score.py run.
-    """
+    """Save current leads.json as leads_previous.json for next week's diff."""
     prev_path = OUTPUT_DIR / "leads_previous.json"
     with open(prev_path, "w") as f:
         json.dump(current_data, f, indent=2, default=str)
@@ -150,35 +144,17 @@ def _save(changes: dict):
 
 
 def _explain_delta(curr: dict, prev: dict) -> str:
-    """Generate a human-readable reason for the score change."""
     reasons = []
-    # Revalidation tipped over
-    if curr.get("revalid_overdue") and not prev.get("revalid_overdue"):
-        reasons.append("Revalidation now overdue")
-    if curr.get("revalid_soon") and not prev.get("revalid_soon"):
-        reasons.append("Revalidation due 2027 — entered pipeline window")
-    # New violation detected
-    if curr.get("total_violations", 0) > prev.get("total_violations", 0):
-        reasons.append(f"New violation recorded "
-                       f"({prev.get('total_violations',0)} → {curr.get('total_violations',0)})")
-    # Violation cleared
-    if curr.get("total_violations", 0) < prev.get("total_violations", 0):
-        reasons.append(f"Violation count reduced "
-                       f"({prev.get('total_violations',0)} → {curr.get('total_violations',0)})")
-    # IIAR 9 gap resolved
-    if not curr.get("iiar9_gap") and prev.get("iiar9_gap"):
-        reasons.append("IIAR 9 compliance language now detected in notes")
-    # IIAR 9 gap appeared
-    if curr.get("iiar9_gap") and not prev.get("iiar9_gap"):
-        reasons.append("IIAR 9 compliance language no longer found")
-    # EPA 2024 threshold cleared (new eval recorded post May 2024)
-    if not curr.get("pre_epa2024") and prev.get("pre_epa2024"):
-        reasons.append("New eval post May 2024 — EPA 2024 RMP Rule threshold cleared")
-    # EPA 2024 threshold appeared (latest eval regressed in data export)
-    if curr.get("pre_epa2024") and not prev.get("pre_epa2024"):
-        reasons.append("EPA 2024 compliance window reopened — latest eval pre-May 2024")
-    # Score changed but reason unclear (data refresh)
+    curr_rv = curr.get("revalid_status", "")
+    prev_rv = prev.get("revalid_status", "")
+    if curr_rv == "overdue" and prev_rv != "overdue":
+        reasons.append("RMP revalidation now overdue")
+    elif curr_rv == "soon" and prev_rv not in ("overdue", "soon"):
+        reasons.append("RMP revalidation due within 18 months")
+    curr_t = curr.get("tier")
+    prev_t = prev.get("tier")
+    if curr_t and prev_t and curr_t != prev_t:
+        reasons.append(f"Tier changed T{prev_t} -> T{curr_t}")
     if not reasons:
-        delta = curr.get("urgency_score", 0) - prev.get("urgency_score", 0)
-        reasons.append(f"Score {'increased' if delta > 0 else 'decreased'} on data refresh")
+        reasons.append("Data refresh")
     return "; ".join(reasons)

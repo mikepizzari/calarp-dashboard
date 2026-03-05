@@ -1,118 +1,233 @@
 """
-CalARP Lead Scoring Engine
---------------------------
-Reads a CERS CalARP inspection export (Excel or CSV),
-scores each site on urgency (1-10), and writes:
-  - output/leads.json       (full scored lead list)
-  - output/leads.csv        (CRM-import ready)
-  - output/dashboard.html   (self-contained dashboard)
-  - output/last_updated.txt (ISO timestamp)
+National NH3 Lead Scoring Engine
+---------------------------------
+Primary data: data/national_rmp.csv (non-CA) + CERS CalARP xlsx (CA).
+Scores each facility on a 5-tier model driven by parent company Locations.
+
+Writes:
+  output/leads.json       full scored lead list + metadata
+  output/leads.csv        CRM-importable flat version
+  output/dashboard.html   self-contained interactive dashboard
+  output/last_updated.txt ISO timestamp
 
 Usage:
-    python score.py --input data/CERS_Data_CalARP_Sites.xlsx
-    python score.py --input data/CERS_Data_CalARP_Sites.csv
+    python score.py --national data/national_rmp.csv --cers "data/CERS Data_CalARP Sites.xlsx"
+    python score.py --national data/national_rmp.csv          # national only
 """
 
 import argparse
 import json
-import os
 import re
 import sys
 from collections import Counter, defaultdict
-from datetime import datetime, timezone
+from datetime import datetime
+from difflib import SequenceMatcher
 from pathlib import Path
 
 import pandas as pd
+
 from diff import compute_diff, save_snapshot
 
-TODAY = datetime.now()
+TODAY      = datetime.now()
 OUTPUT_DIR = Path("output")
 OUTPUT_DIR.mkdir(exist_ok=True)
+DATA_DIR   = Path("data")
 
-# ── SEISMIC ZONE MAP (CUPA keyword → zone) ───────────────────────────────────
-HIGH_SEISMIC = [
-    "alameda","contra costa","san francisco","oakland","santa clara",
-    "san jose","hayward","fremont","richmond","berkeley","long beach",
-    "los angeles city","los angeles county","ventura","santa cruz","monterey",
-]
-MED_SEISMIC = [
-    "san diego","orange county","riverside","san bernardino","sacramento",
-    "san joaquin","kern","imperial",
-]
+TIER_LABELS = {1: "Mega", 2: "Major", 3: "Mid-Market", 4: "Standard", 5: "Single"}
 
-def seismic_zone(cupa: str) -> str:
-    c = cupa.lower()
-    if any(k in c for k in HIGH_SEISMIC):
-        return "High"
-    if any(k in c for k in MED_SEISMIC):
-        return "Medium"
-    return "Low"
+# ── TIER SCORING ──────────────────────────────────────────────────────────────
+def score_tier(locations: int, accidents: int) -> int:
+    """Returns tier 1–5 (1=Mega/best, 5=Single/lowest).
 
-# ── NOTE PATTERNS ─────────────────────────────────────────────────────────────
-AMMONIA_RE   = re.compile(r"ammonia|NH3|anhydrous", re.I)
-REFINERY_RE  = re.compile(r"refin|petroleum|crude|324110", re.I)
-FOOD_RE      = re.compile(r"food|cold.?stor|refriger|dairy|cheese|winery|wine|"
-                           r"fruit|vegetable|meat|poultry|packing|cannery|frozen|"
-                           r"ice.?cream|beverage|tomato|almond|walnut|raisin|warehouse", re.I)
-IIAR9_RE     = re.compile(r"IIAR.?9|mechanical.?integrity|\bMI\b|RAGAGEP", re.I)
-P3_RE        = re.compile(r"program.?3|Program 3|PSM|process.?safety", re.I)
-P2_RE        = re.compile(r"program.?2|Program 2", re.I)
+    Base tier from Locations (parent company facility count).
+    Accident history upgrades tier by 1 (1 accident) or 2 (2+ accidents).
+    """
+    if   locations > 200: base = 1
+    elif locations > 50:  base = 2
+    elif locations > 10:  base = 3
+    elif locations > 1:   base = 4
+    else:                 base = 5
+    upgrade = 2 if accidents >= 2 else (1 if accidents == 1 else 0)
+    return max(1, base - upgrade)
 
-# ── SCORING ───────────────────────────────────────────────────────────────────
-def score_site(row: dict) -> tuple[int, list[str], list[str]]:
-    pts = 2
-    pain = []
-    notes = []
 
-    if row["iiar9_gap"]:
-        pts += 3
-        pain.append("IIAR 9 MI Program: No evidence of update (Jan 2026 deadline passed)")
+def revalid_status(receipt_date_str: str) -> str:
+    """Compute revalidation status from LatestReceiptDate string.
 
-    if row["revalid_overdue"]:
-        pts += 3
-        pain.append(f"RMP Revalidation OVERDUE: Last eval {row['latest_eval']} "
-                    f"({row['years_since']:.1f} yrs ago)")
-    elif row["revalid_soon"]:
-        pts += 1
-        due_yr = row.get("reval_due_year", "soon")
-        pain.append(f"RMP Revalidation DUE {due_yr}: Plan now ({row['latest_eval']})")
+    Returns "overdue" / "soon" / "ok" / "unknown".
+    5-year RMP cycle: overdue if due < today, soon if due < today + 18 months.
+    """
+    s = str(receipt_date_str or "").strip()
+    if not s:
+        return "unknown"
+    try:
+        rd       = pd.Timestamp(s)
+        today_ts = pd.Timestamp(TODAY)
+        due      = rd + pd.DateOffset(years=5)
+        if due < today_ts:
+            return "overdue"
+        if due < today_ts + pd.DateOffset(months=18):
+            return "soon"
+        return "ok"
+    except Exception:
+        return "unknown"
 
-    if row["pre_epa2024"]:
-        pts += 2
-        pain.append("EPA 2024 RMP Rule: Third-party audit + STAA requirements unaddressed")
 
-    v = row["total_violations"]
-    if v >= 4:
-        pts += 2
-        pain.append(f"Significant violation history: {v} violations on record")
-    elif v > 0:
-        pts += 1
-        pain.append(f"Prior violation history: {v} violations on record")
+# ── CERS NOTE PATTERNS ────────────────────────────────────────────────────────
+IIAR9_RE = re.compile(r"IIAR.?9|mechanical.?integrity|\bMI\b|RAGAGEP", re.I)
+P3_RE    = re.compile(r"program.?3|Program 3|PSM|process.?safety", re.I)
 
-    if row["seismic"] == "High":
-        pts += 1
-        pain.append("High seismic zone: IIAR 9 Section 6.6 bracing documentation required")
-    elif row["seismic"] == "Medium":
-        notes.append("Medium seismic zone: Verify IIAR 9 seismic bracing compliance")
+_FILLER = re.compile(
+    r"\b(inc|llc|corp|co|company|the|and|ltd|industries|services|group|"
+    r"holdings|plant|facility|operations|warehouse|foods|food|farms|farm|"
+    r"distribution|mfg|manufacturing|processing|pack|packing|cold|storage)\b"
+)
 
-    if row["is_p3"]:
-        pts += 1
-        pain.append("Program 3 confirmed: STAA + enhanced third-party audits mandatory")
+def _norm_name(name: str) -> str:
+    s = name.lower()
+    s = re.sub(r"[,.\-'\"&/\\()]", " ", s)
+    s = _FILLER.sub(" ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
 
-    return min(pts, 10), pain, notes
 
-def pitch(row: dict) -> str:
-    if row["revalid_overdue"] and row["iiar9_gap"]:
-        return "IIAR 9 MI Gap Analysis + RMP Revalidation Package"
-    if row["iiar9_gap"]:
-        return "IIAR 9 MI Program Development"
-    if row["revalid_overdue"]:
-        return "RMP 5-Year Revalidation"
-    return "EPA 2024 RMP Rule Compliance Review"
+def iiar9_gap_flag(notes: str, notes_count: int, latest_year: int) -> bool:
+    """True if IIAR 9 MI language is absent from notes that are rich enough to expect it."""
+    if IIAR9_RE.search(notes):
+        return False
+    if notes_count >= 2 and latest_year >= 2020:
+        return True
+    if notes_count >= 4:
+        return True
+    return False
+
+
+def norm_epaid(v) -> str | None:
+    """Convert float EPAID to int string: 100000001650.0 -> '100000001650'"""
+    if v is None:
+        return None
+    try:
+        import math
+        if isinstance(v, float) and math.isnan(v):
+            return None
+        return str(int(float(v)))
+    except (ValueError, TypeError):
+        return None
+
+
+# ── CERS AGGREGATION ──────────────────────────────────────────────────────────
+def aggregate_cers(cers_path: str) -> list[dict]:
+    """Load and aggregate CERS CalARP export -> one record per SiteID."""
+    p = Path(cers_path)
+    df = pd.read_excel(p) if p.suffix.lower() in (".xlsx", ".xls") else pd.read_csv(p)
+    df.columns = [c.strip() for c in df.columns]
+
+    required = {"SiteID", "SiteName", "EvalDate", "ViolationsFound", "EvalDivision", "EvalNotes"}
+    missing = required - set(df.columns)
+    if missing:
+        sys.exit(f"[score.py] ERROR – missing CERS columns: {missing}")
+
+    df["EvalDate"]  = pd.to_datetime(df["EvalDate"], errors="coerce")
+    df["EvalNotes"] = df["EvalNotes"].fillna("").astype(str)
+
+    agg = df.groupby("SiteID").agg(
+        SiteName        = ("SiteName",        "first"),
+        CUPA            = ("EvalDivision",     "first"),
+        TotalEvals      = ("EvalDate",         "count"),
+        LatestEval      = ("EvalDate",         "max"),
+        TotalViolations = ("ViolationsFound",  lambda x: (x == "Yes").sum()),
+        AllNotes        = ("EvalNotes",        lambda x: " ".join(x)),
+    ).reset_index()
+
+    agg["LatestEval"] = pd.to_datetime(agg["LatestEval"])
+    notes_ct_map = (df[df["EvalNotes"].str.strip().str.len() > 10]
+                    .groupby("SiteID").size().rename("NotesCount"))
+    agg = agg.join(notes_ct_map, on="SiteID")
+    agg["NotesCount"] = agg["NotesCount"].fillna(0).astype(int)
+
+    sites = []
+    for _, r in agg.iterrows():
+        notes      = r["AllNotes"]
+        latest_str = r["LatestEval"].strftime("%Y-%m-%d") if pd.notna(r["LatestEval"]) else ""
+        latest_yr  = r["LatestEval"].year if pd.notna(r["LatestEval"]) else 0
+        notes_ct   = int(r["NotesCount"])
+        is_p3      = bool(P3_RE.search(notes))
+        gap        = iiar9_gap_flag(notes, notes_ct, latest_yr)
+        pre_epa    = is_p3 and pd.notna(r["LatestEval"]) and r["LatestEval"] < pd.Timestamp("2024-05-01")
+
+        # Revalid from CERS eval date (fallback; may be overridden by DLP match)
+        cers_rv = revalid_status(latest_str)
+
+        cers_flags = []
+        if gap:                                      cers_flags.append("IIAR9")
+        if int(r["TotalViolations"]) > 0:            cers_flags.append(f"Violations:{int(r['TotalViolations'])}")
+        if pre_epa:                                  cers_flags.append("EPA2024")
+        if cers_rv == "overdue":                     cers_flags.append("Revalid:OVERDUE")
+        elif cers_rv == "soon":                      cers_flags.append("Revalid:SOON")
+
+        sites.append({
+            "site_id":            int(r["SiteID"]),
+            "facility_name":      str(r["SiteName"]).strip(),
+            "cupa":               str(r["CUPA"]).strip(),
+            "state":              "CA",
+            "is_ca":              True,
+            "latest_eval":        latest_str,
+            "total_evals":        int(r["TotalEvals"]),
+            "total_violations":   int(r["TotalViolations"]),
+            "iiar9_gap":          gap,
+            "is_p3":              is_p3,
+            "pre_epa2024":        pre_epa,
+            "cers_rv":            cers_rv,
+            "cers_flags":         cers_flags,
+            # Defaults — may be updated by DLP match
+            "locations":          1,
+            "accidents":          0,
+            "latest_receipt_date": "",
+            "epaid":              None,
+        })
+    return sites
+
+
+# ── CERS -> DLP FUZZY MATCH (CA only) ─────────────────────────────────────────
+def match_cers_to_dlp(cers_sites: list, dlp_cache: Path) -> dict:
+    """Fuzzy-match CERS SiteName -> DLP CA FacilityName.
+
+    Returns {site_id: {epaid, accidents, latest_receipt_date}}.
+    Threshold: SequenceMatcher ratio ≥ 0.85.
+    """
+    if not dlp_cache.exists():
+        print("[score.py] DLP cache not found — skipping CERS-DLP match.")
+        return {}
+
+    dlp    = pd.read_csv(dlp_cache, dtype={"EPAFacilityID": str})
+    ca_dlp = dlp[dlp["State"] == "CA"].copy()
+    ca_dlp["epaid"] = ca_dlp["EPAFacilityID"].apply(norm_epaid)
+    ca_dlp["_norm"] = ca_dlp["Name"].fillna("").apply(_norm_name)
+
+    results = {}
+    for site in cers_sites:
+        norm_lead  = _norm_name(site["facility_name"])
+        best_score = 0.0
+        best_row   = None
+        for _, row in ca_dlp.iterrows():
+            sim = SequenceMatcher(None, norm_lead, row["_norm"]).ratio()
+            if sim > best_score:
+                best_score = sim
+                best_row   = row
+        if best_score >= 0.85 and best_row is not None:
+            results[site["site_id"]] = {
+                "epaid":               best_row["epaid"],
+                "accidents":           int(best_row.get("NumAccidentsInLatest") or 0),
+                "latest_receipt_date": str(best_row.get("LatestReceiptDate") or ""),
+            }
+
+    print(f"[score.py] CERS->DLP match: {len(results)}/{len(cers_sites)} CA sites matched")
+    return results
+
 
 # ── SCORE HISTORY ─────────────────────────────────────────────────────────────
 def _update_score_history(rows: list) -> dict:
-    """Append today's scores to output/score_history.json (rolling 52-week window)."""
+    """Track tier (inverted: T1->5, T5->1) weekly for CRM followup logic."""
     history_path = OUTPUT_DIR / "score_history.json"
     date_str     = TODAY.strftime("%Y-%m-%d")
 
@@ -125,36 +240,35 @@ def _update_score_history(rows: list) -> dict:
     dates  = history["dates"]
     scores = history["scores"]
 
-    current_ids = {str(r["site_id"]) for r in rows}
+    current_keys = {r["lead_key"] for r in rows}
+
+    def tier_to_score(t): return 6 - t  # T1->5, T5->1
 
     if date_str in dates:
-        # Overwrite existing entry for today (re-run same day)
         idx = dates.index(date_str)
         for r in rows:
-            sid = str(r["site_id"])
-            if sid not in scores:
-                scores[sid] = [None] * len(dates)
-            scores[sid][idx] = r["urgency_score"]
-        for sid in scores:
-            if sid not in current_ids and len(scores[sid]) > idx:
-                scores[sid][idx] = None
+            k = r["lead_key"]
+            if k not in scores:
+                scores[k] = [None] * len(dates)
+            scores[k][idx] = tier_to_score(r["tier"])
+        for k in scores:
+            if k not in current_keys and len(scores[k]) > idx:
+                scores[k][idx] = None
     else:
         dates.append(date_str)
         for r in rows:
-            sid = str(r["site_id"])
-            if sid not in scores:
-                scores[sid] = [None] * (len(dates) - 1)
-            scores[sid].append(r["urgency_score"])
-        for sid in scores:
-            if sid not in current_ids:
-                if len(scores[sid]) < len(dates):
-                    scores[sid].append(None)
+            k = r["lead_key"]
+            if k not in scores:
+                scores[k] = [None] * (len(dates) - 1)
+            scores[k].append(tier_to_score(r["tier"]))
+        for k in scores:
+            if k not in current_keys and len(scores[k]) < len(dates):
+                scores[k].append(None)
 
-    # Keep rolling 52-week window
     if len(dates) > 52:
         trim   = len(dates) - 52
         dates  = dates[trim:]
-        scores = {sid: v[trim:] for sid, v in scores.items()}
+        scores = {k: v[trim:] for k, v in scores.items()}
 
     history = {"dates": dates, "scores": scores}
     with open(history_path, "w") as f:
@@ -164,198 +278,177 @@ def _update_score_history(rows: list) -> dict:
 
 
 # ── MAIN PIPELINE ─────────────────────────────────────────────────────────────
-def run(input_path: str):
-    print(f"[score.py] Reading: {input_path}")
-    p = Path(input_path)
-    if p.suffix.lower() in (".xlsx", ".xls"):
-        df = pd.read_excel(p)
-    else:
-        df = pd.read_csv(p)
-
-    # Normalise column names (strip whitespace)
-    df.columns = [c.strip() for c in df.columns]
-
-    required = {"SiteID", "SiteName", "EvalDate", "ViolationsFound",
-                "EvalDivision", "EvalNotes"}
-    missing = required - set(df.columns)
-    if missing:
-        sys.exit(f"[score.py] ERROR – missing columns: {missing}\n"
-                 f"Found: {list(df.columns)}")
-
-    df["EvalDate"]  = pd.to_datetime(df["EvalDate"], errors="coerce")
-    df["EvalNotes"] = df["EvalNotes"].fillna("").astype(str)
-
-    # ── Per-site aggregation ──────────────────────────────────────────────────
-    agg = df.groupby("SiteID").agg(
-        SiteName      = ("SiteName",       "first"),
-        CUPA          = ("EvalDivision",    "first"),
-        TotalEvals    = ("EvalDate",        "count"),
-        LatestEval    = ("EvalDate",        "max"),
-        TotalViolations = ("ViolationsFound", lambda x: (x == "Yes").sum()),
-        AllNotes      = ("EvalNotes",       lambda x: " ".join(x)),
-    ).reset_index()
-
-    agg["LatestEval"] = pd.to_datetime(agg["LatestEval"])
-    agg["DaysSince"]  = (TODAY - agg["LatestEval"]).dt.days
-    agg["YearsSince"] = agg["DaysSince"] / 365.25
-
-    # Count how many rows per site have non-empty notes
-    notes_count = df[df["EvalNotes"].str.strip().str.len() > 10].groupby("SiteID").size().rename("NotesCount")
-    agg = agg.join(notes_count, on="SiteID")
-    agg["NotesCount"] = agg["NotesCount"].fillna(0).astype(int)
-
-    def flag(notes, rx): return bool(rx.search(notes))
-
-    def iiar9_gap_flag(notes: str, notes_count: int, latest_year: int) -> bool:
-        """
-        Only flag as IIAR 9 gap if:
-        - Notes are rich enough to expect a mention (at least 2 substantive note rows), OR
-        - The site has recent evals (post-2020) where IIAR 9 should appear if compliant
-        If notes are sparse/blank, mark as UNKNOWN (False) — don't penalize for missing data.
-        """
-        if flag(notes, IIAR9_RE):
-            return False   # Explicitly compliant — no gap
-        if notes_count >= 2 and latest_year >= 2020:
-            return True    # Enough notes, recent enough — absence is meaningful
-        if notes_count >= 4:
-            return True    # Lots of notes across history — absence is meaningful
-        return False       # Sparse notes — can't determine, don't penalize
-
+def run(national_path: str, cers_path: str = ""):
     rows = []
-    for _, r in agg.iterrows():
-        notes = r["AllNotes"]
-        latest_year = r["LatestEval"].year if pd.notna(r["LatestEval"]) else 0
-        latest_str  = r["LatestEval"].strftime("%Y-%m-%d") if pd.notna(r["LatestEval"]) else "Unknown"
-        notes_ct    = int(r["NotesCount"])
 
-        # ── Revalidation flags (5-year cycle, date-relative) ─────────────────
-        if pd.notna(r["LatestEval"]):
-            reval_due       = r["LatestEval"] + pd.DateOffset(years=5)
-            today_ts        = pd.Timestamp(TODAY)
-            revalid_overdue = reval_due < today_ts
-            revalid_soon    = (not revalid_overdue) and reval_due < today_ts + pd.DateOffset(months=18)
-            reval_due_year  = reval_due.year
-        else:
-            revalid_overdue = revalid_soon = False
-            reval_due_year  = None
+    # ── Non-CA: national_rmp.csv ──────────────────────────────────────────────
+    if national_path and Path(national_path).exists():
+        print(f"[score.py] Reading national: {national_path}")
+        nat = pd.read_csv(national_path, dtype={"epaid": str})
+        nat["latest_receipt_date"] = nat["latest_receipt_date"].fillna("").astype(str)
+        nat["locations"] = pd.to_numeric(nat["locations"], errors="coerce").fillna(1).astype(int)
+        nat["accidents"] = pd.to_numeric(nat["accidents"], errors="coerce").fillna(0).astype(int)
+        nat["nh3_lbs"]   = pd.to_numeric(nat["nh3_lbs"],   errors="coerce")
 
-        rec = {
-            "site_id":          int(r["SiteID"]),
-            "facility_name":    str(r["SiteName"]).strip(),
-            "cupa":             str(r["CUPA"]).strip(),
-            "physical_address": "VERIFY via CERS SiteID or EPA ECHO",
-            "total_evals":      int(r["TotalEvals"]),
-            "total_violations": int(r["TotalViolations"]),
-            "latest_eval":      latest_str,
-            "years_since":      round(float(r["YearsSince"]), 1),
-            "seismic":          seismic_zone(str(r["CUPA"])),
-            "has_ammonia":      flag(notes, AMMONIA_RE),
-            "is_food":          flag(notes, FOOD_RE),
-            "is_refinery":      flag(notes, REFINERY_RE),
-            "is_p3":            flag(notes, P3_RE),
-            "is_p2":            flag(notes, P2_RE),
-            "iiar9_gap":        iiar9_gap_flag(notes, notes_ct, latest_year),
-            "revalid_overdue":  revalid_overdue,
-            "revalid_soon":     revalid_soon,
-            "reval_due_year":   reval_due_year,
-            "pre_epa2024":      flag(notes, P3_RE) and pd.notna(r["LatestEval"]) and r["LatestEval"] < pd.Timestamp("2024-05-01"),
-        }
-        score, pain, notes = score_site(rec)
-        rec["urgency_score"]     = score
-        rec["pain_points"]       = pain
-        rec["notes"]             = notes
-        rec["recommended_pitch"] = pitch(rec)
-        rows.append(rec)
+        for _, r in nat.iterrows():
+            loc  = int(r["locations"])
+            acc  = int(r["accidents"])
+            tier = score_tier(loc, acc)
+            rv   = revalid_status(str(r["latest_receipt_date"]))
+            ep   = str(r["epaid"]) if pd.notna(r["epaid"]) else None
 
-    rows.sort(key=lambda x: -x["urgency_score"])
+            def s(col): return str(r[col]).strip() if pd.notna(r.get(col)) and str(r.get(col)).strip() not in ("", "nan") else ""
 
-    # ── Stats for dashboard ───────────────────────────────────────────────────
-    total = len(rows)
-    score_dist   = dict(sorted(Counter(r["urgency_score"] for r in rows).items()))
-    hot          = sum(1 for r in rows if r["urgency_score"] >= 8)
-    iiar9_gap    = sum(1 for r in rows if r["iiar9_gap"])
-    overdue      = sum(1 for r in rows if r["revalid_overdue"])
-    soon         = sum(1 for r in rows if r["revalid_soon"])
-    violations   = sum(1 for r in rows if r["total_violations"] > 0)
-    high_seismic = sum(1 for r in rows if r["seismic"] == "High")
-    med_seismic  = sum(1 for r in rows if r["seismic"] == "Medium")
-    low_seismic  = sum(1 for r in rows if r["seismic"] == "Low")
-    pre2024      = sum(1 for r in rows if r["pre_epa2024"])
-    p3_count     = sum(1 for r in rows if r["is_p3"])
+            rows.append({
+                "lead_key":            ep or f"national-{s('facility_name')}",
+                "epaid":               ep,
+                "facility_name":       s("facility_name"),
+                "company":             s("company"),
+                "addr":                s("addr"),
+                "city":                s("city"),
+                "state":               s("state"),
+                "zip":                 s("zip"),
+                "lat":                 float(r["lat"])  if pd.notna(r.get("lat"))  else None,
+                "lng":                 float(r["lng"])  if pd.notna(r.get("lng"))  else None,
+                "nh3_lbs":             float(r["nh3_lbs"]) if pd.notna(r["nh3_lbs"]) else None,
+                "locations":           loc,
+                "accidents":           acc,
+                "latest_receipt_date": s("latest_receipt_date"),
+                "naics":               s("naics"),
+                "territory":           s("territory"),
+                "contact_name":        s("contact_name"),
+                "contact_phone":       s("contact_phone"),
+                "contact_email":       s("contact_email"),
+                "tier":                tier,
+                "tier_label":          TIER_LABELS[tier],
+                "revalid_status":      rv,
+                "is_ca":               False,
+                "cers_flags":          [],
+            })
+        print(f"[score.py] National (non-CA) leads: {len(rows):,}")
+    else:
+        print("[score.py] No national CSV — CA-only mode")
 
-    cupa_counts = defaultdict(list)
+    # ── CA: CERS aggregation ──────────────────────────────────────────────────
+    cers_sites = []
+    if cers_path and Path(cers_path).exists():
+        print(f"[score.py] Reading CERS: {cers_path}")
+        cers_sites = aggregate_cers(cers_path)
+
+        # Fuzzy-match CERS -> DLP CA for EPAID + accidents + receipt_date
+        dlp_cache   = DATA_DIR / "dlp_facilities.csv"
+        dlp_matches = match_cers_to_dlp(cers_sites, dlp_cache)
+
+        for site in cers_sites:
+            dlp_m = dlp_matches.get(site["site_id"])
+            if dlp_m:
+                site["epaid"]               = dlp_m["epaid"]
+                site["accidents"]           = dlp_m["accidents"]
+                site["latest_receipt_date"] = dlp_m["latest_receipt_date"]
+                # Prefer DLP receipt date for revalid if available
+                if dlp_m["latest_receipt_date"]:
+                    rv = revalid_status(dlp_m["latest_receipt_date"])
+                    site["revalid_status"] = rv
+                    # Rebuild revalid badge in cers_flags
+                    site["cers_flags"] = [f for f in site["cers_flags"] if not f.startswith("Revalid:")]
+                    if rv == "overdue":  site["cers_flags"].append("Revalid:OVERDUE")
+                    elif rv == "soon":   site["cers_flags"].append("Revalid:SOON")
+                else:
+                    site["revalid_status"] = site.get("cers_rv", "unknown")
+            else:
+                site["revalid_status"] = site.get("cers_rv", "unknown")
+
+            tier     = score_tier(site["locations"], site["accidents"])
+            lead_key = site["epaid"] if site["epaid"] else f"cers-{site['site_id']}"
+
+            site["tier"]       = tier
+            site["tier_label"] = TIER_LABELS[tier]
+            site["lead_key"]   = lead_key
+            site["territory"]  = "CERS"
+            rows.append(site)
+
+        print(f"[score.py] CA (CERS) leads: {len(cers_sites):,}")
+
+    if not rows:
+        sys.exit("[score.py] ERROR: No leads loaded. Provide --national or --cers.")
+
+    # ── Sort: T1->T5, then NH3 desc within tier ───────────────────────────────
+    def sort_key(r):
+        return (r["tier"], -(r.get("nh3_lbs") or 0))
+    rows.sort(key=sort_key)
+
+    # ── Stats ─────────────────────────────────────────────────────────────────
+    total       = len(rows)
+    tier_counts = {str(k): v for k, v in sorted(Counter(r["tier"] for r in rows).items())}
+    overdue_ct  = sum(1 for r in rows if r.get("revalid_status") == "overdue")
+    soon_ct     = sum(1 for r in rows if r.get("revalid_status") == "soon")
+
+    # State/territory area bars (top 14 by site count)
+    area_counts = defaultdict(int)
     for r in rows:
-        cupa_counts[r["cupa"]].append(r["urgency_score"])
-    cupa_stats = sorted(
-        [{"name": k, "count": len(v), "avg": round(sum(v)/len(v), 1)}
-         for k, v in cupa_counts.items()],
+        key = r.get("cupa", r.get("state", "?")) if r.get("is_ca") else r.get("state", "?")
+        area_counts[key] += 1
+    area_stats = sorted(
+        [{"name": k, "count": v} for k, v in area_counts.items()],
         key=lambda x: -x["count"]
     )[:14]
 
     stats = {
         "generated":      TODAY.strftime("%Y-%m-%d"),
         "total_sites":    total,
-        "hot_leads":      hot,
-        "total_evals":    int(df.shape[0]),
-        "iiar9_gap":      iiar9_gap,
-        "revalid_overdue": overdue,
-        "revalid_soon":   soon,
-        "violation_sites": violations,
-        "high_seismic":   high_seismic,
-        "med_seismic":    med_seismic,
-        "low_seismic":    low_seismic,
-        "pre_epa2024":    pre2024,
-        "p3_count":       p3_count,
-        "score_dist":     score_dist,
-        "cupa_stats":     cupa_stats,
+        "tier_counts":    tier_counts,
+        "revalid_overdue": overdue_ct,
+        "revalid_soon":    soon_ct,
+        "area_stats":      area_stats,
+        "ca_count":        len(cers_sites),
+        "national_count":  total - len(cers_sites),
     }
 
     # ── Write JSON ────────────────────────────────────────────────────────────
     out_json = {"metadata": stats, "leads": rows}
     with open(OUTPUT_DIR / "leads.json", "w") as f:
         json.dump(out_json, f, indent=2, default=str)
-    print(f"[score.py] Written: output/leads.json ({total} sites)")
+    print(f"[score.py] Written: output/leads.json ({total:,} sites)")
 
     # ── Write CSV ─────────────────────────────────────────────────────────────
     csv_rows = []
     for r in rows:
-        row = {k: v for k, v in r.items() if k != "pain_points"}
-        row["pain_points"] = " | ".join(r["pain_points"])
+        row = {k: v for k, v in r.items() if k != "cers_flags"}
+        row["cers_flags"] = " | ".join(r.get("cers_flags", []))
         csv_rows.append(row)
     pd.DataFrame(csv_rows).to_csv(OUTPUT_DIR / "leads.csv", index=False)
     print(f"[score.py] Written: output/leads.csv")
 
-    # ── Write timestamp ───────────────────────────────────────────────────────
+    # ── Timestamp ─────────────────────────────────────────────────────────────
     with open(OUTPUT_DIR / "last_updated.txt", "w") as f:
         f.write(TODAY.isoformat())
 
-    # ── Compute week-over-week changes ────────────────────────────────────────
-    from diff import compute_diff, save_snapshot
-    changes = compute_diff(rows)
-
-    # ── Match contacts & build score history ──────────────────────────────────
-    from match import run as run_match
-    contacts = run_match(rows)
+    # ── Diff & score history ──────────────────────────────────────────────────
+    changes       = compute_diff(rows)
     score_history = _update_score_history(rows)
 
-    # ── Generate dashboard HTML ───────────────────────────────────────────────
+    # ── Build HTML ────────────────────────────────────────────────────────────
     from build_html import build_html
-    build_html(stats, rows, changes, contacts=contacts, score_history=score_history)
+    build_html(stats, rows, changes, score_history=score_history)
     print(f"[score.py] Written: output/dashboard.html")
 
-    # ── Save snapshot for next week's diff ───────────────────────────────────
+    # ── Save snapshot for next diff ───────────────────────────────────────────
     save_snapshot(out_json)
 
-    print(f"[score.py] Done. {total} sites scored, {hot} hot leads (8-10).")
+    nat_ct  = total - len(cers_sites)
+    print(f"[score.py] Done. {total:,} total leads ({nat_ct:,} national + {len(cers_sites):,} CA).")
     if not changes.get("baseline"):
         s = changes["summary"]
-        print(f"[score.py] Changes: up={s['moved_up_count']} down={s['moved_down_count']} new={s['new_count']} dropped={s['dropped_count']}")
+        print(f"[score.py] Changes: up={s['moved_up_count']} down={s['moved_down_count']} "
+              f"new={s['new_count']} dropped={s['dropped_count']}")
     return stats, rows
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="CalARP Lead Scorer")
-    parser.add_argument("--input", required=True,
-                        help="Path to CERS export (.xlsx or .csv)")
+    parser = argparse.ArgumentParser(description="National NH3 Lead Scorer")
+    parser.add_argument("--national", default="data/national_rmp.csv",
+                        help="Path to national_rmp.csv (built by ingest.py)")
+    parser.add_argument("--cers", default="",
+                        help="Path to CERS CalARP export (.xlsx or .csv)")
     args = parser.parse_args()
-    run(args.input)
+    run(args.national, args.cers)
