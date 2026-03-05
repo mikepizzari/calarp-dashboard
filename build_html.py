@@ -242,6 +242,7 @@ tr:hover td{{background:rgba(255,255,255,0.02);}}
 @media(max-width:1100px){{.kpi-grid{{grid-template-columns:repeat(3,1fr);}}.charts-row{{grid-template-columns:1fr;}}.hlbl{{font-size:8px;}}}}
 @media(max-width:700px){{header,main{{padding-left:20px;padding-right:20px;}}.kpi-grid{{grid-template-columns:repeat(2,1fr);}}h1{{font-size:36px;}}}}
 .changes-grid{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}}
+.changes-grid .card>div:last-child{{max-height:320px;overflow-y:auto;}}
 .change-item{{padding:10px 0;border-bottom:1px solid var(--border);}}
 .change-item:last-child{{border-bottom:none;}}
 .ci-top{{display:flex;align-items:center;gap:8px;margin-bottom:3px;}}
