@@ -92,6 +92,19 @@ def run(contacts_path: Path = DATA_DIR / "contacts.xlsx",
     nh3 = combined[combined["NH3_Lbs"].notna() & (combined["NH3_Lbs"] > 0)].copy()
     print(f"[ingest.py] NH3 facilities (NH3_Lbs > 0): {len(nh3):,}")
 
+    # 3a. Exclude non-refrigeration NAICS codes:
+    #   42491 = Farm Supplies Merchant Wholesalers (fertilizer retail — Nutrien, etc.)
+    #   32531 = Fertilizer Manufacturing
+    #   11511 = Support Activities for Crop Production
+    # These facilities store pressurized anhydrous NH3 for agricultural use,
+    # not refrigeration systems — they are not IIAR 9 / RMP compliance prospects.
+    EXCLUDE_NAICS = {"42491", "32531", "11511"}
+    nh3["_naics5"] = nh3["NAICS"].fillna("").astype(str).str.strip().str[:5]
+    before = len(nh3)
+    nh3 = nh3[~nh3["_naics5"].isin(EXCLUDE_NAICS)].copy()
+    print(f"[ingest.py] After excluding fertilizer/ag NAICS (42491/32531/11511): {len(nh3):,} "
+          f"(removed {before - len(nh3):,})")
+
     # 3. Normalize EPAID
     nh3["epaid"] = nh3["EPAID"].apply(norm_epaid)
 
