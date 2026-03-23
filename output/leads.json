@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-03-16",
+    "generated": "2026-03-23",
     "total_sites": 4053,
     "tier_counts": {
       "1": 32,
@@ -9,8 +9,8 @@
       "4": 960,
       "5": 2155
     },
-    "revalid_overdue": 434,
-    "revalid_soon": 732,
+    "revalid_overdue": 445,
+    "revalid_soon": 736,
     "state_counts": {
       "IA": 137,
       "NE": 89,
@@ -2326,7 +2326,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -3314,7 +3314,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -4224,7 +4224,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -7058,7 +7058,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -7240,7 +7240,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -10074,7 +10074,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -14468,7 +14468,7 @@
       "contact_email": "",
       "tier": 3,
       "tier_label": "Mid-Market",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -16470,7 +16470,7 @@
       "contact_email": "",
       "tier": 3,
       "tier_label": "Mid-Market",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -28770,7 +28770,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -33268,7 +33268,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -34516,7 +34516,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -47178,7 +47178,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -50307,7 +50307,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -51373,7 +51373,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -52309,7 +52309,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -53297,7 +53297,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -57041,7 +57041,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -70535,7 +70535,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -72251,7 +72251,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -72849,7 +72849,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -73265,7 +73265,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -76775,7 +76775,7 @@
       "contact_email": "",
       "tier": 5,
       "tier_label": "Single",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -83596,16 +83596,17 @@
       "iiar9_gap": true,
       "is_p3": false,
       "pre_epa2024": false,
-      "cers_rv": "ok",
+      "cers_rv": "soon",
       "cers_flags": [
         "IIAR9",
-        "Violations:4"
+        "Violations:4",
+        "Revalid:SOON"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "",
       "epaid": null,
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "cers-90922",
@@ -94744,16 +94745,17 @@
       "iiar9_gap": true,
       "is_p3": false,
       "pre_epa2024": false,
-      "cers_rv": "ok",
+      "cers_rv": "soon",
       "cers_flags": [
         "IIAR9",
-        "Violations:2"
+        "Violations:2",
+        "Revalid:SOON"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "",
       "epaid": null,
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "cers-392335",
@@ -97973,16 +97975,17 @@
       "iiar9_gap": true,
       "is_p3": false,
       "pre_epa2024": false,
-      "cers_rv": "ok",
+      "cers_rv": "soon",
       "cers_flags": [
         "IIAR9",
-        "Violations:2"
+        "Violations:2",
+        "Revalid:SOON"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "",
       "epaid": null,
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "cers-398227",
@@ -103336,15 +103339,15 @@
       "iiar9_gap": false,
       "is_p3": false,
       "pre_epa2024": false,
-      "cers_rv": "soon",
+      "cers_rv": "overdue",
       "cers_flags": [
-        "Revalid:SOON"
+        "Revalid:OVERDUE"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "",
       "epaid": null,
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "cers-432926",
