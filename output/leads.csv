@@ -350,7 +350,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000061844,100000061844,"Americold, Belvidere",Americold,6765 Imron Drive,Belvidere,IL,61008,42.251528,-88.8825,21000.0,108,0,2024-05-02,49312,Brian,,,,2,Major,ok,False,,,,,,,,,,
 100000192034,100000192034,"Sysco Cleveland, Inc.",Sysco,4747 Grayton Road,Cleveland,OH,44135,41.4265,-81.840194,21000.0,70,0,2023-06-16,42441,Brian,,,,2,Major,ok,False,,,,,,,,,,
 100000244586,100000244586,Sysco Seattle,Sysco,22820 54th Ave S,Kent,WA,98032,47.395374,-122.264146,21000.0,70,0,2025-09-02,42441,Brian,,,,2,Major,ok,False,,,,,,,,,,
-100000197468,100000197468,"Sysco St. Louis, LLC",Sysco,3850 Mueller Road,St. Charles,MO,63301,38.831892,-90.514656,21000.0,70,0,2022-10-25,42441,Brian,,,,2,Major,ok,False,,,,,,,,,,
+100000197468,100000197468,"Sysco St. Louis, LLC",Sysco,3850 Mueller Road,St. Charles,MO,63301,38.831892,-90.514656,21000.0,70,0,2022-10-25,42441,Brian,,,,2,Major,soon,False,,,,,,,,,,
 100000189235,100000189235,"Sysco Connecticut, LLC",Sysco,100 Inwood Road,Rocky Hill,CT,6067,41.635125,-72.679217,21000.0,70,0,2022-10-06,42441,Micah,,,,2,Major,soon,False,,,,,,,,,,
 100000176748,100000176748,"Sysco Nashville, LLC",Sysco,1 Hermitage Plaza,Nashville,TN,37209,36.180374,-86.880788,21000.0,70,0,2021-04-14,42449,Micah,,,,2,Major,overdue,False,,,,,,,,,,
 100000198001,100000198001,"Sysco Hampton Roads, Inc.",Sysco,7000 Harbour View Blvd.,Suffolk,VA,23435,36.88869,-76.434042,21000.0,70,0,2021-06-09,42441,Micah,,,,2,Major,soon,False,,,,,,,,,,
@@ -515,10 +515,10 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000039102,100000039102,AGRILAND FS INC.   AVOCA,"Agriland Fs, Inc.",110 E. ELLSWORTH,AVOCA,IA,51521,41.4741462,-95.3351122,650000.0,32,0,2024-03-21,44422,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000219729,100000219729,"Ag Partners Cooperative, Inc - Powhattan NH3","Ag Partners Cooperative, Inc.",928 180th St.,Powhattan,KS,66527,39.769209,-95.634151,630000.0,17,0,2024-09-30,42451,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000142945,100000142945,Central Valley Ag  Polk NH3,Central Valley Ag,Railroad Avenue,Polk,NE,68654,41.078769,-97.78432,624000.0,23,0,2024-01-16,49313,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
-100000156261,100000156261,Central Valley Ag  Ulysses NH3,Central Valley Ag,4th and B Street,Ulysses,NE,68669,41.066009,-97.20112,618000.0,23,0,2022-10-24,49313,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
+100000156261,100000156261,Central Valley Ag  Ulysses NH3,Central Valley Ag,4th and B Street,Ulysses,NE,68669,41.066009,-97.20112,618000.0,23,0,2022-10-24,49313,Brian,,,,3,Mid-Market,soon,False,,,,,,,,,,
 100000071325,100000071325,THREE RIVERS FS COMPANY MANCHESTER NH3,Three Rivers Fs Company,1000 S 5th St / 1000 S 3rd St,MANCHESTER,IA,52057,42.47414,-91.463265,580000.0,3,1,2024-05-07,44422,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000216107,100000216107,"AGRILAND FS, Inc. - Dallas County","Agriland Fs, Inc.",23986 A Ave,Panora,IA,50216,41.6888463,-94.2795071,570000.0,32,0,2024-04-11,44422,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
-100000134035,100000134035,Central Valley Ag  - Tamora NH3,Central Valley Ag,465 South Railroad,Tamora,NE,68434,40.896281,-97.234213,567000.0,23,0,2022-10-24,49313,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
+100000134035,100000134035,Central Valley Ag  - Tamora NH3,Central Valley Ag,465 South Railroad,Tamora,NE,68434,40.896281,-97.234213,567000.0,23,0,2022-10-24,49313,Brian,,,,3,Mid-Market,soon,False,,,,,,,,,,
 100000114413,100000114413,Innovative Ag Services - Faulkner,Innovative Ag Services,410 Faulkner Lane,Ackley,IA,50601,42.612863,-93.084349,560320.0,21,0,2024-01-04,11115,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000033117,100000033117,AGRILAND FS INC..-Oskaloosa,"Agriland Fs, Inc.",2305 Highway 23,Oskaloosa,IA,52577,41.2799194,-92.6212696,560000.0,32,0,2024-03-29,44422,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000121076,100000121076,Herbst Agronomy,"Keystone Cooperative, Inc.",2655 S. 600 W.,Marion,IN,46953,40.511139,-85.80275,559000.0,27,0,2024-05-30,11115,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
@@ -816,7 +816,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000046201,100000046201,Saputo Cheese USA Inc. - Sulphur Springs,Saputo Inc.,300 Industrial Drive E,Sulphur Springs,TX,75482,33.122565,-95.585342,22531.0,12,0,2025-06-24,31151,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000180813,100000180813,"US Foods, Inc. - Detroit","Us Foods, Inc.",28001 Napier Road,Wixom,MI,48393,42.495817,-83.556838,22002.0,18,0,2024-05-01,42441,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000158376,100000158376,"DFA Dairy Brands Fluid, LLC. dba T.G. Lee Dairy","Dfa Dairy Brands Fluid, Llc",315 North Bumby Ave.,Orlando,FL,32803,28.546152,-81.350929,22000.0,17,0,2022-02-09,31151,Micah,,,,3,Mid-Market,soon,False,,,,,,,,,,
-100000042321,100000042321,Kenneth O. Lester Co.- PFG Customized Distribution,Performance Food Group,825 Maddox-Simpson Parkway,Lebanon,TN,37090,36.183561,-86.274911,22000.0,15,0,2021-04-22,49312,Micah,,,,3,Mid-Market,soon,False,,,,,,,,,,
+100000042321,100000042321,Kenneth O. Lester Co.- PFG Customized Distribution,Performance Food Group,825 Maddox-Simpson Parkway,Lebanon,TN,37090,36.183561,-86.274911,22000.0,15,0,2021-04-22,49312,Micah,,,,3,Mid-Market,overdue,False,,,,,,,,,,
 100000191534,100000191534,"Performance Food Group, CDC, Kendallville",Performance Food Group,2930 Performance Drive,Kendallville,IN,46755,41.441591,-85.210014,22000.0,15,0,2025-03-11,49312,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000187816,100000187816,"East Side Jersey Dairy - Woodbury, MN","Prairie Farms Dairy, Inc.",1930 Wooddale Drive,Woodbury,MN,55125,44.921595,-92.972408,22000.0,13,0,2025-11-14,311511,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000209231,100000209231,Costco Wholesale Frederick Combo Depot #1053,Costco,5236 Intercoastal Drive,Monrovia,MD,21770,39.374713,-77.280922,22000.0,12,0,2023-01-26,49312,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
@@ -882,7 +882,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000229111,100000229111,Reddy Ice-Denver (206),Reddy Ice Llc,9670 East 40th Avenue,Denver,CO,80238,39.77075,-104.876278,15000.0,14,0,2025-03-21,312113,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000108965,100000108965,"Associated Grocers of Florida, Inc. - Pompano","United Natural Foods, Inc.",1141 SW 12th Avenue,Pompano Beach,FL,33069,26.21646,-80.143122,15000.0,11,0,2024-02-21,49312,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000205994,100000205994,"UNFI Distribution Company, LLC Joliet","United Natural Foods, Inc.",2600 West Haven Road,Joliet,IL,60433,41.5091667,-88.018056,15000.0,11,0,2024-02-26,42441,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
-100000170334,100000170334,UNFI - Distribution Company LLC (Green Bay),"United Natural Foods, Inc.",451 Joannes Avenue,Green Bay,WI,54304,44.4925,-88.040833,15000.0,11,0,2022-10-26,42441,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
+100000170334,100000170334,UNFI - Distribution Company LLC (Green Bay),"United Natural Foods, Inc.",451 Joannes Avenue,Green Bay,WI,54304,44.4925,-88.040833,15000.0,11,0,2022-10-26,42441,Brian,,,,3,Mid-Market,soon,False,,,,,,,,,,
 100000177961,100000177961,"Nash Finch Company - Lumberton, NC Division",Spartannash,121 Cold Storage Road,Lumberton,NC,28360,34.659053,-79.107658,15000.0,4,1,2021-12-27,42441,Micah,,,,3,Mid-Market,soon,False,,,,,,,,,,
 100000228121,100000228121,Turner Holdings LLC,Hiland Dairy,6901 Interstate 30,Little Rock,AR,72209,34.68291,-92.30978,15000.0,3,1,2025-01-17,311511,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000244531,100000244531,"US Foods, Inc. - Houston","Us Foods, Inc.",111 Alliant Drive,Houston,TX,77032,29.932266,-95.32129,14828.0,18,0,2025-07-18,42441,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
@@ -1373,7 +1373,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000212682,100000212682,Weis Markets Milton Distribution Center,Weis Markets,16 South Industrial Park Road,Milton,PA,17847,40.984693,-76.851532,40926.0,3,0,2023-04-05,49312,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000236489,100000236489,Roskam Baking Company - S2,Roskam Baking Company,5565 Broadmoor Ave SE,Grand Rapids,MI,49512,42.859887,-85.549759,40600.0,2,0,2022-08-25,31181,Brian,,,,4,Standard,soon,False,,,,,,,,,,
 100000204815,100000204815,Target FDC T3895,Target Corporation,2115 Technology Parkway,Cedar Falls,IA,50613,42.477577,-92.472479,40589.0,6,0,2021-08-03,49312,Brian,,,,4,Standard,soon,False,,,,,,,,,,
-100000189048,100000189048,Wal-Mart Distribution Center #7018,"Wal-Mart Stores, Inc.",3001 E. State Farm Road,North Platte,NE,69101,41.093889,-100.730278,40541.0,7,0,2022-10-24,49312,Brian,,,,4,Standard,ok,False,,,,,,,,,,
+100000189048,100000189048,Wal-Mart Distribution Center #7018,"Wal-Mart Stores, Inc.",3001 E. State Farm Road,North Platte,NE,69101,41.093889,-100.730278,40541.0,7,0,2022-10-24,49312,Brian,,,,4,Standard,soon,False,,,,,,,,,,
 100000181956,100000181956,Safeway Phoenix Ice Cream Plant,"Safeway, Inc.",2434 E. Pecan Road,Phoenix,AZ,85040,33.396765,-112.028141,40400.0,5,0,2023-01-17,31152,Luke,,,,4,Standard,ok,False,,,,,,,,,,
 100000191302,100000191302,Tecumseh Plant,"Tecumseh Poultry, Llc",333 South Third Street,Tecumseh,NE,68450,40.364659,-96.196587,40088.0,2,0,2023-05-04,31161,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000251504,100000251504,"World Class Distribution, Inc. - Virginia","World Class Distribution, Inc.",24098 Ruther Glen Rd.,Ruther Glen,VA,22546,37.933899,-77.45684,40000.0,8,0,2023-08-13,49312,Micah,,,,4,Standard,ok,False,,,,,,,,,,
@@ -1636,7 +1636,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000169587,100000169587,Kellers Creamery,Dairy Farmers Of America,1015 East Broadway Street,Winnsboro,TX,75494,32.957681,-95.273181,20000.0,6,0,2023-08-28,31151 • 311512,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000038997,100000038997,"The Pictsweet Company - Clarksville, AR Plant",The Pictsweet Company,509 Taylor Road,Clarksville,AR,72830,35.45142,-93.4529,20000.0,5,0,2022-08-23,311411,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000088932,100000088932,Branding Iron Sauk Rapids,Branding Iron Holdings,245 Industrial Blvd.,Sauk Rapids,MN,56379,45.590278,-94.145,20000.0,3,0,2025-07-21,311612,Brian,,,,4,Standard,ok,False,,,,,,,,,,
-100000195326,100000195326,Harris Teeter Indian Trail Distribution Center,Kroger Corporation,6001 Highway 74 East,Indian Trail,NC,28079,35.065556,-80.650833,20000.0,3,0,2021-04-21,49312,Micah,,,,4,Standard,soon,False,,,,,,,,,,
+100000195326,100000195326,Harris Teeter Indian Trail Distribution Center,Kroger Corporation,6001 Highway 74 East,Indian Trail,NC,28079,35.065556,-80.650833,20000.0,3,0,2021-04-21,49312,Micah,,,,4,Standard,overdue,False,,,,,,,,,,
 100000256616,100000256616,FreezPak Logistics Suffolk,Freezpak Logistics,115 Maya Way,Suffolk,VA,23435,36.818324,-76.473882,20000.0,2,0,2025-03-14,49312,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000106191,100000106191,Roche Fruit Co - Warehouse 9,Roche Fruit Co,419 N 1st Avenue,Yakima,WA,98902,46.362876,-120.304463,20000.0,2,0,2024-09-23,49312,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000099635,100000099635,Tops Markets Distribution Center,"Tops Markets, Llc",5873 Genesee Street,Lancaster,NY,14086,42.940556,-78.631944,20000.0,2,0,2023-03-30,49312,Micah,,,,4,Standard,ok,False,,,,,,,,,,
@@ -2115,7 +2115,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000210247,100000210247,Hi Plains Feed LLC,Hi Plains Feed Llc,1650 N. Sherlock Rd.,Garden City,KS,67846,37.976476,-100.935752,79000.0,1,0,2020-01-21,311119,Brian,ANDY LINSCOTT,6202772886.0,ANDY.LINSCOTT@HIPLAINSFEED.COM,5,Single,overdue,False,,,,,,,,,,
 100000199108,100000199108,Jack Oldham Oil Co.,Ricky Bynum,112 N. Wilson,Dumas,TX,79029,35.866667,-101.982222,79000.0,1,0,2022-08-15,44719,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000057127,100000057127,Angus Coop Elevator Association,Angus Coop Elevator Association,Hwy 75,Angus,MN,56712,48.083472,-96.703194,78734.0,1,0,1999-06-18,42291,Brian,,,,5,Single,overdue,False,,,,,,,,,,
-100000158385,100000158385,"Mar-Jac Poultry MS, LLC","Mar-Jac Poultry, Llc.",1301 James Street,Hattiesburg,MS,39401,31.305968,-89.277997,78599.0,1,0,2022-10-24,31161,Micah,,,,5,Single,ok,False,,,,,,,,,,
+100000158385,100000158385,"Mar-Jac Poultry MS, LLC","Mar-Jac Poultry, Llc.",1301 James Street,Hattiesburg,MS,39401,31.305968,-89.277997,78599.0,1,0,2022-10-24,31161,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000246021,100000246021,Petsource,Petsource,1801 Pine St,Seward,NE,68434,40.8834,-97.10428,78505.0,1,0,2024-07-26,311111,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000084516,100000084516,"Honda Dev and Mfg of America, Anna Engine Plant",American Honda Motor Company,12500 Meranda Road,Anna,OH,45302,40.372712,-84.19002,78000.0,1,0,2023-12-08,33631,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000174063,100000174063,Bridor,Bridor,2260 Industrial Way,Vineland,NJ,8360,39.515134,-75.065652,77784.0,1,0,2025-03-18,31181,Micah,,,,5,Single,ok,False,,,,,,,,,,
@@ -2152,7 +2152,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000107804,100000107804,Washington Beef LLC,Ab Foods Llc,201 Elmwood Road,Toppenish,WA,98948,46.3731,-120.332567,67827.0,1,0,2021-01-08,49312,Brian,CRAIG SMITH,5098652121.0,CRAIG.SMITH@ABFOODSUSA.COM,5,Single,overdue,False,,,,,,,,,,
 100000209874,100000209874,Plum Point Energy Station,"Plum Point Energy Associates, Llc",2732 South County Road 623,Osceola,AR,72370,35.663731,-89.946567,67320.0,1,0,2024-10-22,221112,Micah,MATT GRAY,8705635072.0,RICHARD.GRAY@NRG.COM,5,Single,ok,False,,,,,,,,,,
 100000215803,100000215803,Porter Elevator Inc.,Bruce Richard Tetrick,104 Prarie Ave.,Porter,MN,56280,44.6347039,-96.1682224,66938.0,1,0,2014-02-05,42451,Brian,,,,5,Single,overdue,False,,,,,,,,,,
-100000171075,100000171075,"Legacy Fruit Packers, LLC.","Legacy Fruit Packers, Llc.",12 Hoffer Road,Wapato,WA,98951,46.43881,-120.42985,66664.0,1,0,2021-04-23,49312,Brian,,,,5,Single,soon,False,,,,,,,,,,
+100000171075,100000171075,"Legacy Fruit Packers, LLC.","Legacy Fruit Packers, Llc.",12 Hoffer Road,Wapato,WA,98951,46.43881,-120.42985,66664.0,1,0,2021-04-23,49312,Brian,,,,5,Single,overdue,False,,,,,,,,,,
 100000111327,100000111327,"John Soules Foods, Inc.","John Soules Foods, Inc.",10150 FM 14,Tyler,TX,75706,32.410714,-95.277289,66000.0,1,0,2025-03-19,311612 • 49312,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000162414,100000162414,"Greater Omaha Packing Co., Inc.",Henry Davis,3001 L Street,Omaha,NE,68107,41.212111,-95.958611,66000.0,1,0,2025-05-05,49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000046755,100000046755,Nortera Foods Inc - Fairwater,Bonduelle Americas,101 Kennedy Street,Fairwater,WI,53931,43.743056,-88.8625,65800.0,1,0,2024-06-14,49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
@@ -2187,7 +2187,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000252479,100000252479,Carnivore Meat Company,Carnivore Meat Company,3757 Vital Place,Green Bay,WI,54311,44.4914118,-87.897348,60000.0,1,0,2024-07-23,311111,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000075651,100000075651,Whitlock Water Treatment Plant (WTP),"Board Of Water Works At Pueblo, Colorado",1920 West 11th Street,Pueblo,CO,81003,38.27525,-104.640139,59500.0,1,0,2024-12-24,22131,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000159847,100000159847,"Red Kingfisher, LLC",Jose Lorenzo,121 Roseway Dr,Thomasville,GA,31792,30.845446,-84.003805,58959.0,1,0,2025-11-25,311999,Micah,,,,5,Single,ok,False,,,,,,,,,,
-100000235211,100000235211,"CS Beef Packers, LLC","Caviness Cev, Idaho, Llc",17365 S. Cole Rd.,Kuna,ID,83634,43.448373,-116.270824,58429.0,1,0,2022-10-24,311611 • 311613 • 49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
+100000235211,100000235211,"CS Beef Packers, LLC","Caviness Cev, Idaho, Llc",17365 S. Cole Rd.,Kuna,ID,83634,43.448373,-116.270824,58429.0,1,0,2022-10-24,311611 • 311613 • 49312,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000056716,100000056716,Mountaire Farms - Siler City Plant,Mountaire Farms,1101 East Third Street,Siler City,NC,27344,35.731865,-79.450153,58251.0,1,0,2024-10-15,311615,Micah,CATHERINE BASSETT,3029343050.0,CBASSETT@MOUNTAIRE.COM,5,Single,ok,False,,,,,,,,,,
 100000215064,100000215064,"Mount Vernon Mills, Inc. Apparel Fabrics Division","Mount Vernon Mills, Inc.",91 Fourth Street,Trion,GA,30753,34.547,-85.3112,58000.0,1,0,2021-03-18,31331,Micah,,,,5,Single,overdue,False,,,,,,,,,,
 100000094621,100000094621,"Flora Food Sourcing US, Inc.",Flora Food Us Inc.,27080 West 159th Street,New Century,KS,66031,38.840573,-94.897886,57981.0,1,0,2024-11-13,311225,Brian,,,,5,Single,ok,False,,,,,,,,,,
@@ -2207,7 +2207,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000091018,100000091018,"Anheuser-Busch, LLC Merrimack Brewery","Anheuser-Busch Companies, Llc",221 Daniel Webster Highway,Merrimack,NH,3054,42.824167,-71.484167,56000.0,1,0,2024-06-11,31212,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000178639,100000178639,Hay Road Energy Center,"First State Generation, Llc",198 Hay Road Gate B,Wilmington,DE,19809,39.744388,-75.504065,56000.0,1,0,2022-05-09,221112,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000062086,100000062086,Bellevue Milk and Ice Cream,Safeway Inc.,1723 124th Avenue NE,Bellevue,WA,98005,47.625995,-122.17849,56000.0,1,0,2024-06-04,311511 • 31152,Brian,,,,5,Single,ok,False,,,,,,,,,,
-100000017279,100000017279,SEABROOK BROTHERS & SONS INC.,Seabrook Brothers & Sons Inc.,85 FINLEY ROAD,SEABROOK,NJ,8302,39.487778,-75.22,56000.0,1,0,2021-04-22,311411,Micah,,,,5,Single,soon,False,,,,,,,,,,
+100000017279,100000017279,SEABROOK BROTHERS & SONS INC.,Seabrook Brothers & Sons Inc.,85 FINLEY ROAD,SEABROOK,NJ,8302,39.487778,-75.22,56000.0,1,0,2021-04-22,311411,Micah,,,,5,Single,overdue,False,,,,,,,,,,
 100000229184,100000229184,Garrison Energy Center LLC,"Garrison Energy Center, Llc",450 Garrison Oak Drive,Dover,DE,19901,39.186745,-75.499518,56000.0,1,0,2021-11-17,22111,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000172546,100000172546,"Hamakua Energy, LLC",Harbert,P.O. Box 40,Honokaa,HI,96727,20.094083,-155.471028,56000.0,1,0,2025-11-06,221112,Luke,,,,5,Single,ok,False,,,,,,,,,,
 100000169774,100000169774,"Laotto Farm Supplies, Inc.",Dexter Lutter,11757 E. SR 205,Laotto,IN,46763,41.291417,-85.197139,55080.0,1,0,2022-02-17,11115,Brian,,,,5,Single,soon,False,,,,,,,,,,
@@ -2418,7 +2418,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000028784,100000028784,"Ice Cream Specialties, Inc. - Lafayette","Prairie Farms Dairy, Inc",2600 Concord Road,Lafayette,IN,47909,40.390965,-86.858147,32000.0,1,0,2024-04-18,31152,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000170227,100000170227,Germantown Power Plant,Wisconsin Electric Power Company D/B/A We Energies,N96 W19298 County Line Road,Germantown,WI,53022,43.19625,-88.149667,32000.0,1,0,2025-08-05,221112,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000005736,100000005736,MIA Products,J & J Snack Foods,Rocky Glen Industrial Park,Moosic,PA,18507,41.361667,-75.706667,32000.0,1,0,2024-02-28,31152,Micah,,,,5,Single,ok,False,,,,,,,,,,
-100000235168,100000235168,Turkey Hill Dairy - Searcy,"Turkey Hill, Llc",205 South Spring St.,Searcy,AR,72143,35.247195,-91.738239,32000.0,1,0,2022-10-26,31152,Micah,,,,5,Single,ok,False,,,,,,,,,,
+100000235168,100000235168,Turkey Hill Dairy - Searcy,"Turkey Hill, Llc",205 South Spring St.,Searcy,AR,72143,35.247195,-91.738239,32000.0,1,0,2022-10-26,31152,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000244372,100000244372,Penobscot McCrum LLC,Jay Mccrum,2326 Parsons Road,Washburn,ME,4786,46.771625,-68.1534,32000.0,1,0,2024-02-28,311411,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000150739,100000150739,Carl Buddig and Company,Bob Buddig,50 West Taft Drive,South Holland,IL,60473,41.5947222,-87.619722,31495.0,1,0,2025-09-18,311612,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000163583,100000163583,Giant Distribution Center,"Giant Food Store, Llc",1621 Industrial Drive,Carlisle,PA,17013,40.200556,-77.231944,31403.0,1,0,2023-09-19,49312,Micah,,,,5,Single,ok,False,,,,,,,,,,
@@ -2595,7 +2595,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000257465,100000257465,"SMC 23rd Street, LLC",Standard Meat Company,1101 NE 23rd Street,Fort Worth,TX,76164,32.7862928,-97.3425524,22000.0,1,0,2025-05-30,311612,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000155636,100000155636,"Omaha Steaks ""F"" Street Plant",Omaha Steaks International Inc.,"9203 ""F"" Street",Omaha,NE,68127,41.217602,-96.055991,21989.0,1,0,2021-09-29,311612,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000231803,100000231803,Grande Cheese,Charlie Rubio,N2607 County S,Juda,WI,53550,42.601533,-89.505229,21955.0,1,0,2023-08-01,311513,Brian,,,,5,Single,ok,False,,,,,,,,,,
-100000237139,100000237139,Boardman Foods Incorporated,"Boardman Foods, Inc.",71320 East Columbia Blvd,Boardman,OR,97818,45.844717,-119.663469,21940.0,1,0,2022-10-25,31199,Brian,,,,5,Single,ok,False,,,,,,,,,,
+100000237139,100000237139,Boardman Foods Incorporated,"Boardman Foods, Inc.",71320 East Columbia Blvd,Boardman,OR,97818,45.844717,-119.663469,21940.0,1,0,2022-10-25,31199,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000256705,100000256705,Believer Meats,Joshua Link,4939 Lamm Road,Wilson,NC,27893,35.73921,-78.00587,21791.0,1,0,2025-05-13,311615,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000185266,100000185266,Ventura Foods LLC - Albert Lea,Ventura Foods Llc,919 East 14th Street,Albert Lea,MN,56007,43.625278,-93.351944,21733.0,1,0,2025-06-02,311225 • 311613,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000161264,100000161264,Maine Wild Blueberry Inc,Oxford Frozen Foods Inc,78 Elm Street,Machias,ME,4654,44.714665,-67.449065,21610.0,1,0,2023-05-08,311411,Micah,,,,5,Single,ok,False,,,,,,,,,,
@@ -2605,7 +2605,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000254217,100000254217,Omaha Industries,Omaha Industries,4611 W Adams St.,Lincoln,NE,68524,40.8421,-96.78485,21500.0,1,0,2024-08-09,49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000021353,100000021353,"Baker Boy, Inc.","Baker Boy, Inc.",170 GTA Drive,Dickinson,ND,58601,46.8726802,-102.84708,21500.0,1,0,2022-01-31,311812,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000223162,100000223162,White Castle Distributing LLC,"White Castle System, Inc.",1614 Capstone Way,Vandalia,OH,45377,39.880294,-84.228504,21480.0,1,0,2022-08-17,311991,Brian,,,,5,Single,soon,False,,,,,,,,,,
-100000063922,100000063922,"Columbia Fruit Packers, Inc",Mike Wade,2611 Euclid Ave,Wenatchee,WA,98801,47.464167,-120.323333,21310.0,1,0,2021-04-21,49312,Brian,,,,5,Single,soon,False,,,,,,,,,,
+100000063922,100000063922,"Columbia Fruit Packers, Inc",Mike Wade,2611 Euclid Ave,Wenatchee,WA,98801,47.464167,-120.323333,21310.0,1,0,2021-04-21,49312,Brian,,,,5,Single,overdue,False,,,,,,,,,,
 100000174526,100000174526,Cold Storage Solutions/Shetakis Wholesalers,Jim L Shetakis Distributing Co,3840-A N. Civic Center Drive,North Las Vegas,NV,89030,36.229209,-115.111821,21300.0,1,0,2021-02-17,49312,Luke,,,,5,Single,overdue,False,,,,,,,,,,
 100000035516,100000035516,"Lactalis Heritage Dairy, Inc. - Wausau Wisconsin","Lactalis Heritage Dairy, Inc.",1007 Town Line Road,Wausau,WI,54403,44.944444,-89.613333,21258.0,1,0,2022-07-27,311513,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000029284,100000029284,Colorado Premium Race Court,Steve Mark,5120 Race Court,Denver,CO,80216,39.789697,-104.965535,21190.0,1,0,2024-08-16,49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
@@ -2696,7 +2696,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000234196,100000234196,Lyons East,Lyons,95 Richwood Rd,Walton,KY,41094,38.919,-84.616,17700.0,1,0,2021-11-22,312111,Micah,PATRICK HIGGINS,8595120984.0,PATRICK.HIGGINS@LYONSMAGNUS.COM,5,Single,soon,False,,,,,,,,,,
 100000143212,100000143212,"Fair Oaks Foods, LLC (East)",Mike Thompson,7600 95th St,Pleasant Prairie,WI,53158,42.534905,-87.899114,17538.0,1,0,2024-01-02,311612,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000113334,100000113334,Ajinomoto Toyo Frozen Noodles Inc.,Tomo Shiojima,6500 N. Marine Drive,Portland,OR,97203,45.62867,-122.743534,17500.0,1,0,2021-08-23,311412,Brian,,,,5,Single,soon,False,,,,,,,,,,
-100000140821,100000140821,"Columbia Fruit Packers, Inc - Airport Facility","Columbia Fruit Packers, Inc",201 S. Union,East Wenatchee,WA,98802,47.240566,-120.125983,17500.0,1,0,2021-04-21,49312,Brian,,,,5,Single,soon,False,,,,,,,,,,
+100000140821,100000140821,"Columbia Fruit Packers, Inc - Airport Facility","Columbia Fruit Packers, Inc",201 S. Union,East Wenatchee,WA,98802,47.240566,-120.125983,17500.0,1,0,2021-04-21,49312,Brian,,,,5,Single,overdue,False,,,,,,,,,,
 100000025457,100000025457,"Brewster. Rupert, Idaho",Brewster West Llc.,311 South Oneida,Rupert,ID,83350,42.610833,-113.6775,17500.0,1,0,2022-04-26,311513,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000236256,100000236256,"Nueske's Meat Product, Inc","Nueske'S Meat Product, Inc",1390 East Grand Ave,Wittenberg,WI,54499,44.82771,-89.15284,17500.0,1,0,2022-08-05,311612,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000122128,100000122128,DOT Foods Inc. (Williamsport),Dot Foods,16301 Elliott Parkway,Williamsport,MD,21795,39.618911,-77.804245,17437.0,1,0,2023-08-15,42442,Micah,,,,5,Single,ok,False,,,,,,,,,,
@@ -2771,7 +2771,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000063021,100000063021,Banner Apollo Miami Freezer,Banner Apollo Miami Freezer Llc,18770 Northeast 6th Ave.,Miami,FL,33179,25.948056,-80.190278,15000.0,1,0,2025-10-23,49312,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000063469,100000063469,"Bongards' South, LLC",Bongard'S Creameries,3001 Highway 45 W. Bypass,Humboldt,TN,38343,35.837303,-88.896683,15000.0,1,0,2024-06-26,311513,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000150105,100000150105,Borden Dairy,"New Dairy Florida, Llc",1000 6th Street SW,Winter Haven,FL,33880,28.01183,-81.733063,15000.0,1,0,2021-05-03,311511,Micah,,,,5,Single,soon,False,,,,,,,,,,
-100000173206,100000173206,"Roger Wood Foods, Inc.",David Solana,7 Alfred Street,Savannah,GA,31408,32.0900388,-81.147222,15000.0,1,0,2022-10-21,311612,Micah,,,,5,Single,ok,False,,,,,,,,,,
+100000173206,100000173206,"Roger Wood Foods, Inc.",David Solana,7 Alfred Street,Savannah,GA,31408,32.0900388,-81.147222,15000.0,1,0,2022-10-21,311612,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000223402,100000223402,"Bimbo Bakeries, USA",Alberto Moctezuma,1540 S. 54th Avenue,Cicero,IL,60804,41.861158,-87.759493,15000.0,1,0,2023-11-18,311812,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000181297,100000181297,SpartanNash - Severn Distribution Center,Spartannash Company,8024 Telegraph Road,Severn,MD,21144,39.121082,-76.691991,15000.0,1,0,2022-07-08,49312,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000175552,100000175552,"Associated Milk Producers, Inc.","Associated Milk Producers, Inc.",301 Brook Street,Portage,WI,53901,43.54013,-89.451122,15000.0,1,0,2021-03-23,311513,Brian,,,,5,Single,overdue,False,,,,,,,,,,
@@ -2910,7 +2910,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000245807,100000245807,A&D Foods,A&D Foods,2075 Boggs Road,Duluth,GA,30096,33.973454,-84.097468,12000.0,1,0,2025-11-18,49312,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000243541,100000243541,Holmes Foods Inc.,"Holmes Foods, Inc.",101 south liberty ave,Nixon,TX,78140,29.265667,-97.768603,12000.0,1,0,2021-09-16,311615,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000244568,100000244568,Holmen Cheese LLC.,Holmen Cheese Llc.,1775 Granary St.,Holmen,WI,54636,44.00578,-91.2941,11700.0,1,0,2025-06-23,311513,Brian,,,,5,Single,ok,False,,,,,,,,,,
-100000249046,100000249046,Oskaloosa Food Products,Jason Van Zetten,546 9th Ave East,Oskaloosa,IA,52577,41.28681,-92.63808,11683.0,1,0,2022-10-24,311999,Brian,,,,5,Single,ok,False,,,,,,,,,,
+100000249046,100000249046,Oskaloosa Food Products,Jason Van Zetten,546 9th Ave East,Oskaloosa,IA,52577,41.28681,-92.63808,11683.0,1,0,2022-10-24,311999,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000195905,100000195905,Old Neighborhood Foods,Demakes Enterprises,18 Electronics Ave.,Danvers,MA,1923,42.57722,-70.975,11622.0,1,0,2023-07-31,311991,Micah,,,,5,Single,ok,False,,,,,,,,,,
 100000179629,100000179629,"Vertical Cold Storage LLC, La Vista",Bob Franklin,10711 Olive Street,La Vista,NE,68128,41.184556,-96.07791,11603.0,1,0,2023-04-05,49312,Brian,,,,5,Single,ok,False,,,,,,,,,,
 100000236988,100000236988,Bake'n Joy Foods,Bake'N Joy Foods,351 Willow Street,North Andover,MA,1845,42.656538,-71.114379,11532.0,1,0,2023-01-12,311812,Micah,,,,5,Single,ok,False,,,,,,,,,,
@@ -3072,7 +3072,7 @@ cers-42155,,KRYLER CORP,,,,CA,,,,,1,0,,,CERS,,,,5,Single,overdue,True,IIAR9 | Re
 cers-42641,,LA HABRA PLATING,,,,CA,,,,,1,0,,,CERS,,,,5,Single,overdue,True,Revalid:OVERDUE,42641.0,Los Angeles County Fire Department,2015-10-21,2.0,0.0,False,False,False,overdue
 cers-42980,,LAC PUBLIC WORKS WATERWORKS,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:2,42980.0,Los Angeles County Fire Department,2023-03-24,6.0,2.0,True,False,False,ok
 cers-42982,,LAC PUBLIC WORKS WATERWORKS,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:2,42982.0,Los Angeles County Fire Department,2024-04-25,6.0,2.0,True,False,False,ok
-cers-42983,,LAC PUBLIC WORKS WATERWORKS,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,42983.0,Los Angeles County Fire Department,2022-10-21,6.0,3.0,True,False,False,ok
+cers-42983,,LAC PUBLIC WORKS WATERWORKS,,,,CA,,,,,1,0,,,CERS,,,,5,Single,soon,True,IIAR9 | Violations:3 | Revalid:SOON,42983.0,Los Angeles County Fire Department,2022-10-21,6.0,3.0,True,False,False,soon
 cers-42985,,LAC PUBLIC WORKS WATERWORKS,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:1,42985.0,Los Angeles County Fire Department,2024-06-26,5.0,1.0,True,False,False,ok
 cers-42986,,LAC Public Works Waterworks,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,42986.0,Los Angeles County Fire Department,2025-05-06,8.0,3.0,True,False,False,ok
 cers-42988,,"LAC PW WATERWORKS DIST 36, VAL VERD",,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,42988.0,Los Angeles County Fire Department,2025-04-17,13.0,3.0,True,False,False,ok
@@ -3514,7 +3514,7 @@ cers-385251,,"ANOLUME, LLC",,,,CA,,,,,1,0,,,CERS,,,,5,Single,overdue,True,IIAR9 
 100000248387,100000248387,GEODIS Logistics LLC 0593,,,,CA,,,,,1,0,2022-03-04,,CERS,,,,5,Single,soon,True,Violations:1 | Revalid:SOON,385304.0,San Bernardino County Fire Department,2023-07-24,1.0,1.0,False,False,False,ok
 cers-385407,,Arctic Glacier Van Nuys 495,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,385407.0,Los Angeles City Fire Department,2023-10-10,11.0,3.0,True,False,False,ok
 cers-385419,,Arkema Coating Resins - Latex,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:1,385419.0,Torrance Fire Department,2025-04-16,14.0,1.0,True,False,False,ok
-cers-385461,,ARTISTIC SILVER PLATING INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:4,385461.0,Los Angeles County Fire Department,2022-10-26,11.0,4.0,True,False,False,ok
+cers-385461,,ARTISTIC SILVER PLATING INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,soon,True,IIAR9 | Violations:4 | Revalid:SOON,385461.0,Los Angeles County Fire Department,2022-10-26,11.0,4.0,True,False,False,soon
 cers-385504,,ASSOCIATED PLATING CO. INC.,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Violations:3,385504.0,Santa Fe Springs Fire-Rescue,2024-01-25,6.0,3.0,False,False,False,ok
 cers-385514,,Astro Pak LLC Downey,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:2,385514.0,Downey Fire Department,2023-06-27,4.0,2.0,True,False,False,ok
 cers-386765,,ATK SPACE SYSTEMS INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:2,386765.0,Los Angeles County Fire Department,2024-11-21,8.0,2.0,True,False,False,ok
@@ -3695,7 +3695,7 @@ cers-395422,,JCI JONES CHEMICALS INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Vi
 cers-395563,,"Johnson & Johnson CLS, Fontana",,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Violations:1,395563.0,San Bernardino County Fire Department,2022-11-02,4.0,1.0,False,False,False,ok
 cers-395694,,"KALASHO, INC (DBA GO GAS)",,,,CA,,,,,1,0,,,CERS,,,,5,Single,overdue,True,Revalid:OVERDUE,395694.0,San Diego County Department of Env Health,2016-12-16,1.0,0.0,False,False,False,overdue
 cers-395839,,KERN RIDGE GROWERS -DIGIORGIO/GREEN VALLEY COLD STORAGE,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:4,395839.0,Kern County Env Health Services Department,2025-04-10,8.0,4.0,True,False,False,ok
-100000118357,100000118357,KERN RIDGE GROWERS LLC- ARVIN,,,,CA,,,,,1,0,2009-06-24,,CERS,,,,5,Single,overdue,True,IIAR9 | Violations:4 | Revalid:OVERDUE,395840.0,Kern County Env Health Services Department,2021-04-21,6.0,4.0,True,False,False,soon
+100000118357,100000118357,KERN RIDGE GROWERS LLC- ARVIN,,,,CA,,,,,1,0,2009-06-24,,CERS,,,,5,Single,overdue,True,IIAR9 | Violations:4 | Revalid:OVERDUE,395840.0,Kern County Env Health Services Department,2021-04-21,6.0,4.0,True,False,False,overdue
 100000119016,100000119016,KERN RIDGE GROWERS LLC- LAMONT,,,,CA,,,,,1,0,2009-06-24,,CERS,,,,5,Single,overdue,True,IIAR9 | Violations:8 | Revalid:OVERDUE,395841.0,Kern County Env Health Services Department,2025-03-07,9.0,8.0,True,False,False,ok
 100000103719,100000103719,KIK (SoCAL) LLC,,,,CA,,,,,1,0,2024-05-02,,CERS,,,,5,Single,ok,True,Violations:3,395876.0,Santa Fe Springs Fire-Rescue,2024-03-12,8.0,3.0,False,False,False,ok
 cers-395895,,KINGS HAWAIIAN BAKERY WEST INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,395895.0,Los Angeles City Fire Department,2022-11-16,6.0,3.0,True,False,False,ok
@@ -3703,7 +3703,7 @@ cers-395907,,KIRSCHENMAN ENT AND PACKING INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok
 100000208759,100000208759,KONOIKE PACIFIC CALIFORNIA,,,,CA,,,,,1,0,2024-08-28,,CERS,,,,5,Single,ok,True,Violations:2,395997.0,Los Angeles City Fire Department,2023-12-20,6.0,2.0,False,False,False,ok
 100000180902,100000180902,KONOIKE-E STREET INC,,,,CA,,,,,1,0,2021-11-24,,CERS,,,,5,Single,soon,True,Violations:3 | Revalid:SOON,395998.0,Los Angeles City Fire Department,2023-12-20,6.0,3.0,False,False,False,ok
 cers-396095,,LA BREA BAKERY,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:6,396095.0,Los Angeles City Fire Department,2025-03-03,12.0,6.0,True,False,False,ok
-100000190651,100000190651,LA PALOMA GENERATING PLANT,,,,CA,,,,,1,0,2021-04-26,,CERS,,,,5,Single,soon,True,IIAR9 | Revalid:SOON,396156.0,Kern County Env Health Services Department,2024-03-18,4.0,0.0,True,False,False,ok
+100000190651,100000190651,LA PALOMA GENERATING PLANT,,,,CA,,,,,1,0,2021-04-26,,CERS,,,,5,Single,overdue,True,IIAR9 | Revalid:OVERDUE,396156.0,Kern County Env Health Services Department,2024-03-18,4.0,0.0,True,False,False,ok
 cers-396185,,LAGUNA COUNTY SANITATION DIST.,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Violations:1,396185.0,Santa Barbara County Environmental Health Services,2025-05-09,4.0,1.0,False,False,False,ok
 cers-396257,,Lancaster Water Reclamation Plant,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:1,396257.0,Los Angeles County Fire Department,2023-06-12,5.0,1.0,True,False,False,ok
 cers-396274,,LANGER JUICE CO INC,,,,CA,,,,,1,0,,,CERS,,,,5,Single,overdue,True,Violations:1 | Revalid:OVERDUE,396274.0,Los Angeles County Fire Department,2020-05-07,3.0,1.0,False,False,False,overdue
