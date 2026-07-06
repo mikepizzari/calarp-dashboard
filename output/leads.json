@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2026-06-29",
+    "generated": "2026-07-06",
     "total_sites": 4053,
     "tier_counts": {
       "1": 32,
@@ -9,8 +9,8 @@
       "4": 960,
       "5": 2155
     },
-    "revalid_overdue": 573,
-    "revalid_soon": 764,
+    "revalid_overdue": 575,
+    "revalid_soon": 768,
     "state_counts": {
       "IA": 137,
       "NE": 89,
@@ -11660,7 +11660,7 @@
       "contact_email": "",
       "tier": 2,
       "tier_label": "Major",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -14676,7 +14676,7 @@
       "contact_email": "",
       "tier": 3,
       "tier_label": "Mid-Market",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -27158,7 +27158,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -41224,7 +41224,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -42264,7 +42264,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "is_ca": false,
       "cers_flags": []
     },
@@ -47854,7 +47854,7 @@
       "contact_email": "",
       "tier": 4,
       "tier_label": "Standard",
-      "revalid_status": "soon",
+      "revalid_status": "overdue",
       "is_ca": false,
       "cers_flags": []
     },
@@ -95016,13 +95016,14 @@
       "cers_rv": "ok",
       "cers_flags": [
         "IIAR9",
-        "Violations:6"
+        "Violations:6",
+        "Revalid:SOON"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "2023-01-05",
       "epaid": "100000198877",
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "100000198877",
@@ -100146,16 +100147,17 @@
       "iiar9_gap": true,
       "is_p3": false,
       "pre_epa2024": false,
-      "cers_rv": "ok",
+      "cers_rv": "soon",
       "cers_flags": [
         "IIAR9",
-        "Violations:3"
+        "Violations:3",
+        "Revalid:SOON"
       ],
       "locations": 1,
       "accidents": 0,
       "latest_receipt_date": "",
       "epaid": null,
-      "revalid_status": "ok",
+      "revalid_status": "soon",
       "tier": 5,
       "tier_label": "Single",
       "lead_key": "cers-402201",
