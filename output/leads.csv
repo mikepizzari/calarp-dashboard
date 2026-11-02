@@ -810,7 +810,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000042072,100000042072,Gerber Products Company,Nestle,405 State Street,Fremont,MI,49413,43.468182,-85.95475,23732.0,37,0,2024-07-17,311421,Brian,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000089058,100000089058,"Kraft Heinz Foods Company, Fort Myers",Kraft Heinz,5521 Division Drive,Fort Myers,FL,33905,26.664925,-81.802501,23565.0,26,0,2025-10-20,311812,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000144373,100000144373,Reddy Ice-Austin (301),Reddy Ice Llc,7901 Springdale Road,Austin,TX,78724,30.322513,-97.658059,23500.0,14,0,2024-06-18,312113,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
-100000176999,100000176999,Reddy Ice-Gaffney (435),Reddy Ice Llc,130 Peoples Creek Road,Gaffney,SC,29340,35.072066,-81.612977,23000.0,14,0,2021-10-27,312113,Micah,,,,3,Mid-Market,soon,False,,,,,,,,,,
+100000176999,100000176999,Reddy Ice-Gaffney (435),Reddy Ice Llc,130 Peoples Creek Road,Gaffney,SC,29340,35.072066,-81.612977,23000.0,14,0,2021-10-27,312113,Micah,,,,3,Mid-Market,overdue,False,,,,,,,,,,
 100000183972,100000183972,Costco Wholesale - Dallas,Costco,3730 Mountain Creek Parkway,Dallas,TX,75236,32.69275,-96.961333,23000.0,12,0,2023-09-06,49312,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
 100000198243,100000198243,"United Natural Foods, Inc. - Allentown","United Natural Foods, Inc.",2310 Roberts Drive,Anniston,AL,36207,33.624444,-85.798611,22900.0,11,0,2022-01-26,44511,Micah,,,,3,Mid-Market,soon,False,,,,,,,,,,
 100000046201,100000046201,Saputo Cheese USA Inc. - Sulphur Springs,Saputo Inc.,300 Industrial Drive E,Sulphur Springs,TX,75482,33.122565,-95.585342,22531.0,12,0,2025-06-24,31151,Micah,,,,3,Mid-Market,ok,False,,,,,,,,,,
@@ -946,7 +946,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000175268,100000175268,Plant Bowen,Georgia Power Company,317 Covered Bridge Road,Cartersville,GA,30120,34.125278,-84.920556,2100000.0,4,0,2024-06-12,221112,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000038826,100000038826,"Dakota Midland Grain, LLC","Dakota Midland Grain, Llc",5758 Norwich Road,Norwich,ND,58768,48.248333,-100.985,1800500.0,4,0,2024-05-06,111199,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000177006,100000177006,Gibson Generating Station,Duke Energy Corp.,1097 N. 950 W.,Owensville,IN,47665,38.370082,-87.764383,1800000.0,1,1,2021-10-18,221112,Brian,JENNIFER GARBER,9803730668.0,JENNIFER.GARBER@DUKE-ENERGY.COM,4,Standard,overdue,False,,,,,,,,,,
-100000182465,100000182465,Santee Cooper Cross Generating Station,Santee Cooper,553 Cross Station Road,Pineville,SC,29468,33.380535,-80.112682,1767600.0,2,0,2023-05-01,221122,Micah,,,,4,Standard,ok,False,,,,,,,,,,
+100000182465,100000182465,Santee Cooper Cross Generating Station,Santee Cooper,553 Cross Station Road,Pineville,SC,29468,33.380535,-80.112682,1767600.0,2,0,2023-05-01,221122,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000181929,100000181929,Belews Creek Steam Station,Duke Energy Corporation,3195 Pine Hall Road,Belews Creek,NC,27009,36.285294,-80.059897,1600000.0,2,0,2022-06-07,221112,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000034526,100000034526,"Ray-Carroll County Grain Growers, Inc., Norborne","Ray-Carroll County Grain Growers, I",Sante Fe,Norborne,MO,64668,39.305191,-93.6729,1400000.0,3,0,2022-12-19,42451,Brian,,,,4,Standard,soon,False,,,,,,,,,,
 100000049869,100000049869,ST CLAIR SERVICE CO  (BELLEVILLE),St Clair Service Company,1036 S. GREEN MOUNT RD,BELLEVILLE,IL,62220,38.47414,-89.937364,1400000.0,2,0,2024-03-05,44422,Brian,,,,4,Standard,ok,False,,,,,,,,,,
@@ -1641,13 +1641,13 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000106191,100000106191,Roche Fruit Co - Warehouse 9,Roche Fruit Co,419 N 1st Avenue,Yakima,WA,98902,46.362876,-120.304463,20000.0,2,0,2024-09-23,49312,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000099635,100000099635,Tops Markets Distribution Center,"Tops Markets, Llc",5873 Genesee Street,Lancaster,NY,14086,42.940556,-78.631944,20000.0,2,0,2023-03-30,49312,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000156742,100000156742,Buddy's Kitchen,Premium Brands Holdings Corporation,21150 Hamburg Avenue,Lakeville,MN,55044,44.642851,-93.226761,20000.0,2,0,2022-02-17,311991,Brian,,,,4,Standard,soon,False,,,,,,,,,,
-100000076794,100000076794,"Home Market Foods, Inc.","Home Market Foods, Inc.",380 South Worcester St,Norton,MA,2766,41.939527,-71.178263,20000.0,2,0,2023-04-27,49312,Micah,,,,4,Standard,ok,False,,,,,,,,,,
+100000076794,100000076794,"Home Market Foods, Inc.","Home Market Foods, Inc.",380 South Worcester St,Norton,MA,2766,41.939527,-71.178263,20000.0,2,0,2023-04-27,49312,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000190731,100000190731,"West Liberty Foods, Mount Pleasant","West Liberty Foods, Llc",2225 East Commerce Drive,Mt. Pleasant,IA,52641,40.97238,-91.52258,19967.0,2,0,2020-02-11,311615,Brian,,,,4,Standard,overdue,False,,,,,,,,,,
 100000185532,100000185532,Suzanna's Kitchen II,Bradley Howard,4101 Blue Ridge Industrial Parkway,Duluth,GA,30096,33.980501,-84.17084,19900.0,2,0,2023-10-18,31141,Micah,JOHN SIMS,7702075047.0,JSIMS@SUZANNASKITCHEN.COM,4,Standard,ok,False,,,,,,,,,,
 100000028098,100000028098,"Tillamook Illinois, LLC",Tillamook County Creamery Association,757 N. Morgan Street,Decatur,IL,62521,39.848883,-88.948367,19883.0,2,0,2024-12-17,31152,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000238405,100000238405,Don's Cold Storage,Don Coenen,2320 South Hall St.,Webb City,MO,64870,37.116553,-94.459956,19697.0,2,0,2023-06-30,49312,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000243186,100000243186,Birchwood Foods,Kenosha Beef,6009C Goshen Springs Road SW,Norcross,GA,30071,33.917345,-84.20376,19626.0,2,0,2024-12-09,311612,Micah,,,,4,Standard,ok,False,,,,,,,,,,
-100000247538,100000247538,York Cold Storage,York Cold Storage,1215 N. Division Ave,YORK,NE,68467,40.87227,-97.59757,19610.0,2,0,2021-10-28,311111,Brian,,,,4,Standard,soon,False,,,,,,,,,,
+100000247538,100000247538,York Cold Storage,York Cold Storage,1215 N. Division Ave,YORK,NE,68467,40.87227,-97.59757,19610.0,2,0,2021-10-28,311111,Brian,,,,4,Standard,overdue,False,,,,,,,,,,
 100000192524,100000192524,Arvah B. Hopkins Electric Generating Station,City Of Tallahassee,1125 Geddie Rd,Tallahassee,FL,32304,30.452436,-84.399381,19600.0,2,0,2025-07-07,221112,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000098477,100000098477,"Maple Leaf Farms, Indiana Division","Maple Leaf Farms, Inc.",9166 North 200 East,Milford,IN,46542,41.365471,-85.805456,19600.0,2,0,2025-01-06,311615,Brian,,,,4,Standard,ok,False,,,,,,,,,,
 100000160274,100000160274,Agri-Mark,Agri-Mark,869 Exchange Street,Middlebury,VT,5753,44.03145,-73.17261,19560.0,1,1,2024-05-24,311513,Micah,,,,4,Standard,ok,False,,,,,,,,,,
@@ -1793,7 +1793,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000240517,100000240517,Campbell Snacks - Denver Plant,Campbell Soup Company,2195 N Reading Rd,Denver,PA,17517,40.22429,-76.09463,14000.0,4,0,2023-11-17,311812,Micah,,,,4,Standard,ok,False,,,,,,,,,,
 100000209213,100000209213,Wegmans Food Markets Culinary Innovation,"Wegmans Food Markets, Inc.",360 Wegmans Market Street,Rochester,NY,14624,43.119428,-77.698221,14000.0,2,0,2022-04-11,311991,Micah,,,,4,Standard,soon,False,,,,,,,,,,
 100000173901,100000173901,Yuengling Brewery,Yuengling Brewery,310 Mill Creek,Pottsville,PA,17901,40.69812,-76.173923,14000.0,2,0,2021-01-29,31212,Micah,,,,4,Standard,overdue,False,,,,,,,,,,
-100000236586,100000236586,NewCold Seattle Operations LLC,Newcold Advanced Cold Logistics,4601 S Orchard St,Tacoma,WA,98466,47.21694,-122.50235,14000.0,2,0,2023-05-01,49312,Brian,,,,4,Standard,ok,False,,,,,,,,,,
+100000236586,100000236586,NewCold Seattle Operations LLC,Newcold Advanced Cold Logistics,4601 S Orchard St,Tacoma,WA,98466,47.21694,-122.50235,14000.0,2,0,2023-05-01,49312,Brian,,,,4,Standard,soon,False,,,,,,,,,,
 100000212487,100000212487,Cafe Valley Bakery,Cafe Valley Inc.,7000 W. Buckeye Road,Phoenix,AZ,85043,33.438876,-112.210768,13822.0,2,0,2025-11-20,311813,Luke,,,,4,Standard,ok,False,,,,,,,,,,
 100000219989,100000219989,"New Columbia Fruit Packers, LLC",Mark Garrison,2809 River Road,Yakima,WA,98902,46.370861,-120.325001,13783.0,3,0,2022-11-10,42448,Brian,,,,4,Standard,soon,False,,,,,,,,,,
 100000230369,100000230369,"New Columbia Fruit Packers, LLC",Mark Garrison,1225 N 28th Avenue,Yakima,WA,98902,46.3713,-120.324,13651.0,3,0,2025-06-30,42448,Brian,,,,4,Standard,ok,False,,,,,,,,,,
@@ -2838,7 +2838,7 @@ lead_key,epaid,facility_name,company,addr,city,state,zip,lat,lng,nh3_lbs,locatio
 100000229451,100000229451,"Brewster Cheese Company, Stockton Location","Brewster Cheese Company, Ohio Location",300 West Railroad Ave.,Stockton,IL,61085,42.348156,-90.011192,13805.0,1,0,2022-04-12,31151,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000221976,100000221976,Laack Cold Storage,Mark Laack,356 Dixie St,Fond Du Lac,WI,54935,43.761212,-88.460061,13789.0,1,0,2013-07-02,42441,Brian,,,,5,Single,overdue,False,,,,,,,,,,
 100000093908,100000093908,Grecian Delight - Estes,Grecian Delight Foods,1301 Estes Avenue,Elk Grove Village,IL,60007,42.005278,-87.966944,13767.0,1,0,2023-06-30,31181,Brian,,,,5,Single,ok,False,,,,,,,,,,
-100000223108,100000223108,Aurora Organic Dairy,Aurora Organic Holdings Llc,6788 SH 66,Platteville,CO,80651,40.201041,-104.927098,13750.0,1,0,2023-04-27,311511,Brian,,,,5,Single,ok,False,,,,,,,,,,
+100000223108,100000223108,Aurora Organic Dairy,Aurora Organic Holdings Llc,6788 SH 66,Platteville,CO,80651,40.201041,-104.927098,13750.0,1,0,2023-04-27,311511,Brian,,,,5,Single,soon,False,,,,,,,,,,
 100000176454,100000176454,"Horizon Organic Dairy, LLC","Horizon Organic Dairy, Llc",1658 South 4370 West,Salt Lake City,UT,84104,40.734904,-111.996393,13750.0,1,0,2022-06-07,31151,Luke,,,,5,Single,soon,False,,,,,,,,,,
 100000199251,100000199251,"Merchants Cold Storage, LLC.,",Skip Hawk,240 Shorland Drive,Walton,KY,41094,38.925468,-84.625336,13700.0,1,0,2022-05-24,48411,Micah,,,,5,Single,soon,False,,,,,,,,,,
 100000222957,100000222957,Masters Gallery Foods INC.,"Masters Gallery Foods, Inc.",411 County Road PP,Plymouth,WI,53073,43.731078,-87.975148,13700.0,1,0,2023-11-01,42443,Brian,,,,5,Single,ok,False,,,,,,,,,,
@@ -3082,7 +3082,7 @@ cers-44579,,"Baker Cold Storage, INC. DBA: Lineage Logistics - Vernon",,,,CA,,,,
 100000056084,100000056084,LLOYD MICHAEL WATER TREATMENT PLANT,,,,CA,,,,,1,0,2009-06-22,,CERS,,,,5,Single,overdue,True,Revalid:OVERDUE,44734.0,San Bernardino County Fire Department,2015-05-21,1.0,0.0,False,False,False,overdue
 100000143043,100000143043,LONG BEACH WATER RECLAMATION PLANT,,,,CA,,,,,1,0,1999-06-24,,CERS,,,,5,Single,overdue,True,IIAR9 | Revalid:OVERDUE,44956.0,Long Beach Environmental Heath,2025-02-06,3.0,0.0,True,False,False,ok
 100000077294,100000077294,LOS ANGELES COLD STORAGE CO.,,,,CA,,,,,1,0,2023-05-17,,CERS,,,,5,Single,ok,True,Violations:4,45062.0,Los Angeles City Fire Department,2023-12-04,5.0,4.0,False,False,False,ok
-cers-45074,,"LOS ANGELES REFINERY, NORTH AREA TANK FARM",,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | EPA2024,45074.0,Los Angeles County Fire Department,2023-04-27,3.0,0.0,True,True,True,ok
+cers-45074,,"LOS ANGELES REFINERY, NORTH AREA TANK FARM",,,,CA,,,,,1,0,,,CERS,,,,5,Single,soon,True,IIAR9 | EPA2024 | Revalid:SOON,45074.0,Los Angeles County Fire Department,2023-04-27,3.0,0.0,True,True,True,soon
 100000145489,100000145489,Los Coyotes Water Reclamation Plant,,,,CA,,,,,1,0,2014-06-18,,CERS,,,,5,Single,overdue,True,IIAR9 | Violations:2 | Revalid:OVERDUE,45097.0,Los Angeles County Fire Department,2024-09-05,8.0,2.0,True,False,False,ok
 cers-45751,,MC Gill Corp,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,45751.0,Los Angeles County Fire Department,2024-02-08,16.0,3.0,True,False,False,ok
 cers-46032,,MAERKLE DAM CHLORINATION STAT,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9,46032.0,San Diego County Department of Env Health,2024-12-10,6.0,0.0,True,False,False,ok
@@ -3588,7 +3588,7 @@ cers-390750,,Nutrien Ag Solutions - San Jacinto,,,,CA,,,,,1,0,,,CERS,,,,5,Single
 cers-390754,,"Sentinel Energy Center, LLC",,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9,390754.0,Riverside County Department of Env Health,2025-01-30,7.0,0.0,True,False,False,ok
 cers-390809,,"Midstream Energy Partners, USA,LLC- NO COLES LEVEE GAS PLT",,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Violations:5 | EPA2024,390809.0,Kern County Env Health Services Department,2024-03-26,16.0,5.0,False,True,True,ok
 cers-390815,,CRIMSON RENEWABLE ENERGY L.P.,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,Violations:4,390815.0,Kern County Env Health Services Department,2023-07-26,8.0,4.0,False,False,False,ok
-100000052328,100000052328,Nutrien Ag Solutions,,,,CA,,,,,1,0,2022-10-18,,CERS,,,,5,Single,soon,True,Violations:3 | Revalid:SOON,390841.0,Imperial CUPA - DTSC,2021-10-27,4.0,3.0,False,False,False,soon
+100000052328,100000052328,Nutrien Ag Solutions,,,,CA,,,,,1,0,2022-10-18,,CERS,,,,5,Single,soon,True,Violations:3 | Revalid:SOON,390841.0,Imperial CUPA - DTSC,2021-10-27,4.0,3.0,False,False,False,overdue
 cers-390856,,Crown Citrus Company,,,,CA,,,,,1,0,,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,390856.0,Imperial CUPA - DTSC,2025-04-25,4.0,3.0,True,False,False,ok
 cers-390857,,FIVE CROWNS INC DBA CROWN COOLING,,,,CA,,,,,1,0,,,CERS,,,,5,Single,soon,True,Violations:2 | Revalid:SOON,390857.0,Imperial CUPA - DTSC,2021-12-29,3.0,2.0,False,False,False,soon
 100000151391,100000151391,"Custom Alloy Sales, Inc.",,,,CA,,,,,1,0,2023-09-13,,CERS,,,,5,Single,ok,True,IIAR9 | Violations:3,390909.0,Los Angeles County Fire Department,2025-05-01,15.0,3.0,True,False,False,ok
